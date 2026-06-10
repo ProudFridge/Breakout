@@ -18,10 +18,10 @@
 script = ExtResource("1_sl2e5")
 
 [node name="BlockManager" parent="." unique_id=46482369 instance=ExtResource("2_v5dby")]
-blockAmount = Vector2i(10, 10)
-blockPadding = Vector2(20, 20)
-gridPadding = Vector2(10, 10)
-showGridArea = true
+block_amount = Vector2i(10, 10)
+block_padding = Vector2(12, 12)
+grid_padding = Vector2(20, 20)
+show_grid_area = true
 
 [node name="WorldBoundary" type="Node" parent="." unique_id=1687065296]
 

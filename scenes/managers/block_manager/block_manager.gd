@@ -1,10 +1,11 @@
 extends Node
 class_name BlockManager
 
-@export var blockAmount: Vector2i = Vector2i(3,2)
-@export var blockPadding: Vector2 = Vector2(10, 10)
-@export var gridPadding: Vector2 = Vector2(50, 50)
-@export var showGridArea: bool = false
+@export var block_amount: Vector2i = Vector2i(3,2)
+@export var block_padding: Vector2 = Vector2(10, 10)
+@export var grid_padding: Vector2 = Vector2(50, 50)
+@export var grid_height: float = 400
+@export var show_grid_area: bool = false
 
 @onready var grid_area: ColorRect = $GridArea
 
@@ -16,9 +17,9 @@ static var _block_instances: Array[Block] 	= []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var viewportSize: Vector2 = get_viewport().size
-	grid_area.visible = showGridArea
+	grid_area.visible = show_grid_area
 		
-	generate_grid(Vector2(viewportSize.x, 300), blockAmount, blockPadding, gridPadding)
+	generate_grid(Vector2(viewportSize.x, grid_height), block_amount, block_padding, grid_padding)
 
 # Instantiates a grid of blocks 
 func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
