@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cvstwnwbs75xl"]
+
+[ext_resource type="Script" uid="uid://6bua83dj7est" path="res://scenes/paddle/paddle.gd" id="1_q5rgx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eletc"]
+size = Vector2(60, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_q5rgx"]
+
+[node name="Paddle" type="CharacterBody2D" unique_id=274753157]
+script = ExtResource("1_q5rgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546577879]
+shape = SubResource("RectangleShape2D_eletc")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1066922579]
+scale = Vector2(60, 20)
+mesh = SubResource("QuadMesh_q5rgx")
