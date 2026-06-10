@@ -7,6 +7,7 @@ class_name BlockManager
 @export var paddingX: float = 1
 @export var paddingY: float = 1
 
+# TODO: get the padding from the block size or make it autoamtic idk
 @export var worldPaddingX: float = 50
 @export var worldPaddingY: float = 50
 
@@ -30,9 +31,6 @@ func _ready() -> void:
 	
 	# TODO: add automatic spawning function that fills a certain portion of the screen with blocks
 	#var viewportSize: Vector2 = get_viewport().size
-
-func _process(delta: float) -> void:
-	print(_block_instances.size())
 
 # Adds a block to the block instances array
 static func add_block(block_instance: Block) -> void:
