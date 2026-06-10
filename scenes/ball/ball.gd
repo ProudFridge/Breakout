@@ -12,3 +12,6 @@ func _physics_process(delta: float) -> void:
 	# Bounces the ball whenever there's a collision
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
+		
+		if collision.get_collider() is Block:
+			collision.get_collider().take_damage(1)

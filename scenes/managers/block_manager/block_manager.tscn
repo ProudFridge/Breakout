@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://blmhj0qtrvphf"]
+
+[ext_resource type="Script" uid="uid://b3rubb1j4yc84" path="res://scenes/managers/block_manager/block_manager.gd" id="1_lbx8y"]
+
+[node name="BlockManager" type="Node" unique_id=46482369]
+script = ExtResource("1_lbx8y")

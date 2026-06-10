@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://csx6j305eareb"]
+
+[ext_resource type="Script" uid="uid://nfq5jd1ec32a" path="res://scenes/block/block.gd" id="1_c27ow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yksjm"]
+size = Vector2(40, 15)
+
+[sub_resource type="QuadMesh" id="QuadMesh_c27ow"]
+
+[node name="Block" type="CharacterBody2D" unique_id=1082513130 groups=["Block"]]
+motion_mode = 1
+script = ExtResource("1_c27ow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225417575]
+shape = SubResource("RectangleShape2D_yksjm")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=317730714]
+scale = Vector2(40, 15)
+mesh = SubResource("QuadMesh_c27ow")
