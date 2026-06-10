@@ -21,7 +21,6 @@ script = ExtResource("1_sl2e5")
 block_amount = Vector2i(10, 10)
 block_padding = Vector2(12, 12)
 grid_padding = Vector2(20, 20)
-show_grid_area = true
 
 [node name="WorldBoundary" type="Node" parent="." unique_id=1687065296]
 
@@ -51,15 +50,19 @@ position = Vector2(323, 706)
 [node name="Ball" parent="." unique_id=71320122 instance=ExtResource("3_1fp7r")]
 position = Vector2(302, 577)
 
-[node name="UI" type="Control" parent="." unique_id=1848346517]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1593247802]
+
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1848346517]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="BlockCounter" type="RichTextLabel" parent="UI" unique_id=847174107]
+[node name="BlockCounter" type="RichTextLabel" parent="CanvasLayer/UI" unique_id=847174107]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -72,3 +75,71 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("5_v5dby")
+
+[node name="GridControls" type="Control" parent="CanvasLayer/UI" unique_id=113130881]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/GridControls" unique_id=1519628941]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -169.0
+offset_right = 252.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="CanvasLayer/UI/GridControls/MarginContainer" unique_id=1659178617]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/GridControls/MarginContainer" unique_id=1008522024]
+layout_mode = 2
+
+[node name="GenerateGridButton" type="Button" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer" unique_id=105890785]
+layout_mode = 2
+text = "Generate Grid"
+
+[node name="BlockX" type="HBoxContainer" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer" unique_id=1509040941]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/BlockX" unique_id=126053469]
+layout_mode = 2
+text = "Block amount x:"
+
+[node name="BlockAmountX" type="LineEdit" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/BlockX" unique_id=994568989]
+layout_mode = 2
+placeholder_text = "block x"
+
+[node name="BlockY" type="HBoxContainer" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer" unique_id=1312768934]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/BlockY" unique_id=1128811482]
+layout_mode = 2
+text = "Block amount y:"
+
+[node name="BlockAmountY" type="LineEdit" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/BlockY" unique_id=69742669]
+layout_mode = 2
+placeholder_text = "block y"
+
+[node name="ShowGrid" type="HBoxContainer" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer" unique_id=729932485]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/ShowGrid" unique_id=2076497758]
+layout_mode = 2
+text = "Toggle grid visibility"
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/ShowGrid" unique_id=465536670]
+layout_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/GenerateGridButton" to="." method="_on_generate_grid_button_pressed"]
+[connection signal="text_changed" from="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/BlockX/BlockAmountX" to="." method="_on_block_amount_x_text_changed"]
+[connection signal="text_changed" from="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/BlockY/BlockAmountY" to="." method="_on_block_amount_y_text_changed"]
+[connection signal="pressed" from="CanvasLayer/UI/GridControls/MarginContainer/VBoxContainer/ShowGrid/CheckButton" to="." method="_on_check_button_pressed"]
