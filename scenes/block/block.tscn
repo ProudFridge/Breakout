@@ -7,6 +7,10 @@ size = Vector2(40, 15)
 
 [sub_resource type="QuadMesh" id="QuadMesh_c27ow"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_c27ow"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
 [node name="Block" type="CharacterBody2D" unique_id=1082513130]
 motion_mode = 1
 script = ExtResource("1_c27ow")
@@ -17,3 +21,21 @@ shape = SubResource("RectangleShape2D_yksjm")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=317730714]
 scale = Vector2(40, 15)
 mesh = SubResource("QuadMesh_c27ow")
+
+[node name="Label" type="Label" parent="." unique_id=732255590]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -5.5
+offset_right = 7.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "1"
+label_settings = SubResource("LabelSettings_c27ow")
+horizontal_alignment = 1
+vertical_alignment = 1
