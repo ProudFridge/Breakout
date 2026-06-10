@@ -11,7 +11,7 @@ func take_damage(damage: float) -> void:
 	health = health - damage
 	if health == 0:
 		BlockManager.remove_block(self)
-		queue_free()
+		delete()
 
 # Sets the block's size
 func set_size(newSize: Vector2) -> void:
@@ -21,3 +21,7 @@ func set_size(newSize: Vector2) -> void:
 # Return's the block's size
 func get_size() -> Vector2:
 	return $CollisionShape2D.shape.size
+
+# Deletes the block
+func delete() -> void:
+	queue_free()

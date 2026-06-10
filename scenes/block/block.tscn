@@ -7,7 +7,7 @@ size = Vector2(40, 15)
 
 [sub_resource type="QuadMesh" id="QuadMesh_c27ow"]
 
-[node name="Block" type="CharacterBody2D" unique_id=1082513130 groups=["Block"]]
+[node name="Block" type="CharacterBody2D" unique_id=1082513130]
 motion_mode = 1
 script = ExtResource("1_c27ow")
 

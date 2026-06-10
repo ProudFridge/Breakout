@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bwnvb3pphh2v2" path="res://scenes/world/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://blmhj0qtrvphf" path="res://scenes/managers/block_manager/block_manager.tscn" id="2_v5dby"]
 [ext_resource type="PackedScene" uid="uid://dpwwvkfv48suw" path="res://scenes/ball/ball.tscn" id="3_1fp7r"]
-[ext_resource type="Script" uid="uid://co35vd55fxmed" path="res://scenes/world/rich_text_label.gd" id="5_v5dby"]
+[ext_resource type="Script" uid="uid://co35vd55fxmed" path="res://scenes/world/block_counter.gd" id="5_v5dby"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sl2e5"]
 
@@ -18,10 +18,10 @@
 script = ExtResource("1_sl2e5")
 
 [node name="BlockManager" parent="." unique_id=46482369 instance=ExtResource("2_v5dby")]
-blocksX = 10
-blocksY = 10
-paddingX = 30.0
-paddingY = 30.0
+blockAmount = Vector2i(10, 10)
+blockPadding = Vector2(20, 20)
+gridPadding = Vector2(10, 10)
+showGridArea = true
 
 [node name="WorldBoundary" type="Node" parent="." unique_id=1687065296]
 
@@ -56,9 +56,19 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="BlockCounter" type="RichTextLabel" parent="UI" unique_id=847174107]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("5_v5dby")

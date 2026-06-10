@@ -4,3 +4,8 @@
 
 [node name="BlockManager" type="Node" unique_id=46482369]
 script = ExtResource("1_lbx8y")
+
+[node name="GridArea" type="ColorRect" parent="." unique_id=1189459072]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.69411767, 0.44313726, 0.98039216, 0.30980393)
