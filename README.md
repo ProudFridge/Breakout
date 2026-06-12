@@ -1,3 +1,7 @@
-Breakout clone i'm making as part of the 20 games challenges.
+# Breakout
+A breakout clone with some additional features.
 
-The project is relatively empty right now, so i'll update this later.
+## How to run
+1. Download the godot game engine from [godotengine.org](https://godotengine.org/)
+2. Clone this repository and import the project into godot
+3. Run the projet by pressing F5
