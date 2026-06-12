@@ -14,6 +14,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="Block" type="CharacterBody2D" unique_id=1082513130]
 motion_mode = 1
 script = ExtResource("1_c27ow")
+health = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225417575]
 shape = SubResource("RectangleShape2D_yksjm")
