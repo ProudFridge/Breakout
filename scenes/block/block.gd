@@ -5,7 +5,6 @@ class_name Block
 var initialHealth: float
 var initialColor: Color
 
-
 @onready var label: Label = $Label
 @onready var mesh: MeshInstance2D = $MeshInstance2D
 

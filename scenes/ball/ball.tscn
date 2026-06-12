@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpwwvkfv48suw"]
 
 [ext_resource type="Script" uid="uid://dt5xtc30siyuo" path="res://scenes/ball/ball.gd" id="1_oqv3d"]
+[ext_resource type="AudioStream" uid="uid://bnaci47aix6w4" path="res://assets/sound_effects/synth.wav" id="2_nv6q1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5a6bx"]
 
@@ -16,3 +17,6 @@ shape = SubResource("CircleShape2D_5a6bx")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1661593475]
 scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_oqv3d")
+
+[node name="CollisionSound" type="AudioStreamPlayer2D" parent="." unique_id=227188667]
+stream = ExtResource("2_nv6q1")
