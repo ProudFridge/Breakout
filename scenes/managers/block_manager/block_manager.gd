@@ -39,7 +39,7 @@ func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector
 			var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmount.y),0.5,1,1)
 			var bPosition: Vector2
 			bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
-			bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
+			bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2 + 50
 			
 			instantiate_block(bPosition, blockSize, color)
 
