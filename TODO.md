@@ -1,5 +1,5 @@
 ### TODO
-- Make the blocks change colors as they lose health
+X- Make the blocks change colors as they lose health
 - Fix the generate_grid function not being able to generate large grids of blocks
 - Add the possibility for larger levels, by adding a camera to the player and changing the player's and the ball's spawn point with code
 - Create a simple gameplay loop

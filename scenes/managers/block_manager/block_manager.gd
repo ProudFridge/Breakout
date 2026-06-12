@@ -13,7 +13,7 @@ class_name BlockManager
 var block: PackedScene = preload("res://scenes/block/block.tscn")
 
 # Use later to detect if the player has won
-static var _block_instances: Array[Block] 	= []
+static var _block_instances: Array[Block] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,13 +35,13 @@ func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector
 	
 	for row: int in blockAmount.x:
 		for column: int in blockAmount.y:
-			var blockInstance: Block = block.instantiate()	
-			blockInstance.set_size(blockSize)
-
-			blockInstance.position.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
-			blockInstance.position.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
+			# Make the blocks spawn in a rainbow
+			var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmount.y),0.5,1,1)
+			var bPosition: Vector2
+			bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
+			bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
 			
-			add_child(blockInstance)
+			instantiate_block(bPosition, blockSize, color)
 
 # Adds a block to the block instances array
 static func add_block(block_instance: Block) -> void:
@@ -62,3 +62,12 @@ static func clear_grid() -> void:
 # Toggles the visibility of the color rect that represents the grid area
 func toggle_grid_area_visibilty() -> void:
 	grid_area_highlight.visible = not grid_area_highlight.visible
+	
+func instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
+	var blockInstance: Block = block.instantiate()	
+	
+	blockInstance.set_size(size)
+	blockInstance.initialColor = color
+	blockInstance.position = position
+	
+	add_child(blockInstance)
