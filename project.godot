@@ -22,8 +22,8 @@ gdscript/warnings/inferred_declaration=2
 
 [display]
 
-window/size/viewport_width=648
-window/size/viewport_height=900
+window/size/viewport_width=900
+window/size/viewport_height=1000
 
 [editor_plugins]
 
@@ -77,3 +77,4 @@ tilt_left={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.11489672, 0.11489684, 0.11489674, 1)

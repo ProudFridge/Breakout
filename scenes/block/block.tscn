@@ -5,7 +5,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yksjm"]
 size = Vector2(40, 15)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66klm"]
+
 [sub_resource type="QuadMesh" id="QuadMesh_c27ow"]
+material = SubResource("ShaderMaterial_66klm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rfxuc"]
 
@@ -16,7 +19,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="Block" type="CharacterBody2D" unique_id=1082513130]
 motion_mode = 1
 script = ExtResource("1_c27ow")
-health = 3.0
+health = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225417575]
 shape = SubResource("RectangleShape2D_yksjm")

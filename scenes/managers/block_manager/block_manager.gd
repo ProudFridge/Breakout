@@ -4,7 +4,7 @@ class_name BlockManager
 @export var block_amount: Vector2i = Vector2i(3,2)
 @export var block_padding: Vector2 = Vector2(10, 10)
 @export var grid_padding: Vector2 = Vector2(50, 50)
-@export var grid_height: float = 400
+#@export var grid_height: float = 400
 @export var grid_area: Vector2
 @export var show_grid_area: bool = false
 
@@ -12,18 +12,12 @@ class_name BlockManager
 
 var block: PackedScene = preload("res://scenes/block/block.tscn")
 
-# Use later to detect if the player has won
-static var _block_instances: Array[Block] = []
+# Make it sync in the world scene later
+@export var gameAreaSize: Vector2 = Vector2(400, 900)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	grid_area_highlight.visible = show_grid_area
-	
-	# Temporary fix for the area of the grid
-	var viewportSize: Vector2 = get_viewport().size
-	grid_area = Vector2(viewportSize.x, grid_height)
-		
-	generate_grid(Vector2(viewportSize.x, grid_height), block_amount, block_padding, grid_padding)
+# Use later to detect if the player has won
+# TODO: make non static, there's no real use for it being static
+static var _block_instances: Array[Block] = []
 
 # Instantiates a grid of blocks 
 func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
@@ -39,7 +33,7 @@ func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector
 			var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmount.y),0.5,1,1)
 			var bPosition: Vector2
 			bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
-			bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2 + 50
+			bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
 			
 			instantiate_block(bPosition, blockSize, color)
 

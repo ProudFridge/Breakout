@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dpwwvkfv48suw" path="res://scenes/ball/ball.tscn" id="3_1fp7r"]
 [ext_resource type="Script" uid="uid://bm8l7wl3514wr" path="res://scenes/world/count.gd" id="6_t5ptc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5dby"]
+bg_color = Color(0.35531357, 0.35531357, 0.35531345, 1)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sl2e5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1fp7r"]
@@ -16,6 +19,21 @@
 
 [node name="World" type="Node2D" unique_id=1769071752]
 script = ExtResource("1_sl2e5")
+
+[node name="Control" type="Control" parent="." unique_id=1567258030]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 650.0
+offset_bottom = 909.0
+
+[node name="Panel" type="Panel" parent="Control" unique_id=802174903]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v5dby")
 
 [node name="BlockManager" parent="." unique_id=46482369 instance=ExtResource("2_v5dby")]
 block_amount = Vector2i(10, 10)
@@ -53,7 +71,10 @@ SPEED = 400.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1593247802]
 
-[node name="UI" type="Control" parent="CanvasLayer" unique_id=1848346517]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1953188512]
+position = Vector2(317, 437)
+
+[node name="UI" type="Control" parent="." unique_id=1848346517]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,7 +84,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="GridControls" type="MarginContainer" parent="CanvasLayer/UI" unique_id=1519628941]
+[node name="GridControls" type="MarginContainer" parent="UI" unique_id=1519628941]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -76,59 +97,59 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="FoldableContainer" type="FoldableContainer" parent="CanvasLayer/UI/GridControls" unique_id=587160359]
+[node name="FoldableContainer" type="FoldableContainer" parent="UI/GridControls" unique_id=587160359]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/UI/GridControls/FoldableContainer" unique_id=1659178617]
+[node name="Panel" type="Panel" parent="UI/GridControls/FoldableContainer" unique_id=1659178617]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/GridControls/FoldableContainer" unique_id=1008522024]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GridControls/FoldableContainer" unique_id=1008522024]
 layout_mode = 2
 
-[node name="GenerateGridButton" type="Button" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer" unique_id=105890785]
+[node name="GenerateGridButton" type="Button" parent="UI/GridControls/FoldableContainer/VBoxContainer" unique_id=105890785]
 layout_mode = 2
 text = "Generate Grid"
 
-[node name="BlockX" type="HBoxContainer" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer" unique_id=1509040941]
+[node name="BlockX" type="HBoxContainer" parent="UI/GridControls/FoldableContainer/VBoxContainer" unique_id=1509040941]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/BlockX" unique_id=126053469]
+[node name="Label" type="Label" parent="UI/GridControls/FoldableContainer/VBoxContainer/BlockX" unique_id=126053469]
 layout_mode = 2
 text = "Block amount x:"
 
-[node name="BlockAmountX" type="LineEdit" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/BlockX" unique_id=994568989]
+[node name="BlockAmountX" type="LineEdit" parent="UI/GridControls/FoldableContainer/VBoxContainer/BlockX" unique_id=994568989]
 layout_mode = 2
 placeholder_text = "block x"
 
-[node name="BlockY" type="HBoxContainer" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer" unique_id=1312768934]
+[node name="BlockY" type="HBoxContainer" parent="UI/GridControls/FoldableContainer/VBoxContainer" unique_id=1312768934]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/BlockY" unique_id=1128811482]
+[node name="Label" type="Label" parent="UI/GridControls/FoldableContainer/VBoxContainer/BlockY" unique_id=1128811482]
 layout_mode = 2
 text = "Block amount y:"
 
-[node name="BlockAmountY" type="LineEdit" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/BlockY" unique_id=69742669]
+[node name="BlockAmountY" type="LineEdit" parent="UI/GridControls/FoldableContainer/VBoxContainer/BlockY" unique_id=69742669]
 layout_mode = 2
 placeholder_text = "block y"
 
-[node name="ShowGrid" type="HBoxContainer" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer" unique_id=729932485]
+[node name="ShowGrid" type="HBoxContainer" parent="UI/GridControls/FoldableContainer/VBoxContainer" unique_id=729932485]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/ShowGrid" unique_id=2076497758]
+[node name="Label" type="Label" parent="UI/GridControls/FoldableContainer/VBoxContainer/ShowGrid" unique_id=2076497758]
 layout_mode = 2
 text = "Toggle grid visibility"
 
-[node name="CheckButton" type="CheckButton" parent="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/ShowGrid" unique_id=465536670]
+[node name="CheckButton" type="CheckButton" parent="UI/GridControls/FoldableContainer/VBoxContainer/ShowGrid" unique_id=465536670]
 layout_mode = 2
 
-[node name="Header" type="Panel" parent="CanvasLayer/UI" unique_id=528724686]
+[node name="Header" type="Panel" parent="UI" unique_id=528724686]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 41.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/Header" unique_id=1175450939]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Header" unique_id=1175450939]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,38 +158,38 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="BlocksLeft" type="HBoxContainer" parent="CanvasLayer/UI/Header/HBoxContainer" unique_id=1965400196]
+[node name="BlocksLeft" type="HBoxContainer" parent="UI/Header/HBoxContainer" unique_id=1965400196]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/Header/HBoxContainer/BlocksLeft" unique_id=1347913852]
+[node name="Text" type="Label" parent="UI/Header/HBoxContainer/BlocksLeft" unique_id=1347913852]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Blocks Left:"
 horizontal_alignment = 2
 
-[node name="Count" type="Label" parent="CanvasLayer/UI/Header/HBoxContainer/BlocksLeft" unique_id=1942803392]
+[node name="Count" type="Label" parent="UI/Header/HBoxContainer/BlocksLeft" unique_id=1942803392]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "2"
 script = ExtResource("6_t5ptc")
 
-[node name="Score" type="HBoxContainer" parent="CanvasLayer/UI/Header/HBoxContainer" unique_id=2015808371]
+[node name="Score" type="HBoxContainer" parent="UI/Header/HBoxContainer" unique_id=2015808371]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Text" type="Label" parent="CanvasLayer/UI/Header/HBoxContainer/Score" unique_id=66261102]
+[node name="Text" type="Label" parent="UI/Header/HBoxContainer/Score" unique_id=66261102]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Score:"
 horizontal_alignment = 2
 
-[node name="Count" type="Label" parent="CanvasLayer/UI/Header/HBoxContainer/Score" unique_id=1305827151]
+[node name="Count" type="Label" parent="UI/Header/HBoxContainer/Score" unique_id=1305827151]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "3232"
 
-[connection signal="pressed" from="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/GenerateGridButton" to="." method="_on_generate_grid_button_pressed"]
-[connection signal="text_changed" from="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/BlockX/BlockAmountX" to="." method="_on_block_amount_x_text_changed"]
-[connection signal="text_changed" from="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/BlockY/BlockAmountY" to="." method="_on_block_amount_y_text_changed"]
-[connection signal="pressed" from="CanvasLayer/UI/GridControls/FoldableContainer/VBoxContainer/ShowGrid/CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="pressed" from="UI/GridControls/FoldableContainer/VBoxContainer/GenerateGridButton" to="." method="_on_generate_grid_button_pressed"]
+[connection signal="text_changed" from="UI/GridControls/FoldableContainer/VBoxContainer/BlockX/BlockAmountX" to="." method="_on_block_amount_x_text_changed"]
+[connection signal="text_changed" from="UI/GridControls/FoldableContainer/VBoxContainer/BlockY/BlockAmountY" to="." method="_on_block_amount_y_text_changed"]
+[connection signal="pressed" from="UI/GridControls/FoldableContainer/VBoxContainer/ShowGrid/CheckButton" to="." method="_on_check_button_pressed"]

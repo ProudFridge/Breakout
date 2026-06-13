@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Bounces the ball whenever there's a collision
 	if collision:
-		collision_sound.play()
+		#collision_sound.play()
 		
 		velocity = velocity.bounce(collision.get_normal())
 	
