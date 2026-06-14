@@ -13,19 +13,26 @@ extends Node2D
 var blockAmountX: int = 10
 var blockAmountY: int = 10
 
-@export var gameAreaSize: Vector2 = Vector2(600, 900)
+@export var gameAreaSize: Vector2 = Vector2(900, 900)
+var blockAreaSize: Vector2 = Vector2(gameAreaSize.x, 400)
+#@export var isCompact: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Centers camera
 	camera.position = gameAreaSize / 2
 	
-	# Isolates the game area
+	# Makes the ui only fit in the game area
 	ui.size = gameAreaSize
-
+	
+	# Try to fix later, tried to add a setting that made the viewport the same size as the game area + header
+	#if isCompact:
+		#ProjectSettings.set_setting("display/window/size/viewport_width", 200)
+		#ProjectSettings.set_setting("display/window/size/viewport_height", gameAreaSize.y + header.size.y)
+	
 	header.position.y = -header.size.y
 	panel.size = gameAreaSize
-	block_manager.generate_grid(Vector2(gameAreaSize.x, 400), Vector2(blockAmountX, blockAmountY), block_manager.block_padding, block_manager.grid_padding)
+	block_manager.generate_grid(blockAreaSize, Vector2(blockAmountX, blockAmountY), block_manager.block_padding, block_manager.grid_padding)
 	
 	# Set up the world boundaries otbe add the screen edges
 	# Should change later for custom level sizes
@@ -39,8 +46,8 @@ func _input(event: InputEvent) -> void:
 		get_tree().quit()
 
 func _on_generate_grid_button_pressed() -> void:
-	BlockManager.clear_grid()
-	block_manager.generate_grid(block_manager.grid_area, Vector2(blockAmountX, blockAmountY), block_manager.block_padding, block_manager.grid_padding)
+	block_manager.clear_grid()
+	block_manager.generate_grid(blockAreaSize, Vector2(blockAmountX, blockAmountY), block_manager.block_padding, block_manager.grid_padding)
 
 func _on_block_amount_x_text_changed(new_text: String) -> void:
 	blockAmountX = int(new_text)

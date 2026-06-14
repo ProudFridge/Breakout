@@ -22,20 +22,28 @@ static var _block_instances: Array[Block] = []
 # Instantiates a grid of blocks 
 func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
 	grid_area_highlight.size = gridSize
-
+	
 	var blockSize: Vector2
 	blockSize.x = (gridSize.x - 2 * gridPadding.x - (blockAmount.x - 1) * blockPadding.x) / blockAmount.x
-	blockSize.y = (gridSize.y - 2 * gridPadding.y - (blockAmount.y - 1) * blockPadding.y) / blockAmount.y 
+	blockSize.y = (gridSize.y - 2 * gridPadding.y - (blockAmount.y - 1) * blockPadding.y) / blockAmount.y
+
+	var blockGrid: Dictionary[Vector2, int]
 	
+	# Create a map of 1s and 0s to determine if a block should spawn or not
+	for i: int in blockAmount.x:
+		for j: int in blockAmount.y:
+			blockGrid[Vector2(i,j)] = randi_range(0,1) 
+
 	for row: int in blockAmount.x:
 		for column: int in blockAmount.y:
-			# Make the blocks spawn in a rainbow
-			var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmount.y),0.5,1,1)
-			var bPosition: Vector2
-			bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
-			bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
-			
-			instantiate_block(bPosition, blockSize, color)
+			if blockGrid.get(Vector2(row, column)) == 1:
+				# Make the blocks spawn in a rainbow
+				var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmount.y),0.5,1,1)
+				var bPosition: Vector2
+				bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
+				bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
+				
+				instantiate_block(bPosition, blockSize, color)
 
 # Adds a block to the block instances array
 static func add_block(block_instance: Block) -> void:
@@ -59,6 +67,7 @@ func toggle_grid_area_visibilty() -> void:
 	
 func instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
 	var blockInstance: Block = block.instantiate()	
+	self.add_block(blockInstance)
 	
 	blockInstance.set_size(size)
 	blockInstance.initialColor = color

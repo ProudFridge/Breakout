@@ -11,7 +11,7 @@ var initialColor: Color
 func _ready() -> void:
 	mesh.modulate = initialColor
 	initialHealth = health
-	BlockManager.add_block(self)
+	#BlockManager.add_block(self)
 	update_health_label()
 
 # Decreases the block's health
