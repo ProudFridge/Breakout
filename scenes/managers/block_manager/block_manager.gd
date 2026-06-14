@@ -4,24 +4,22 @@ class_name BlockManager
 @export var block_amount: Vector2i = Vector2i(3,2)
 @export var block_padding: Vector2 = Vector2(10, 10)
 @export var grid_padding: Vector2 = Vector2(50, 50)
-#@export var grid_height: float = 400
-@export var grid_area: Vector2
+@export var grid_area: Vector2	
 @export var show_grid_area: bool = false
 
 @onready var grid_area_highlight: ColorRect = $GridArea
 
 var block: PackedScene = preload("res://scenes/block/block.tscn")
 
+# Use later to detect if the player has won
+var _block_instances: Array[Block] = []
+static var levels: Array = []
+
+signal block_added(block: Block)
+signal block_removed(block: Block)
+
 # Test
 static var blockGrid: Dictionary[Vector2, int]
-
-# Make it sync in the world scene later
-@export var gameAreaSize: Vector2 = Vector2(400, 900)
-
-# Use later to detect if the player has won
-# TODO: make non static, there's no real use for it being static
-static var _block_instances: Array[Block] = []
-static var levels: Array = []
 
 # Loads levels from levels.json
 static func load_levels() -> void:
@@ -67,21 +65,23 @@ func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector
 				instantiate_block(bPosition, blockSize, color)
 
 # Adds a block to the block instances array
-static func add_block(block_instance: Block) -> void:
+func add_block(block_instance: Block) -> void:
 	if not block_instance in _block_instances:
 		_block_instances.append(block_instance)
-		
+		block_added.emit(block_instance)
+
 # Removes a block from the block instances array
-static func remove_block(block_instance: Block) -> void:
+func remove_block(block_instance: Block) -> void:
 	if block_instance in _block_instances:
 		_block_instances.erase(block_instance)
-		
+		block_removed.emit(block_instance)
+
 # Deletes all the blocks in the block istances array and remove their references
-static func clear_grid() -> void:
+func clear_grid() -> void:
 	for b: Block in _block_instances:
 		b.delete()
 	_block_instances.clear()
-		
+
 # Toggles the visibility of the color rect that represents the grid area
 func toggle_grid_area_visibilty() -> void:
 	grid_area_highlight.visible = not grid_area_highlight.visible
@@ -90,6 +90,7 @@ func instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
 	var blockInstance: Block = block.instantiate()	
 	self.add_block(blockInstance)
 	
+	blockInstance.blockManager = self
 	blockInstance.set_size(size)
 	blockInstance.initialColor = color
 	blockInstance.position = position

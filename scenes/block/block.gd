@@ -4,6 +4,7 @@ class_name Block
 @export var health: float = 2
 var initialHealth: float
 var initialColor: Color
+var blockManager: BlockManager
 
 @onready var label: Label = $Label
 @onready var mesh: MeshInstance2D = $MeshInstance2D
@@ -18,7 +19,7 @@ func _ready() -> void:
 func take_damage(damage: float) -> void:
 	health = health - damage
 	if health == 0:
-		BlockManager.remove_block(self)
+		blockManager.remove_block(self)
 		delete()
 	update_health_label()	
 	

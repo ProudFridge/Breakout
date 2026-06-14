@@ -47,7 +47,8 @@ func _input(event: InputEvent) -> void:
 		get_tree().quit()
 
 func _on_generate_grid_button_pressed() -> void:
-	BlockManager.clear_grid()
+	#BlockManager.clear_grid()
+	block_manager.clear_grid()
 	block_manager.generate_grid(blockAreaSize, Vector2(blockAmountX, blockAmountY), block_manager.block_padding, block_manager.grid_padding)
 
 func _on_block_amount_x_text_changed(new_text: String) -> void:

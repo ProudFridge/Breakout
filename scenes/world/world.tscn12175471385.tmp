@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bwnvb3pphh2v2" path="res://scenes/world/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://blmhj0qtrvphf" path="res://scenes/managers/block_manager/block_manager.tscn" id="2_v5dby"]
 [ext_resource type="PackedScene" uid="uid://dpwwvkfv48suw" path="res://scenes/ball/ball.tscn" id="3_1fp7r"]
-[ext_resource type="Script" uid="uid://ces6ena1i6w8o" path="res://scenes/world/score_count.gd" id="6_bq33v"]
 [ext_resource type="Script" uid="uid://bm8l7wl3514wr" path="res://scenes/world/count.gd" id="6_t5ptc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5dby"]
@@ -184,7 +183,6 @@ horizontal_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "3232"
-script = ExtResource("6_bq33v")
 
 [connection signal="pressed" from="UI/GridControls/FoldableContainer/VBoxContainer/GenerateGridButton" to="." method="_on_generate_grid_button_pressed"]
 [connection signal="text_changed" from="UI/GridControls/FoldableContainer/VBoxContainer/BlockX/BlockAmountX" to="." method="_on_block_amount_x_text_changed"]

@@ -3,11 +3,8 @@ extends Label
 @onready var block_manager: BlockManager = $"../../../../../BlockManager"
 
 func _ready() -> void:
-	block_manager.block_added.connect(_on_block_manager_block_added)
+	text = "0"
 	block_manager.block_removed.connect(_on_block_manager_block_removed)
 
 func _on_block_manager_block_removed(block: Block) -> void:
-	text = str(block_manager._block_instances.size())
-
-func _on_block_manager_block_added(block: Block) -> void:
-	text = str(block_manager._block_instances.size())
+	text = str(int(text) + 10)
