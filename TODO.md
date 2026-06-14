@@ -2,8 +2,6 @@
 X- Make the blocks change colors as they lose health
 - Fix how the ui is hardcoded
 - Add a gameManager class or somethign to track score
-- Fix the generate_grid function not being able to generate large grids of blocks
-- Fix the static signal issue in the BlockManager class
 - Add the possibility for larger levels, by adding a camera to the player and changing the player's and the ball's spawn point with code
 - Create a simple gameplay loop
 	- Let the player be able to score points
@@ -11,6 +9,12 @@ X- Make the blocks change colors as they lose health
 	- Add a simple main menu
 - Add simple sound effects
 - Add a sound track
+- Block textures
+- Procedural background texture or something
+- Main menu
+- Different difficulties
+- Border texture
+- Different grid types idk
 
 ### Maybe:
 - Create different level types: infinite, round, moving blocks, etc

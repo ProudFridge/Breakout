@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dcf4uyw6i8nn6"]
+
+[ext_resource type="Script" uid="uid://tc3q5cno42au" path="res://scenes/components/dash_component/dash_component.gd" id="1_yak1m"]
+
+[node name="DashComponent" type="Node" unique_id=688090852]
+script = ExtResource("1_yak1m")
+
+[node name="DashTimer" type="Timer" parent="." unique_id=877738817]

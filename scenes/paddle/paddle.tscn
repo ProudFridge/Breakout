@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvstwnwbs75xl"]
 
 [ext_resource type="Script" uid="uid://6bua83dj7est" path="res://scenes/paddle/paddle.gd" id="1_q5rgx"]
+[ext_resource type="PackedScene" uid="uid://dcf4uyw6i8nn6" path="res://scenes/components/dash_component/dash_component.tscn" id="2_2sa55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eletc"]
 size = Vector2(60, 20)
@@ -17,3 +18,5 @@ shape = SubResource("RectangleShape2D_eletc")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1066922579]
 scale = Vector2(60, 20)
 mesh = SubResource("QuadMesh_q5rgx")
+
+[node name="DashComponent" parent="." unique_id=688090852 instance=ExtResource("2_2sa55")]

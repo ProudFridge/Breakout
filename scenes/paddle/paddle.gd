@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const SPEED: float = 300.0
+var SPEED: float = 300.0
+var oriSpeed: float = SPEED
 const maxTiltAngle: float = deg_to_rad(30)
 var tiltAccel: float = 10
 
@@ -11,7 +12,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
 	# Handle the paddle tilt
 	if Input.is_action_pressed("tilt_right"):
 		rotation = move_toward(rotation, maxTiltAngle, tiltAccel * delta)
@@ -20,6 +21,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		rotation = move_toward(rotation, 0, tiltAccel * delta)
 	
-	position.x = get_global_mouse_position().x
+	#position.x = get_global_mouse_position().x
 	move_and_slide()
-	
