@@ -12,13 +12,41 @@ class_name BlockManager
 
 var block: PackedScene = preload("res://scenes/block/block.tscn")
 
+# Test
+static var blockGrid: Dictionary[Vector2, int]
+
 # Make it sync in the world scene later
 @export var gameAreaSize: Vector2 = Vector2(400, 900)
 
 # Use later to detect if the player has won
 # TODO: make non static, there's no real use for it being static
 static var _block_instances: Array[Block] = []
+static var levels: Array = []
 
+# Loads levels from levels.json
+static func load_levels() -> void:
+	# Reads the levels.json file and parses it
+	var levelFile: FileAccess = FileAccess.open("res://levels.json", FileAccess.READ)
+	var fileContent: String = levelFile.get_as_text()
+	print(fileContent)
+	
+	var json: JSON = JSON.new()
+	var error: Error = json.parse(fileContent)
+	
+	if error == OK:
+		var data_received: Dictionary = json.data
+		var blockGridTemp: Array = data_received["1"]["blockGrid"]
+		
+		# Iterates through the grid
+		# TODO: make it possible to list multiple levels
+		for i: int in blockGridTemp.size():
+			var column: Array = blockGridTemp.get(i)
+			for j: int in column.size():	
+				blockGrid[Vector2(j,i)] = int(column.get(j))
+	else:
+		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
+		return
+	
 # Instantiates a grid of blocks 
 func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
 	grid_area_highlight.size = gridSize
@@ -26,13 +54,6 @@ func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector
 	var blockSize: Vector2
 	blockSize.x = (gridSize.x - 2 * gridPadding.x - (blockAmount.x - 1) * blockPadding.x) / blockAmount.x
 	blockSize.y = (gridSize.y - 2 * gridPadding.y - (blockAmount.y - 1) * blockPadding.y) / blockAmount.y
-
-	var blockGrid: Dictionary[Vector2, int]
-	
-	# Create a map of 1s and 0s to determine if a block should spawn or not
-	for i: int in blockAmount.x:
-		for j: int in blockAmount.y:
-			blockGrid[Vector2(i,j)] = randi_range(0,1) 
 
 	for row: int in blockAmount.x:
 		for column: int in blockAmount.y:
