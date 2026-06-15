@@ -18,46 +18,22 @@ static var levels: Array = []
 signal block_added(block: Block)
 signal block_removed(block: Block)
 
-# Test
-static var blockGrid: Dictionary[Vector2, int]
-
-# Loads levels from levels.json
-static func load_levels() -> void:
-	# Reads the levels.json file and parses it
-	var levelFile: FileAccess = FileAccess.open("res://levels.json", FileAccess.READ)
-	var fileContent: String = levelFile.get_as_text()
-	print(fileContent)
-	
-	var json: JSON = JSON.new()
-	var error: Error = json.parse(fileContent)
-	
-	if error == OK:
-		var data_received: Dictionary = json.data
-		var blockGridTemp: Array = data_received["1"]["blockGrid"]
-		
-		# Iterates through the grid
-		# TODO: make it possible to list multiple levels
-		for i: int in blockGridTemp.size():
-			var column: Array = blockGridTemp.get(i)
-			for j: int in column.size():	
-				blockGrid[Vector2(j,i)] = int(column.get(j))
-	else:
-		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
-		return
-	
 # Instantiates a grid of blocks 
-func generate_grid(gridSize: Vector2, blockAmount: Vector2, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
+func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
 	grid_area_highlight.size = gridSize
 	
+	var blockAmountX: int = blockGrid.size()
+	var blockAmountY: int = blockGrid[0].size()
+	
 	var blockSize: Vector2
-	blockSize.x = (gridSize.x - 2 * gridPadding.x - (blockAmount.x - 1) * blockPadding.x) / blockAmount.x
-	blockSize.y = (gridSize.y - 2 * gridPadding.y - (blockAmount.y - 1) * blockPadding.y) / blockAmount.y
-
-	for row: int in blockAmount.x:
-		for column: int in blockAmount.y:
-			if blockGrid.get(Vector2(row, column)) == 1:
+	blockSize.x = (gridSize.x - 2 * gridPadding.x - (blockAmountX - 1) * blockPadding.x) / blockAmountX
+	blockSize.y = (gridSize.y - 2 * gridPadding.y - (blockAmountY - 1) * blockPadding.y) / blockAmountY
+	
+	for row: int in blockAmountX:
+		for column: int in blockAmountY:
+			if blockGrid[row][column] == 1:
 				# Make the blocks spawn in a rainbow
-				var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmount.y),0.5,1,1)
+				var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmountY),0.5,1,1)
 				var bPosition: Vector2
 				bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
 				bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2

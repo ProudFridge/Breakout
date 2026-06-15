@@ -1,11 +1,38 @@
 extends Node
 class_name LevelManager
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+static var grid: Array = []
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+# Loads levels from the levels.json file
+# Currently can o nly store one level in the grid array
+static func load_levels() -> void:
+	# Reads the levels.json file and parses it
+	var levelFile: FileAccess = FileAccess.open("res://levels.json", FileAccess.READ)
+	var fileContent: String = levelFile.get_as_text()
+	
+	var json: JSON = JSON.new()
+	var error: Error = json.parse(fileContent)	
+	
+	if error == OK:
+		var data_received: Dictionary = json.data
+		var blockGridTemp: Array = data_received["1"]["blockGrid"]
+		
+		var gridHeight: int = blockGridTemp.size() - 1
+		var gridWidth: int = blockGridTemp[0].size() - 1
+		
+		for i: int in gridWidth:
+			grid.append([])
+			for j: int in gridHeight:
+				grid[i].append(0) # Set a starter value for each position
+		print(gridHeight, gridWidth)
+		
+		# Iterates through the grid
+		# TODO: make it possible to list multiple levels
+		for i: int in gridHeight:
+			var column: Array = blockGridTemp.get(i)
+			for j: int in gridWidth:
+				grid[j][i] = int(column.get(j))
+		print(grid)
+	else:
+		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
+		return
