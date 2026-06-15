@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dt5xtc30siyuo" path="res://scenes/ball/ball.gd" id="1_oqv3d"]
 [ext_resource type="AudioStream" uid="uid://bnaci47aix6w4" path="res://assets/sound_effects/synth.wav" id="2_nv6q1"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5a6bx"]
+[ext_resource type="PackedScene" uid="uid://dyolv8x4fpwe5" path="res://scenes/components/trail_component/trail_component.tscn" id="3_stoaj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_oqv3d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5a6bx"]
 
 [sub_resource type="Gradient" id="Gradient_nv6q1"]
 colors = PackedColorArray(0.28118682, 0.28118688, 0.28118682, 1, 0.8217887, 0.82178867, 0.82178867, 1)
@@ -35,18 +36,24 @@ scale_curve = SubResource("CurveTexture_stoaj")
 color_initial_ramp = SubResource("GradientTexture1D_stoaj")
 
 [node name="Ball" type="CharacterBody2D" unique_id=71320122]
+z_index = 1
 motion_mode = 1
 script = ExtResource("1_oqv3d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336167681]
-shape = SubResource("CircleShape2D_5a6bx")
+[node name="TrailComponent" parent="." unique_id=1230096798 instance=ExtResource("3_stoaj")]
+pointLimit = 8
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1661593475]
 scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_oqv3d")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336167681]
+shape = SubResource("CircleShape2D_5a6bx")
+
 [node name="CollisionSound" type="AudioStreamPlayer2D" parent="." unique_id=227188667]
 stream = ExtResource("2_nv6q1")
 
 [node name="DeathParticles" type="GPUParticles2D" parent="." unique_id=383569983]
+visible = false
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_nv6q1")
