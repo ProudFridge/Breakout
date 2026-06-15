@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var damage: float = 1
 
 @onready var collision_sound: AudioStreamPlayer2D = $CollisionSound
+@onready var death_particles: GPUParticles2D = $DeathParticles
 
 var initial_vector: Vector2 = Vector2(0,1)
 
@@ -15,9 +16,16 @@ func _physics_process(delta: float) -> void:
 	
 	# Bounces the ball whenever there's a collision
 	if collision:
+		var body: Node = collision.get_collider()
 		#collision_sound.play()
 		
 		velocity = velocity.bounce(collision.get_normal())
-	
-		if collision.get_collider() is Block:
-			collision.get_collider().take_damage(damage)
+		
+		print(body.name)
+		if body.is_in_group("BottomWall"):
+			delete()
+		if body is Block:
+			body.take_damage(damage)
+			
+func delete() -> void:
+	queue_free()

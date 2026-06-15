@@ -1,6 +1,4 @@
 ### TODO
-X- Make the blocks change colors as they lose health
-- Fix how the ui is hardcoded
 - Add a gameManager class or somethign to track score
 - Add the possibility for larger levels, by adding a camera to the player and changing the player's and the ball's spawn point with code
 - Create a simple gameplay loop
@@ -15,6 +13,7 @@ X- Make the blocks change colors as they lose health
 - Different difficulties
 - Border texture
 - Different grid types idk
+- Add a component that's basically the collision walls
 
 ### Maybe:
 - Create different level types: infinite, round, moving blocks, etc

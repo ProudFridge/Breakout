@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var left_wall: CollisionShape2D = $WorldBoundary/Walls/LeftWall
 @onready var right_wall: CollisionShape2D = $WorldBoundary/Walls/RightWall
-@onready var bottom_wall: CollisionShape2D = $WorldBoundary/Walls/BottomWall
+@onready var bottom_wall: CollisionShape2D = $WorldBoundary/BottomWall/BottomWall
 @onready var top_wall: CollisionShape2D = $WorldBoundary/Walls/TopWall
 @onready var block_manager: BlockManager = $BlockManager
 @onready var panel: Panel = $Background/Panel

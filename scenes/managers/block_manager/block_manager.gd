@@ -3,7 +3,7 @@ class_name BlockManager
 
 @export var block_amount: Vector2i = Vector2i(3,2)
 @export var block_padding: Vector2 = Vector2(10, 10)
-@export var grid_padding: Vector2 = Vector2(50, 50)
+@export var grid_padding: Vector2 = Vector2(10, 10)
 @export var grid_area: Vector2	
 @export var show_grid_area: bool = false
 

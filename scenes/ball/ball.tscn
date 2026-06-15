@@ -7,6 +7,33 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_oqv3d"]
 
+[sub_resource type="Gradient" id="Gradient_nv6q1"]
+colors = PackedColorArray(0.28118682, 0.28118688, 0.28118682, 1, 0.8217887, 0.82178867, 0.82178867, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_stoaj"]
+gradient = SubResource("Gradient_nv6q1")
+
+[sub_resource type="Curve" id="Curve_nv6q1"]
+_data = [Vector2(0.011869438, 1), 0.0, 0.20133278, 0, 0, Vector2(0.99998, 0.46470588), -1.2443876, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_stoaj"]
+curve = SubResource("Curve_nv6q1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nv6q1"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+radial_velocity_min = 24.999977
+radial_velocity_max = 49.999977
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -45.0
+radial_accel_max = -15.000002
+scale_min = 3.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_stoaj")
+color_initial_ramp = SubResource("GradientTexture1D_stoaj")
+
 [node name="Ball" type="CharacterBody2D" unique_id=71320122]
 motion_mode = 1
 script = ExtResource("1_oqv3d")
@@ -20,3 +47,6 @@ mesh = SubResource("SphereMesh_oqv3d")
 
 [node name="CollisionSound" type="AudioStreamPlayer2D" parent="." unique_id=227188667]
 stream = ExtResource("2_nv6q1")
+
+[node name="DeathParticles" type="GPUParticles2D" parent="." unique_id=383569983]
+process_material = SubResource("ParticleProcessMaterial_nv6q1")
