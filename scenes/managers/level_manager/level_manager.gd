@@ -17,8 +17,8 @@ static func load_levels() -> void:
 		var data_received: Dictionary = json.data
 		var blockGridTemp: Array = data_received["1"]["blockGrid"]
 		
-		var gridHeight: int = blockGridTemp.size() - 1
-		var gridWidth: int = blockGridTemp[0].size() - 1
+		var gridHeight: int = blockGridTemp.size()
+		var gridWidth: int = blockGridTemp[0].size()
 		
 		for i: int in gridWidth:
 			grid.append([])
@@ -47,4 +47,3 @@ static func generate_level(gridSize: Vector2) -> Array:
 				blockGrid[i].append(1)
 	
 	return blockGrid
-	
