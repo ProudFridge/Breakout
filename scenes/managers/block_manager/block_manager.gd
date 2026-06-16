@@ -4,7 +4,7 @@ class_name BlockManager
 @export var block_amount: Vector2i = Vector2i(3,2)
 @export var block_padding: Vector2 = Vector2(10, 10)
 @export var grid_padding: Vector2 = Vector2(10, 10)
-@export var grid_area: Vector2	
+#@export var grid_area: Vector2	
 @export var show_grid_area: bool = false
 
 @onready var grid_area_highlight: ColorRect = $GridArea
@@ -21,7 +21,7 @@ signal block_removed(block: Block)
 # Instantiates a grid of blocks 
 func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
 	grid_area_highlight.size = gridSize
-	
+	print(gridSize.x)
 	var blockAmountX: int = blockGrid.size()
 	var blockAmountY: int = blockGrid[0].size()
 	

@@ -20,6 +20,7 @@ bg_color = Color(0.35531357, 0.35531357, 0.35531345, 1)
 
 [node name="World" type="Node2D" unique_id=1769071752]
 script = ExtResource("1_sl2e5")
+gameAreaSize = Vector2(600, 900)
 
 [node name="Background" type="Control" parent="." unique_id=1567258030]
 layout_mode = 3

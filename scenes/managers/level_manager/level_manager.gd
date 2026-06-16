@@ -36,3 +36,15 @@ static func load_levels() -> void:
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
 		return
+		
+# Generates a full grid of blocks
+static func generate_level(gridSize: Vector2) -> Array:
+	var blockGrid: Array = []
+	
+	for i: int in gridSize.x:
+			blockGrid.append([])
+			for j: int in gridSize.y:
+				blockGrid[i].append(1)
+	
+	return blockGrid
+	
