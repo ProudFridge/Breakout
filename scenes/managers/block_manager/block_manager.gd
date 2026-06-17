@@ -18,6 +18,9 @@ static var levels: Array = []
 signal block_added(block: Block)
 signal block_removed(block: Block)
 
+func _ready() -> void:
+	grid_area_highlight.visible = show_grid_area
+
 # Instantiates a grid of blocks 
 func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
 	grid_area_highlight.size = gridSize

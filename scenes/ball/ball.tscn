@@ -57,8 +57,3 @@ stream = ExtResource("2_nv6q1")
 visible = false
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_nv6q1")
-
-[node name="RespawnTimer" type="Timer" parent="." unique_id=391385309]
-one_shot = true
-
-[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

@@ -6,7 +6,6 @@ class_name Ball
 
 @onready var collision_sound: AudioStreamPlayer2D = $CollisionSound
 @onready var death_particles: GPUParticles2D = $DeathParticles
-@onready var respawn_timer: Timer = $RespawnTimer
 
 var initial_vector: Vector2 = Vector2(0,1)
 var initial_position: Vector2

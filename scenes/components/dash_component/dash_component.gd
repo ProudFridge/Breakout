@@ -19,15 +19,28 @@ func _ready() -> void:
 			#characterBody = node	
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and characterBody.velocity != Vector2.ZERO:
 		dash_start()
-
+		
 func _on_dash_timer_timeout() -> void:
 	dash_finished()
+	characterBody.scale = Vector2(1,1)
 	
 func dash_start() -> void:
 	characterBody.SPEED = dashSpeed
 	dash_timer.start()
+	
+	# Tween the character body's scale
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(characterBody, "scale", Vector2(1.4, 0.7), dashTime * 0.3)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
 
 func dash_finished() -> void:
 	characterBody.SPEED = characterBody.oriSpeed
+	
+	# Reset's the character body's scale
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(characterBody, "scale", Vector2(1, 1), dashTime * 0.2)
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_SINE)
