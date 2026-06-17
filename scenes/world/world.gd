@@ -5,10 +5,12 @@ extends Node2D
 @onready var bottom_wall: CollisionShape2D = $WorldBoundary/BottomWall/BottomWall
 @onready var top_wall: CollisionShape2D = $WorldBoundary/Walls/TopWall
 @onready var block_manager: BlockManager = $BlockManager
+@onready var game_manager: GameManager = $GameManager
 @onready var panel: Panel = $Background/Panel
 @onready var ui: Control = $UI
 @onready var header: Panel = $UI/Header
 @onready var camera: Camera2D = $Camera2D
+@onready var lost_screen: Panel = $UI/LostScreen
 
 @export var gameAreaSize: Vector2 = Vector2(900, 900)
 @onready var blockAreaSize: Vector2 = Vector2(gameAreaSize.x, 400)
@@ -29,6 +31,7 @@ func _ready() -> void:
 	# Makes the ui only fit in the game area
 	ui.size = gameAreaSize
 	
+	game_manager.lost_game.connect(_on_game_manager_lost_game)
 	# Try to fix later, tried to add a setting that made the viewport the same size as the game area + header
 	#if isCompact:
 		#ProjectSettings.set_setting("display/window/size/viewport_width", 200)
@@ -62,3 +65,6 @@ func _on_block_amount_y_text_changed(new_text: String) -> void:
 
 func _on_check_button_pressed() -> void:
 	block_manager.toggle_grid_area_visibilty()
+
+func _on_game_manager_lost_game() -> void:
+	lost_screen.visible = visible

@@ -4,7 +4,7 @@ class_name LevelManager
 static var grid: Array = []
 
 # Loads levels from the levels.json file
-# Currently can o nly store one level in the grid array
+# Currently can only store one level in the grid array
 static func load_levels() -> void:
 	# Reads the levels.json file and parses it
 	var levelFile: FileAccess = FileAccess.open("res://levels.json", FileAccess.READ)
@@ -24,7 +24,6 @@ static func load_levels() -> void:
 			grid.append([])
 			for j: int in gridHeight:
 				grid[i].append(0) # Set a starter value for each position
-		print(gridHeight, gridWidth)
 		
 		# Iterates through the grid
 		# TODO: make it possible to list multiple levels
@@ -32,7 +31,6 @@ static func load_levels() -> void:
 			var column: Array = blockGridTemp.get(i)
 			for j: int in gridWidth:
 				grid[j][i] = int(column.get(j))
-		print(grid)
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
 		return

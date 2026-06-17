@@ -2,10 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cvstwnwbs75xl" path="res://scenes/paddle/paddle.tscn" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://bwnvb3pphh2v2" path="res://scenes/world/world.gd" id="1_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://crl3sjvrqcwai" path="res://scenes/managers/game_manager/game_manager.tscn" id="2_bq33v"]
 [ext_resource type="PackedScene" uid="uid://blmhj0qtrvphf" path="res://scenes/managers/block_manager/block_manager.tscn" id="2_v5dby"]
 [ext_resource type="PackedScene" uid="uid://dpwwvkfv48suw" path="res://scenes/ball/ball.tscn" id="3_1fp7r"]
 [ext_resource type="Script" uid="uid://ces6ena1i6w8o" path="res://scenes/world/score_count.gd" id="6_bq33v"]
 [ext_resource type="Script" uid="uid://bm8l7wl3514wr" path="res://scenes/world/count.gd" id="6_t5ptc"]
+[ext_resource type="Script" uid="uid://bkds3evdumf3k" path="res://scenes/world/lives_count.gd" id="8_j2gmx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5dby"]
 bg_color = Color(0.35531357, 0.35531357, 0.35531345, 1)
@@ -17,6 +19,16 @@ bg_color = Color(0.35531357, 0.35531357, 0.35531345, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v5dby"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6m72w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2gmx"]
+bg_color = Color(0.32544068, 0.32544097, 0.32544082, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yooq"]
+bg_color = Color(0.13319641, 0.13319641, 0.13319635, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="World" type="Node2D" unique_id=1769071752]
 script = ExtResource("1_sl2e5")
@@ -36,6 +48,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v5dby")
+
+[node name="GameManager" parent="." unique_id=2062060914 node_paths=PackedStringArray("ball") instance=ExtResource("2_bq33v")]
+ball = NodePath("../Ball")
 
 [node name="BlockManager" parent="." unique_id=46482369 instance=ExtResource("2_v5dby")]
 
@@ -147,6 +162,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 41.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j2gmx")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Header" unique_id=1175450939]
 layout_mode = 1
@@ -188,6 +204,55 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "3232"
 script = ExtResource("6_bq33v")
+
+[node name="LivesLeft" type="HBoxContainer" parent="UI/Header/HBoxContainer" unique_id=1499677608]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Text" type="Label" parent="UI/Header/HBoxContainer/LivesLeft" unique_id=15434094]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lives:"
+horizontal_alignment = 2
+
+[node name="Count" type="Label" parent="UI/Header/HBoxContainer/LivesLeft" unique_id=455399839 node_paths=PackedStringArray("gameManager")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "32"
+script = ExtResource("8_j2gmx")
+gameManager = NodePath("../../../../../GameManager")
+
+[node name="LostScreen" type="Panel" parent="UI" unique_id=430691535]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -91.5
+offset_right = 165.0
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1yooq")
+
+[node name="Label" type="Label" parent="UI/LostScreen" unique_id=281808710]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -11.5
+offset_right = 35.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Lost!"
 
 [connection signal="pressed" from="UI/GridControls/FoldableContainer/VBoxContainer/GenerateGridButton" to="." method="_on_generate_grid_button_pressed"]
 [connection signal="text_changed" from="UI/GridControls/FoldableContainer/VBoxContainer/BlockX/BlockAmountX" to="." method="_on_block_amount_x_text_changed"]

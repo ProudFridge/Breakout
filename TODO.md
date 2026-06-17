@@ -14,6 +14,7 @@
 - Border texture
 - Different grid types idk
 - Add a component that's basically the collision walls
+- Make the ball "blink" before it respawns
 
 ### Maybe:
 - Create different level types: infinite, round, moving blocks, etc

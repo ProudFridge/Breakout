@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Ball
 
 @export var SPEED: float = 300.0
 @export var damage: float = 1
@@ -9,6 +10,7 @@ extends CharacterBody2D
 
 var initial_vector: Vector2 = Vector2(0,1)
 var initial_position: Vector2
+signal died()
 
 func _ready() -> void:
 	velocity = initial_vector * SPEED
@@ -24,9 +26,9 @@ func _physics_process(delta: float) -> void:
 		
 		velocity = velocity.bounce(collision.get_normal())
 		
-		print(body.name)
 		if body.is_in_group("BottomWall"):
 			die()
+			died.emit()
 		if body is Block:
 			body.take_damage(damage)
 			
@@ -37,8 +39,13 @@ func delete() -> void:
 func die() -> void:
 	position = initial_position
 	velocity = Vector2.ZERO
-	respawn_timer.start()
 
-func _on_respawn_timer_timeout() -> void:
+# "Respawns" the ball
+func respawn() -> void:
 	visible = true
 	velocity = initial_vector * SPEED
+	
+func freeze() -> void:
+	velocity = Vector2.ZERO
+	visible = false
+	$CollisionShape2D.disabled = true
