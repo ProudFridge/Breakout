@@ -32,7 +32,7 @@ func dash_start() -> void:
 	
 	# Tween the character body's scale
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(characterBody, "scale", Vector2(1.4, 0.7), dashTime * 0.3)
+	tween.tween_property(characterBody, "scale", Vector2(1.4, 0.7), dashTime * 0.5)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
 
@@ -41,6 +41,6 @@ func dash_finished() -> void:
 	
 	# Reset's the character body's scale
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(characterBody, "scale", Vector2(1, 1), dashTime * 0.2)
+	tween.tween_property(characterBody, "scale", Vector2(1, 1), dashTime * 0.5)
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_SINE)
