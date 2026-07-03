@@ -5,7 +5,6 @@
 	- Let the player be able to score points
 	- Make it possible for the player to lose points
 	- Add a simple main menu
-- Add simple sound effects
 - Add a sound track
 - Block textures
 - Procedural background texture or something

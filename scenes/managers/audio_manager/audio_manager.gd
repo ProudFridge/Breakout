@@ -23,10 +23,7 @@ func play_sound(sound_name: String) -> void:
 	sound.stream = array[randi_range(0, array.size() - 1)]
 	sound.volume_db = -10
 	sound.play()
+	
 	sound.finished.connect(func () -> void:
 		sound.queue_free()
 	)
-
-enum sound_names {
-	BOUNCE
-}

@@ -1,12 +1,12 @@
 extends Node
 class_name LevelManager
 
-static var grid: Array = []
+static var grid: Array[Array] = []
 
 # Loads levels from the levels.json file
 # Currently can only store one level in the grid array
 static func load_levels() -> void:
-	# Reads the levels.json file and parses it
+	# Reads the levels.json file and stores its content
 	var levelFile: FileAccess = FileAccess.open("res://levels.json", FileAccess.READ)
 	var fileContent: String = levelFile.get_as_text()
 	
@@ -14,23 +14,34 @@ static func load_levels() -> void:
 	var error: Error = json.parse(fileContent)	
 	
 	if error == OK:
-		var data_received: Dictionary = json.data
-		var blockGridTemp: Array = data_received["1"]["blockGrid"]
+		var data_received: Array = json.data
+		print(data_received)
+		var levelAmount: int = data_received.size()
 		
-		var gridHeight: int = blockGridTemp.size()
-		var gridWidth: int = blockGridTemp[0].size()
-		
-		for i: int in gridWidth:
+		for level: int in levelAmount:
+			# Add and array to store all the grids for the specified levels
 			grid.append([])
-			for j: int in gridHeight:
-				grid[i].append(0) # Set a starter value for each position
-		
-		# Iterates through the grid
-		# TODO: make it possible to list multiple levels
-		for i: int in gridHeight:
-			var column: Array = blockGridTemp.get(i)
-			for j: int in gridWidth:
-				grid[j][i] = int(column.get(j))
+			var currentLevel: Array = data_received[level]
+			
+			for levelIdx: int in currentLevel.size():	
+				grid[level].append([])
+				var blockGridTemp: Array = currentLevel[levelIdx]["blockGrid"]
+				
+				var gridHeight: int = blockGridTemp.size()
+				var gridWidth: int = blockGridTemp[0].size()
+				
+				# Create 2d array to store the grid
+				for i: int in gridWidth:
+					grid[level][levelIdx].append([])
+					for j: int in gridHeight:
+						grid[level][levelIdx][i].append(0) # Set a starter value for each position
+				
+				# Iterates through the grid
+				# TODO: make it possible to list multiple levels
+				for i: int in gridHeight:
+					var column: Array = blockGridTemp.get(i)
+					for j: int in gridWidth:
+						grid[level][levelIdx][j][i] = int(column.get(j))
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
 		return

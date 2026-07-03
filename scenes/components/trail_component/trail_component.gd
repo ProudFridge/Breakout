@@ -38,3 +38,6 @@ func _process(_delta: float) -> void:
 		#currentPoint = point
 		#length += (currentPoint - previousPoint).length()
 	#return length
+	
+func clear() -> void:
+	clear_points()

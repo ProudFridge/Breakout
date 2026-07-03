@@ -30,7 +30,7 @@ func take_damage(damage: float) -> void:
 func set_size(newSize: Vector2) -> void:
 	$CollisionShape2D.shape.size = newSize
 	$MeshInstance2D.scale = newSize
-
+	
 # Return's the block's size
 func get_size() -> Vector2:
 	return $CollisionShape2D.shape.size

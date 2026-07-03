@@ -39,7 +39,7 @@ func _ready() -> void:
 	
 	header.position.y = -header.size.y
 	panel.size = gameAreaSize
-	block_manager.generate_grid(blockAreaSize, LevelManager.grid, block_manager.block_padding, block_manager.grid_padding)
+	block_manager.generate_grid(blockAreaSize, LevelManager.grid[0][1], block_manager.block_padding, block_manager.grid_padding)
 	
 	# Set up the world boundaries otbe add the screen edges
 	# Should change later for custom level sizes

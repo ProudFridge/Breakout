@@ -38,6 +38,7 @@ func delete() -> void:
 # Resets the ball's position
 func die() -> void:
 	position = initial_position
+	$TrailComponent.clear()
 	velocity = Vector2.ZERO
 
 # "Respawns" the ball
