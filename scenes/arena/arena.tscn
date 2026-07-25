@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://cniqxh06sbxw5"]
+
+[ext_resource type="Script" uid="uid://bahxyb1jog471" path="res://scenes/arena/arena.gd" id="1_ii07k"]
+[ext_resource type="PackedScene" uid="uid://crl3sjvrqcwai" path="res://scenes/managers/game_manager/game_manager.tscn" id="1_u52cf"]
+[ext_resource type="PackedScene" uid="uid://blmhj0qtrvphf" path="res://scenes/managers/block_manager/block_manager.tscn" id="2_ii07k"]
+[ext_resource type="PackedScene" uid="uid://cvstwnwbs75xl" path="res://scenes/paddle/paddle.tscn" id="3_6w4xk"]
+[ext_resource type="PackedScene" uid="uid://dpwwvkfv48suw" path="res://scenes/ball/ball.tscn" id="4_2ml6w"]
+[ext_resource type="Script" uid="uid://c08c1s1psljyd" path="res://scenes/arena/blocks_left.gd" id="6_ii07k"]
+[ext_resource type="Script" uid="uid://b8i4rgwx54w7n" path="res://scenes/arena/score_count.gd" id="6_jx0ua"]
+[ext_resource type="Script" uid="uid://blvoilddcboll" path="res://scenes/arena/lives_left.gd" id="7_u52cf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv88w"]
+bg_color = Color(0.35531357, 0.35531357, 0.35531345, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5tue2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aj7ud"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_asdgj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jx0ua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w4xk"]
+bg_color = Color(0.32544068, 0.32544097, 0.32544082, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ml6w"]
+bg_color = Color(0.13319641, 0.13319641, 0.13319635, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Arena" type="Node2D" unique_id=2083693325]
+script = ExtResource("1_ii07k")
+gameAreaSize = Vector2(600, 900)
+
+[node name="Background" type="Control" parent="." unique_id=971906882]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 650.0
+offset_bottom = 909.0
+
+[node name="Panel" type="Panel" parent="Background" unique_id=662623244]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fv88w")
+
+[node name="GameManager" parent="." unique_id=2062060914 node_paths=PackedStringArray("ball") instance=ExtResource("1_u52cf")]
+ball = NodePath("../Ball")
+
+[node name="BlockManager" parent="." unique_id=46482369 instance=ExtResource("2_ii07k")]
+
+[node name="WorldBoundary" type="Node" parent="." unique_id=185627799]
+
+[node name="Walls" type="StaticBody2D" parent="WorldBoundary" unique_id=931866966]
+
+[node name="LeftWall" type="CollisionShape2D" parent="WorldBoundary/Walls" unique_id=43210926]
+position = Vector2(187, 555)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_5tue2")
+
+[node name="RightWall" type="CollisionShape2D" parent="WorldBoundary/Walls" unique_id=1243038819]
+position = Vector2(649, 0)
+rotation = 4.712389
+shape = SubResource("WorldBoundaryShape2D_aj7ud")
+
+[node name="TopWall" type="CollisionShape2D" parent="WorldBoundary/Walls" unique_id=342760673]
+rotation = -3.1415927
+shape = SubResource("WorldBoundaryShape2D_asdgj")
+
+[node name="BottomWall" type="StaticBody2D" parent="WorldBoundary" unique_id=307821613 groups=["BottomWall"]]
+
+[node name="BottomWall" type="CollisionShape2D" parent="WorldBoundary/BottomWall" unique_id=1369192134]
+position = Vector2(197, 836)
+shape = SubResource("WorldBoundaryShape2D_jx0ua")
+
+[node name="Paddle" parent="." unique_id=274753157 instance=ExtResource("3_6w4xk")]
+position = Vector2(323, 706)
+
+[node name="Ball" parent="." unique_id=71320122 instance=ExtResource("4_2ml6w")]
+position = Vector2(302, 577)
+SPEED = 400.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=301651378]
+position = Vector2(317, 437)
+zoom = Vector2(0.95, 0.95)
+
+[node name="UI" type="Control" parent="." unique_id=1429491807]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GridControls" type="MarginContainer" parent="UI" unique_id=637272537]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -181.0
+offset_right = 252.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="FoldableContainer" type="FoldableContainer" parent="UI/GridControls" unique_id=1077554516]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UI/GridControls/FoldableContainer" unique_id=284489176]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GridControls/FoldableContainer" unique_id=677055259]
+layout_mode = 2
+
+[node name="GenerateGridButton" type="Button" parent="UI/GridControls/FoldableContainer/VBoxContainer" unique_id=1176456509]
+layout_mode = 2
+text = "Generate Grid"
+
+[node name="BlockX" type="HBoxContainer" parent="UI/GridControls/FoldableContainer/VBoxContainer" unique_id=205071254]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/GridControls/FoldableContainer/VBoxContainer/BlockX" unique_id=200519209]
+layout_mode = 2
+text = "Block amount x:"
+
+[node name="BlockAmountX" type="LineEdit" parent="UI/GridControls/FoldableContainer/VBoxContainer/BlockX" unique_id=1701325149]
+layout_mode = 2
+placeholder_text = "block x"
+
+[node name="BlockY" type="HBoxContainer" parent="UI/GridControls/FoldableContainer/VBoxContainer" unique_id=818294052]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/GridControls/FoldableContainer/VBoxContainer/BlockY" unique_id=84636564]
+layout_mode = 2
+text = "Block amount y:"
+
+[node name="BlockAmountY" type="LineEdit" parent="UI/GridControls/FoldableContainer/VBoxContainer/BlockY" unique_id=781812316]
+layout_mode = 2
+placeholder_text = "block y"
+
+[node name="ShowGrid" type="HBoxContainer" parent="UI/GridControls/FoldableContainer/VBoxContainer" unique_id=1108381204]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/GridControls/FoldableContainer/VBoxContainer/ShowGrid" unique_id=1092917353]
+layout_mode = 2
+text = "Toggle grid visibility"
+
+[node name="CheckButton" type="CheckButton" parent="UI/GridControls/FoldableContainer/VBoxContainer/ShowGrid" unique_id=774058977]
+layout_mode = 2
+
+[node name="Header" type="Panel" parent="UI" unique_id=1684772623]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6w4xk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Header" unique_id=1633728394]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="BlocksLeft" type="HBoxContainer" parent="UI/Header/HBoxContainer" unique_id=1213601012]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Text" type="Label" parent="UI/Header/HBoxContainer/BlocksLeft" unique_id=1133850849]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Blocks Left:"
+horizontal_alignment = 2
+
+[node name="Count" type="Label" parent="UI/Header/HBoxContainer/BlocksLeft" unique_id=640630894]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+script = ExtResource("6_ii07k")
+
+[node name="Score" type="HBoxContainer" parent="UI/Header/HBoxContainer" unique_id=1248358298]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Text" type="Label" parent="UI/Header/HBoxContainer/Score" unique_id=746149645]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Score:"
+horizontal_alignment = 2
+
+[node name="Count" type="Label" parent="UI/Header/HBoxContainer/Score" unique_id=1590482683]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3232"
+script = ExtResource("6_jx0ua")
+
+[node name="LivesLeft" type="HBoxContainer" parent="UI/Header/HBoxContainer" unique_id=853678790]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Text" type="Label" parent="UI/Header/HBoxContainer/LivesLeft" unique_id=567214792]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lives:"
+horizontal_alignment = 2
+
+[node name="Count" type="Label" parent="UI/Header/HBoxContainer/LivesLeft" unique_id=1937186695 node_paths=PackedStringArray("gameManager")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "32"
+script = ExtResource("7_u52cf")
+gameManager = NodePath("../../../../../GameManager")
+
+[node name="LostScreen" type="Panel" parent="UI" unique_id=1320494785]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -91.5
+offset_right = 165.0
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ml6w")
+
+[node name="Label" type="Label" parent="UI/LostScreen" unique_id=1454564898]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -11.5
+offset_right = 35.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Lost!"
+
+[connection signal="pressed" from="UI/GridControls/FoldableContainer/VBoxContainer/GenerateGridButton" to="." method="_on_generate_grid_button_pressed"]
