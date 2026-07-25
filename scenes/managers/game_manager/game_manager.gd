@@ -1,9 +1,8 @@
-# Stores lives left and handle's ball respawn
-
 extends Node
 class_name GameManager
+## Stores lives left and handle's ball respawn
 
-@export var lives: int = 3
+@export var lives: int = 1
 @export var ball: Ball
 
 @onready var respawn_timer: Timer = $RespawnTimer

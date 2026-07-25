@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c08c1s1psljyd" path="res://scenes/arena/blocks_left.gd" id="6_ii07k"]
 [ext_resource type="Script" uid="uid://b8i4rgwx54w7n" path="res://scenes/arena/score_count.gd" id="6_jx0ua"]
 [ext_resource type="Script" uid="uid://blvoilddcboll" path="res://scenes/arena/lives_left.gd" id="7_u52cf"]
+[ext_resource type="Script" uid="uid://c0jjhek854oit" path="res://scenes/arena/restart_button.gd" id="9_6w4xk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv88w"]
 bg_color = Color(0.35531357, 0.35531357, 0.35531345, 1)
@@ -240,19 +241,31 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2ml6w")
 
-[node name="Label" type="Label" parent="UI/LostScreen" unique_id=1454564898]
+[node name="MarginContainer" type="MarginContainer" parent="UI/LostScreen" unique_id=523988215]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.5
-offset_top = -11.5
-offset_right = 35.5
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/LostScreen/MarginContainer" unique_id=971040385]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/LostScreen/MarginContainer/VBoxContainer" unique_id=1454564898]
+layout_mode = 2
+size_flags_vertical = 6
 text = "You Lost!"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="UI/LostScreen/MarginContainer/VBoxContainer" unique_id=1753414004]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart?"
+script = ExtResource("9_6w4xk")
 
 [connection signal="pressed" from="UI/GridControls/FoldableContainer/VBoxContainer/GenerateGridButton" to="." method="_on_generate_grid_button_pressed"]

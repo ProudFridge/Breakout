@@ -1,11 +1,15 @@
 extends Node
 class_name LevelManager
+## Handles level loading from the levels.json file
 
 static var grid: Array[Array] = []
 
 # Loads levels from the levels.json file
-# Currently can only store one level in the grid array
+# Can only store one level in the grid array
 static func load_levels() -> void:
+	# Clear the grid array in case this function is called more than once
+	grid.clear()
+	
 	# Reads the levels.json file and stores its content
 	var levelFile: FileAccess = FileAccess.open("res://levels.json", FileAccess.READ)
 	var fileContent: String = levelFile.get_as_text()

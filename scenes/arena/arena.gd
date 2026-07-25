@@ -24,24 +24,32 @@ var blockAmountY: int = 10
 func _ready() -> void:
 	print(gameAreaSize)
 	print(blockAreaSize)
-	# Centers camera
+	
+	# Load levels
 	LevelManager.load_levels()
+	print(LevelManager.grid)
+	
+	# Center camera
 	camera.position = gameAreaSize / 2
 	
 	# Makes the ui only fit in the game area
 	ui.size = gameAreaSize
 	
 	game_manager.lost_game.connect(_on_game_manager_lost_game)
-	# Try to fix later, tried to add a setting that made the viewport the same size as the game area + header
+	# TODO: Try to fix later, tried to add a setting that made the viewport the same size as the game area + header
 	#if isCompact:
 		#ProjectSettings.set_setting("display/window/size/viewport_width", 200)
 		#ProjectSettings.set_setting("display/window/size/viewport_height", gameAreaSize.y + header.size.y)
 	
 	header.position.y = -header.size.y
 	panel.size = gameAreaSize
+	if LevelManager.grid.is_empty():
+		print("EMPTYYY")
+	else:
+		print("NOT EMPTY, should work")
 	block_manager.generate_grid(blockAreaSize, LevelManager.grid[game_manager.currentLevel][0], block_manager.block_padding, block_manager.grid_padding)
 	
-	# Set up the world boundaries otbe add the screen edges
+	# Set up the world boundaries and add the screen edges
 	# Should change later for custom level sizes
 	left_wall.position = Vector2(0,0)
 	right_wall.position = Vector2(gameAreaSize.x, 0)
@@ -53,7 +61,6 @@ func _input(event: InputEvent) -> void:
 		get_tree().quit()
 
 func _on_generate_grid_button_pressed() -> void:
-	#BlockManager.clear_grid()
 	block_manager.clear_grid()
 	block_manager.generate_grid(blockAreaSize, LevelManager.generate_level(Vector2(blockAmountX, blockAmountY)), block_manager.block_padding, block_manager.grid_padding)
 

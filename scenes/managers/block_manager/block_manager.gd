@@ -1,7 +1,6 @@
-# Used to instantiate block grid
-
 extends Node
 class_name BlockManager
+## Used to instantiate a block grid
 
 @export var block_amount: Vector2i = Vector2i(3,2)
 @export var block_padding: Vector2 = Vector2(10, 10)
@@ -27,7 +26,7 @@ func _ready() -> void:
 # Instantiates a grid of blocks 
 func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
 	grid_area_highlight.size = gridSize
-	print(gridSize.x)
+	
 	var blockAmountX: int = blockGrid.size()
 	var blockAmountY: int = blockGrid[0].size()
 	

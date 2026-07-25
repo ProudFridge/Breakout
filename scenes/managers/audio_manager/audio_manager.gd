@@ -20,10 +20,12 @@ func play_sound(sound_name: String) -> void:
 	
 	add_child(sound)
 	
+	# Pick a random sound
 	sound.stream = array[randi_range(0, array.size() - 1)]
 	sound.volume_db = -10
 	sound.play()
 	
+	# Delete the AudioStreamPlayer as soon as it's done playing
 	sound.finished.connect(func () -> void:
 		sound.queue_free()
 	)

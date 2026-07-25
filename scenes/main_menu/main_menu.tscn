@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0ow0ritn1su"]
 
 [ext_resource type="Script" uid="uid://cy8mms22kryo7" path="res://scenes/main_menu/play_button.gd" id="1_fsom3"]
+[ext_resource type="Script" uid="uid://deswd6ual3uih" path="res://scenes/main_menu/quit_button.gd" id="2_0ebjn"]
 
 [node name="MainMenu" type="Control" unique_id=740092537]
 layout_mode = 3
@@ -29,3 +30,4 @@ script = ExtResource("1_fsom3")
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"
+script = ExtResource("2_0ebjn")
