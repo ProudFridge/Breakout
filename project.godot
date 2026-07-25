@@ -14,7 +14,7 @@ config/name="Breakout"
 config/tags=PackedStringArray("2d")
 run/main_scene="uid://cp5wos6f3udvx"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://ccpe11f3ap40g"
 
 [autoload]
 
@@ -33,6 +33,12 @@ window/size/viewport_height=950
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "gray"
+}
 
 [global_group]
 

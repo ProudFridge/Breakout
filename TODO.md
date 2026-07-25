@@ -1,5 +1,4 @@
 ### TODO
-- Add a gameManager class or somethign to track score
 - Add the possibility for larger levels, by adding a camera to the player and changing the player's and the ball's spawn point with code
 - Create a simple gameplay loop
 	- Let the player be able to score points

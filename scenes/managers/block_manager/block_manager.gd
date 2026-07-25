@@ -1,3 +1,5 @@
+# Used to instantiate block grid
+
 extends Node
 class_name BlockManager
 
@@ -17,6 +19,7 @@ static var levels: Array = []
 
 signal block_added(block: Block)
 signal block_removed(block: Block)
+signal level_won()
 
 func _ready() -> void:
 	grid_area_highlight.visible = show_grid_area
@@ -54,6 +57,10 @@ func remove_block(block_instance: Block) -> void:
 	if block_instance in _block_instances:
 		_block_instances.erase(block_instance)
 		block_removed.emit(block_instance)
+		
+		# Detects if the player has won
+		if _block_instances.size() == 0:
+			level_won.emit()
 
 # Deletes all the blocks in the block istances array and remove their references
 func clear_grid() -> void:

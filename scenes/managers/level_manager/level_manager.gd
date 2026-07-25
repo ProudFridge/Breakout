@@ -15,7 +15,6 @@ static func load_levels() -> void:
 	
 	if error == OK:
 		var data_received: Array = json.data
-		print(data_received)
 		var levelAmount: int = data_received.size()
 		
 		for level: int in levelAmount:

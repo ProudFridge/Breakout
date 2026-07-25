@@ -4,15 +4,19 @@ class_name Ball
 @export var SPEED: float = 300.0
 @export var damage: float = 1
 
-@onready var death_particles: GPUParticles2D = $DeathParticles
+@onready var collision_particles: GPUParticles2D = $CollisionParticles
+@onready var particle_timer: Timer = $CollisionParticles/ParticleTimer
 
 var initial_vector: Vector2 = Vector2(0,1)
 var initial_position: Vector2
+
 signal died()
 
 func _ready() -> void:
 	velocity = initial_vector * SPEED
 	initial_position = position
+	
+	particle_timer.timeout.connect(_on_particle_timer_timeout)
 
 func _physics_process(delta: float) -> void:		
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
@@ -32,6 +36,10 @@ func _physics_process(delta: float) -> void:
 		if body is Block:
 			body.take_damage(damage)
 			
+			collision_particles.position = position
+			collision_particles.emitting = true
+			particle_timer.start()
+			
 func delete() -> void:
 	queue_free()
 
@@ -50,3 +58,6 @@ func freeze() -> void:
 	velocity = Vector2.ZERO
 	visible = false
 	$CollisionShape2D.disabled = true
+	
+func _on_particle_timer_timeout() -> void:
+	collision_particles.emitting = false

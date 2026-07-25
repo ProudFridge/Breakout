@@ -56,7 +56,12 @@ shape = SubResource("CircleShape2D_5a6bx")
 [node name="CollisionSound" type="AudioStreamPlayer2D" parent="." unique_id=227188667]
 stream = SubResource("AudioStreamWAV_nv6q1")
 
-[node name="DeathParticles" type="GPUParticles2D" parent="." unique_id=383569983]
-visible = false
+[node name="CollisionParticles" type="GPUParticles2D" parent="." unique_id=383569983]
+top_level = true
 emitting = false
+lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_nv6q1")
+
+[node name="ParticleTimer" type="Timer" parent="CollisionParticles" unique_id=1721663854]
+wait_time = 0.2
+one_shot = true
