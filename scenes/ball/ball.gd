@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(collision.get_normal())
 		
 		if body.is_in_group("BottomWall"):
-			die()
+			reset_ball()
 			died.emit()
 		else:
 			AudioManager.play_sound("bounce")
@@ -43,8 +43,8 @@ func _physics_process(delta: float) -> void:
 func delete() -> void:
 	queue_free()
 
-# Resets the ball's position
-func die() -> void:
+## Resets the ball's position and clears the trail
+func reset_ball() -> void:
 	position = initial_position
 	$TrailComponent.clear()
 	velocity = Vector2.ZERO

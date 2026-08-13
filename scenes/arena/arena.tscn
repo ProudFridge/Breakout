@@ -10,9 +10,6 @@
 [ext_resource type="Script" uid="uid://blvoilddcboll" path="res://scenes/arena/lives_left.gd" id="7_u52cf"]
 [ext_resource type="Script" uid="uid://c0jjhek854oit" path="res://scenes/arena/restart_button.gd" id="9_6w4xk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv88w"]
-bg_color = Color(0.35531357, 0.35531357, 0.35531345, 1)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5tue2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aj7ud"]
@@ -41,14 +38,9 @@ anchors_preset = 0
 offset_right = 650.0
 offset_bottom = 909.0
 
-[node name="Panel" type="Panel" parent="Background" unique_id=662623244]
+[node name="Panel" type="ColorRect" parent="Background" unique_id=291097030]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fv88w")
+color = Color(0.46229059, 0.46229059, 0.46229059, 1)
 
 [node name="GameManager" parent="." unique_id=2062060914 node_paths=PackedStringArray("ball") instance=ExtResource("1_u52cf")]
 ball = NodePath("../Ball")

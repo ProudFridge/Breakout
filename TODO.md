@@ -1,4 +1,5 @@
 ### TODO
+- Maybe use scenes to store levels and a tool script inside of a json file, could make different types of levels easier to implement
 - Add the possibility for larger levels, by adding a camera to the player and changing the player's and the ball's spawn point with code
 - Create a simple gameplay loop
 	- Let the player be able to score points

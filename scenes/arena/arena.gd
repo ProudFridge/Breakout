@@ -1,16 +1,20 @@
 extends Node2D
 
+# TODO: Replace the following nodes with a single node
 @onready var left_wall: CollisionShape2D = $WorldBoundary/Walls/LeftWall
 @onready var right_wall: CollisionShape2D = $WorldBoundary/Walls/RightWall
 @onready var bottom_wall: CollisionShape2D = $WorldBoundary/BottomWall/BottomWall
 @onready var top_wall: CollisionShape2D = $WorldBoundary/Walls/TopWall
+
 @onready var block_manager: BlockManager = $BlockManager
 @onready var game_manager: GameManager = $GameManager
-@onready var panel: Panel = $Background/Panel
+@onready var panel: ColorRect = $Background/Panel
 @onready var ui: Control = $UI
 @onready var header: Panel = $UI/Header
 @onready var camera: Camera2D = $Camera2D
 @onready var lost_screen: Panel = $UI/LostScreen
+@onready var paddle: CharacterBody2D = $Paddle
+@onready var ball: Ball = $Ball
 
 @export var gameAreaSize: Vector2 = Vector2(900, 900)
 @onready var blockAreaSize: Vector2 = Vector2(gameAreaSize.x, 400)
@@ -22,15 +26,18 @@ var blockAmountY: int = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(gameAreaSize)
-	print(blockAreaSize)
+	print("GameAreaSize: ", gameAreaSize)
+	print("BlockAreaSize: ", blockAreaSize)
 	
 	# Load levels
 	LevelManager.load_levels()
 	print(LevelManager.grid)
 	
-	# Center camera
+	# Center camera, paddle and ball
 	camera.position = gameAreaSize / 2
+	paddle.position = Vector2(gameAreaSize.x / 2, 700)
+	ball.position = Vector2(gameAreaSize.x / 2, 570)
+	
 	
 	# Makes the ui only fit in the game area
 	ui.size = gameAreaSize
@@ -43,6 +50,7 @@ func _ready() -> void:
 	
 	header.position.y = -header.size.y
 	panel.size = gameAreaSize
+	
 	if LevelManager.grid.is_empty():
 		print("EMPTYYY")
 	else:
