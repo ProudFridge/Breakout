@@ -13,17 +13,19 @@ func _ready() -> void:
 
 	
 ## Deletes the sourceScene and instances the targetScene
-func switch_from_to(sourceScene: Node, targetScene: String) -> void:
+func switch_from_to(targetScene: String, transitionType: TRANSITION_TYPE = TRANSITION_TYPE.NONE) -> void:
 	# Defer the load to a later time, when we can be sure that no code from the current scene is running
-	deferred_switch_to.call_deferred(sourceScene, targetScene)
+	deferred_switch_to.call_deferred(targetScene, transitionType)
 
-func deferred_switch_to(targetScene: String) -> void:
+func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE) -> void:
 	# It is now safe to remove the current scene.
 	current_scene.free()
 
 	# Load the new scene.
 	var s: PackedScene = ResourceLoader.load(targetScene)
-
+	
+	
+	
 	# Instance the new scene.
 	current_scene = s.instantiate()
 
@@ -34,4 +36,9 @@ func deferred_switch_to(targetScene: String) -> void:
 
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
-	
+
+## Defines the transition type used when switching scenes
+enum TRANSITION_TYPE {
+	NONE,
+	SLIDE
+}
