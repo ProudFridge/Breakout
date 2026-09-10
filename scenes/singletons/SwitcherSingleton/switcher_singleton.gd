@@ -20,11 +20,9 @@ func switch_from_to(targetScene: String, transitionType: TRANSITION_TYPE = TRANS
 func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE) -> void:
 	# It is now safe to remove the current scene.
 	current_scene.free()
-
+	
 	# Load the new scene.
 	var s: PackedScene = ResourceLoader.load(targetScene)
-	
-	
 	
 	# Instance the new scene.
 	current_scene = s.instantiate()
