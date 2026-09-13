@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func _on_restart_button_pressed() -> void:
 	print(get_tree().root)
-	SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn")
+	SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn", SwitcherSingleton.TRANSITION_TYPE.SLIDE)

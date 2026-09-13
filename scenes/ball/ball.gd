@@ -3,6 +3,7 @@ class_name Ball
 
 @export var SPEED: float = 300.0
 @export var damage: float = 1
+@export var isPiercing: bool = false
 
 @onready var collision_particles: GPUParticles2D = $CollisionParticles
 @onready var particle_timer: Timer = $CollisionParticles/ParticleTimer
@@ -25,8 +26,6 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		var body: Node = collision.get_collider()
 		
-		velocity = velocity.bounce(collision.get_normal())
-		
 		if body.is_in_group("BottomWall"):
 			reset_ball()
 			died.emit()
@@ -39,6 +38,11 @@ func _physics_process(delta: float) -> void:
 			collision_particles.position = position
 			collision_particles.emitting = true
 			particle_timer.start()
+			
+			if not isPiercing:
+				velocity = velocity.bounce(collision.get_normal())
+		else:
+			velocity = velocity.bounce(collision.get_normal())
 			
 func delete() -> void:
 	queue_free()
