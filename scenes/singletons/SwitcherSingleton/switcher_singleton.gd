@@ -18,11 +18,16 @@ func switch_from_to(targetScene: String, transitionType: TRANSITION_TYPE = TRANS
 
 func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE) -> void:
 	if transitionType != TRANSITION_TYPE.NONE:
-		var transitionRect: TransitionRect = TransitionRect.new(1)
+		# Adds the transitionRect into a canvasLayer so it stays idnependant of the camera's position
+		# TODO: group this into a function, it's messy
+		var canvasLayer: CanvasLayer = CanvasLayer.new()
+		var transitionRect: TransitionRect = TransitionRect.new(0.5)
+		canvasLayer.add_child(transitionRect)
+		
 		transitionRect.set_shader(TransitionRect.TRANSITION_SHADER.get("HORIZONTAL"))
 		transitionRect.startTransitionDone.connect(SwitcherSingleton.switch_from_to.bind("res://scenes/arena/arena.tscn"))
 	
-		get_tree().get_root().add_child(transitionRect)
+		get_tree().get_root().add_child(canvasLayer)
 	else:
 		# It is now safe to remove the current scene.
 		current_scene.free()
@@ -53,7 +58,7 @@ class TransitionRect extends ColorRect:
 	static var TRANSITION_SHADER: Dictionary = {
 		"HORIZONTAL": "res://shaders/horizontal_transition.gdshader"
 	}
-
+	
 	signal startTransitionDone
 	signal endTransitionDone
 

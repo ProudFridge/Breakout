@@ -30,7 +30,6 @@ corner_radius_bottom_left = 8
 
 [node name="Arena" type="Node2D" unique_id=2083693325]
 script = ExtResource("1_ii07k")
-gameAreaSize = Vector2(600, 900)
 
 [node name="Background" type="Control" parent="." unique_id=971906882]
 layout_mode = 3
