@@ -21,5 +21,4 @@ func _physics_process(delta: float) -> void:
 	else:
 		rotation = move_toward(rotation, 0, tiltAccel * delta)
 	
-	#position.x = get_global_mouse_position().x
 	move_and_slide()

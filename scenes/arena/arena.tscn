@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bahxyb1jog471" path="res://scenes/arena/arena.gd" id="1_ii07k"]
 [ext_resource type="PackedScene" uid="uid://crl3sjvrqcwai" path="res://scenes/managers/game_manager/game_manager.tscn" id="1_u52cf"]
+[ext_resource type="PackedScene" uid="uid://divqtlbgv6kp0" path="res://scenes/managers/boundary_manager/boundary_manager.tscn" id="2_2ml6w"]
 [ext_resource type="PackedScene" uid="uid://blmhj0qtrvphf" path="res://scenes/managers/block_manager/block_manager.tscn" id="2_ii07k"]
 [ext_resource type="PackedScene" uid="uid://cvstwnwbs75xl" path="res://scenes/paddle/paddle.tscn" id="3_6w4xk"]
 [ext_resource type="PackedScene" uid="uid://dpwwvkfv48suw" path="res://scenes/ball/ball.tscn" id="4_2ml6w"]
@@ -9,14 +10,6 @@
 [ext_resource type="Script" uid="uid://b8i4rgwx54w7n" path="res://scenes/arena/score_count.gd" id="6_jx0ua"]
 [ext_resource type="Script" uid="uid://blvoilddcboll" path="res://scenes/arena/lives_left.gd" id="7_u52cf"]
 [ext_resource type="Script" uid="uid://c0jjhek854oit" path="res://scenes/arena/restart_button.gd" id="9_6w4xk"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5tue2"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aj7ud"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_asdgj"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jx0ua"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w4xk"]
 bg_color = Color(0.32544068, 0.32544097, 0.32544082, 1)
@@ -41,34 +34,12 @@ offset_bottom = 909.0
 layout_mode = 1
 color = Color(0.46229059, 0.46229059, 0.46229059, 1)
 
+[node name="BoundaryManager" parent="." unique_id=850233231 instance=ExtResource("2_2ml6w")]
+
 [node name="GameManager" parent="." unique_id=2062060914 node_paths=PackedStringArray("ball") instance=ExtResource("1_u52cf")]
 ball = NodePath("../Ball")
 
 [node name="BlockManager" parent="." unique_id=46482369 instance=ExtResource("2_ii07k")]
-
-[node name="WorldBoundary" type="Node" parent="." unique_id=185627799]
-
-[node name="Walls" type="StaticBody2D" parent="WorldBoundary" unique_id=931866966]
-
-[node name="LeftWall" type="CollisionShape2D" parent="WorldBoundary/Walls" unique_id=43210926]
-position = Vector2(187, 555)
-rotation = 1.5707964
-shape = SubResource("WorldBoundaryShape2D_5tue2")
-
-[node name="RightWall" type="CollisionShape2D" parent="WorldBoundary/Walls" unique_id=1243038819]
-position = Vector2(649, 0)
-rotation = 4.712389
-shape = SubResource("WorldBoundaryShape2D_aj7ud")
-
-[node name="TopWall" type="CollisionShape2D" parent="WorldBoundary/Walls" unique_id=342760673]
-rotation = -3.1415927
-shape = SubResource("WorldBoundaryShape2D_asdgj")
-
-[node name="BottomWall" type="StaticBody2D" parent="WorldBoundary" unique_id=307821613 groups=["BottomWall"]]
-
-[node name="BottomWall" type="CollisionShape2D" parent="WorldBoundary/BottomWall" unique_id=1369192134]
-position = Vector2(197, 836)
-shape = SubResource("WorldBoundaryShape2D_jx0ua")
 
 [node name="Paddle" parent="." unique_id=274753157 instance=ExtResource("3_6w4xk")]
 position = Vector2(323, 706)

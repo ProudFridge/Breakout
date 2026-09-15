@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://x512y2sg1mhi"]
+
+[ext_resource type="Script" uid="uid://bwvpj13pj3k44" path="res://scenes/managers/boundary_manager/boundary_manager.gd" id="1_01ac3"]
+[ext_resource type="PackedScene" uid="uid://bxjsvx742x2sl" path="res://scenes/managers/boundary_manager/boundary.tscn" id="2_b4fg2"]
+
+[node name="BoundaryManager" type="Node" unique_id=850233231]
+script = ExtResource("1_01ac3")
+
+[node name="LeftWall" parent="." unique_id=953823340 instance=ExtResource("2_b4fg2")]
+
+[node name="RightWall" parent="." unique_id=449992501 instance=ExtResource("2_b4fg2")]
+
+[node name="BottomWall" parent="." unique_id=1619875260 groups=["BottomWall"] instance=ExtResource("2_b4fg2")]
+
+[node name="TopWall" parent="." unique_id=682539531 instance=ExtResource("2_b4fg2")]

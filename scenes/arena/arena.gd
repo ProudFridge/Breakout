@@ -1,11 +1,5 @@
 extends Node2D
 
-# TODO: Replace the following nodes with a single node
-@onready var left_wall: CollisionShape2D = $WorldBoundary/Walls/LeftWall
-@onready var right_wall: CollisionShape2D = $WorldBoundary/Walls/RightWall
-@onready var bottom_wall: CollisionShape2D = $WorldBoundary/BottomWall/BottomWall
-@onready var top_wall: CollisionShape2D = $WorldBoundary/Walls/TopWall
-
 @onready var block_manager: BlockManager = $BlockManager
 @onready var game_manager: GameManager = $GameManager
 @onready var panel: ColorRect = $Background/Panel
@@ -49,13 +43,6 @@ func _ready() -> void:
 		#ProjectSettings.set_setting("display/window/size/viewport_height", gameAreaSize.y + header.size.y)
 		
 	block_manager.generate_grid(blockAreaSize, LevelManager.grid[game_manager.currentLevel][0], block_manager.block_padding, block_manager.grid_padding)
-	
-	# Set up the world boundaries and add the screen edges
-	# Should change later for custom level sizes
-	left_wall.position = Vector2(0,0)
-	right_wall.position = Vector2(gameAreaSize.x, 0)
-	bottom_wall.position = Vector2(0, gameAreaSize.y)
-	top_wall.position = Vector2(0,0)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):
