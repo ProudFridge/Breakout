@@ -5,6 +5,7 @@ extends Node2D
 @onready var panel: ColorRect = $Background/Panel
 @onready var ui: Control = $UI
 @onready var header: Panel = $UI/Header
+@onready var grid_utility: GridUtility = $UI/GridUtility
 @onready var camera: Camera2D = $Camera2D
 @onready var lost_screen: Panel = $UI/LostScreen
 @onready var paddle: CharacterBody2D = $Paddle
@@ -26,6 +27,10 @@ func _ready() -> void:
 	# Load levels
 	LevelManager.load_levels()
 	
+	# Set the blockAreaSize of the grid utility
+	# TODO: move the blockAreaSize variable to the BlockManager or GameManager class idk
+	grid_utility.blockAreaSize = blockAreaSize
+	
 	# Center camera, paddle and ball
 	camera.position = gameAreaSize / 2
 	paddle.position = Vector2(gameAreaSize.x / 2, 700)
@@ -35,6 +40,7 @@ func _ready() -> void:
 	ui.size = gameAreaSize
 	header.position.y = -header.size.y
 	panel.size = gameAreaSize
+	grid_utility.set_position(Vector2(10, gameAreaSize.y - grid_utility.size.y - 10))
 	
 	game_manager.lost_game.connect(_on_game_manager_lost_game)
 	# TODO: Try to fix later, tried to add a setting that made the viewport the same size as the game area + header
@@ -54,6 +60,7 @@ func _on_generate_grid_button_pressed() -> void:
 
 func _on_block_amount_x_text_changed(new_text: String) -> void:
 	blockAmountX = int(new_text)
+	print(blockAmountX)
 
 func _on_block_amount_y_text_changed(new_text: String) -> void:
 	blockAmountY = int(new_text)

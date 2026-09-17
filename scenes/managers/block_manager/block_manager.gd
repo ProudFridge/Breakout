@@ -24,7 +24,7 @@ func _ready() -> void:
 	grid_area_highlight.visible = show_grid_area
 
 # Instantiates a grid of blocks 
-func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, gridPadding: Vector2 ) -> void:
+func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, gridPadding: Vector2) -> void:
 	grid_area_highlight.size = gridSize
 	
 	var blockAmountX: int = blockGrid.size()
@@ -37,12 +37,13 @@ func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, g
 	for row: int in blockAmountX:
 		for column: int in blockAmountY:
 			if blockGrid[row][column] == 1:
+				#if sqrt(pow(row - blockAmountX / 2, 2) + pow(column - blockAmountY / 2, 2)) < 3.5:
 				# Make the blocks spawn in a rainbow
 				var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmountY),0.5,1,1)
 				var bPosition: Vector2
 				bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
 				bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
-				
+					
 				instantiate_block(bPosition, blockSize, color)
 
 # Adds a block to the block instances array

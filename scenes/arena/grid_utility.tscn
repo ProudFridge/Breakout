@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cy2vw61o3udh7"]
+
+[ext_resource type="Script" uid="uid://blqn4enjbaexv" path="res://scenes/arena/grid_utility.gd" id="1_s6pia"]
+
+[node name="GridUtility" type="GridContainer" unique_id=1717053236]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_s6pia")
+
+[node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=685990188]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FoldableContainer" unique_id=795267385]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer" unique_id=55089256]
+layout_mode = 2
+
+[node name="GenerateGridButton" type="Button" parent="FoldableContainer/VBoxContainer" unique_id=1160125594]
+layout_mode = 2
+text = "Generate Grid"
+
+[node name="BlockX" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=1511706161]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockX" unique_id=471134380]
+layout_mode = 2
+text = "Block amount x:"
+
+[node name="BlockAmountX" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockX" unique_id=1590959547]
+layout_mode = 2
+placeholder_text = "block x"
+
+[node name="BlockY" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=750267667]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockY" unique_id=1034453803]
+layout_mode = 2
+text = "Block amount y:"
+
+[node name="BlockAmountY" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockY" unique_id=120915544]
+layout_mode = 2
+placeholder_text = "block y"
+
+[node name="ShowGrid" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=847951354]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/ShowGrid" unique_id=631162036]
+layout_mode = 2
+text = "Toggle grid visibility"
+
+[node name="CheckButton" type="CheckButton" parent="FoldableContainer/VBoxContainer/ShowGrid" unique_id=1472322250]
+layout_mode = 2
