@@ -6,7 +6,7 @@ class_name BoundaryManager
 @onready var bottom_wall: StaticBody2D = $BottomWall
 @onready var top_wall: StaticBody2D = $TopWall
 
-@export var gameAreaSize: Vector2 = Vector2(900, 900)
+@export var gameAreaSize: Vector2 = Vector2(600, 900)
 @onready var blockAreaSize: Vector2 = Vector2(gameAreaSize.x, 400)
 
 # Called when the node enters the scene tree for the first time.

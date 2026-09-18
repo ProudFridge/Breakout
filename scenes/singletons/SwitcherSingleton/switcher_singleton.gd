@@ -21,7 +21,7 @@ func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE) ->
 		# Adds the transitionRect into a canvasLayer so it stays idnependant of the camera's position
 		# TODO: group this into a function, it's messy
 		var canvasLayer: CanvasLayer = CanvasLayer.new()
-		var transitionRect: TransitionRect = TransitionRect.new(0.5)
+		var transitionRect: TransitionRect = TransitionRect.new(1)
 		canvasLayer.add_child(transitionRect)
 		
 		transitionRect.set_shader(TransitionRect.TRANSITION_SHADER.get("HORIZONTAL"))

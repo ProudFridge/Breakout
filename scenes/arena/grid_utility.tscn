@@ -25,22 +25,44 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockX" unique_id=471134380]
 layout_mode = 2
-text = "Block amount x:"
+text = "Block Amount X:"
 
 [node name="BlockAmountX" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockX" unique_id=1590959547]
 layout_mode = 2
-placeholder_text = "block x"
+placeholder_text = "num"
 
 [node name="BlockY" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=750267667]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockY" unique_id=1034453803]
 layout_mode = 2
-text = "Block amount y:"
+text = "Block Amount Y:"
 
 [node name="BlockAmountY" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockY" unique_id=120915544]
 layout_mode = 2
-placeholder_text = "block y"
+placeholder_text = "num"
+
+[node name="BlockPaddingX" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=183988794]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockPaddingX" unique_id=1239138150]
+layout_mode = 2
+text = "Block Padding X:"
+
+[node name="BlockPaddingX" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockPaddingX" unique_id=1776525980]
+layout_mode = 2
+placeholder_text = "num"
+
+[node name="BlockPaddingY" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=1240205611]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockPaddingY" unique_id=2052842916]
+layout_mode = 2
+text = "Block Padding Y:"
+
+[node name="BlockPaddingY" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockPaddingY" unique_id=322858350]
+layout_mode = 2
+placeholder_text = "num"
 
 [node name="ShowGrid" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=847951354]
 layout_mode = 2
