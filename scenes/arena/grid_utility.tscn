@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://blqn4enjbaexv" path="res://scenes/arena/grid_utility.gd" id="1_s6pia"]
 
 [node name="GridUtility" type="GridContainer" unique_id=1717053236]
+z_index = 1
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_s6pia")

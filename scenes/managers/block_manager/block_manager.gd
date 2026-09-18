@@ -37,14 +37,15 @@ func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, g
 	for row: int in blockAmountX:
 		for column: int in blockAmountY:
 			if blockGrid[row][column] == 1:
-				#if sqrt(pow(row - blockAmountX / 2, 2) + pow(column - blockAmountY / 2, 2)) < 3.5:
-				# Make the blocks spawn in a rainbow
-				var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmountY),0.5,1,1)
-				var bPosition: Vector2
-				bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
-				bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
-					
-				instantiate_block(bPosition, blockSize, color)
+				#if spawn_in_circle(row, column, blockAmountX, blockAmountY, 30):
+				if spawn_in_a_border(row, column, blockAmountX, blockAmountY, 5):
+					# Make the blocks spawn in a rainbow
+					var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmountY),0.5,1,1)
+					var bPosition: Vector2
+					bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
+					bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
+						
+					instantiate_block(bPosition, blockSize, color)
 
 # Adds a block to the block instances array
 func add_block(block_instance: Block) -> void:
@@ -82,3 +83,16 @@ func instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
 	blockInstance.position = position
 	
 	add_child(blockInstance)
+
+func spawn_in_circle(row: int, col: int, blockAmountX: int, blockAmountY: int, radius: float) -> bool:
+	if sqrt(pow(row - blockAmountX / 2, 2) + pow(col - blockAmountY / 2, 2)) < radius:
+		return true
+	else:
+		return false
+	
+func spawn_in_a_border(row: int, col: int, blockAmountX: int, blockAmountY: int, borderWidth: float) -> bool:
+	if (row <= 0 + borderWidth - 1 or row >= blockAmountX - borderWidth or 
+		col <= 0 + borderWidth - 1 or col >= blockAmountY - borderWidth - 1):
+		return true
+	else:
+		return false
