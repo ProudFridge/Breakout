@@ -1,7 +1,5 @@
-@tool
-
 extends Control
-class_name PolygonButton
+#class_name PolygonButton
 
 @export var width: float = 240;
 var height: float = sqrt(width * width - (width / 2) * (width / 2))
@@ -42,3 +40,4 @@ func _on_mouse_entered() -> void:
 	
 func _on_mouse_exited() -> void:
 	self_modulate = normalColor
+	

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cok8ntql3ahxo"]
+
+[ext_resource type="Script" uid="uid://b5tdgkdmidv1e" path="res://test/polygon_button/polygon_button.gd" id="1_u38vv"]
+
+[node name="PolygonButton" type="Button" unique_id=785898870]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_u38vv")
