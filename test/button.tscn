@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://0qaab12c8133"]
+
+[ext_resource type="Texture2D" uid="uid://ccpe11f3ap40g" path="res://icon.svg" id="1_n7ti5"]
+
+[node name="Button" type="Button" unique_id=2143412722]
+offset_left = 98.0
+offset_top = 36.0
+offset_right = 231.0
+offset_bottom = 129.0
+tooltip_text = "ytybrtbyrt"
+theme_override_colors/font_color = Color(0.92568076, 0.8711742, 0.7398547, 1)
+icon = ExtResource("1_n7ti5")

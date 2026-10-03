@@ -49,10 +49,9 @@ position = Vector2(323, 706)
 [node name="Ball" parent="." unique_id=71320122 instance=ExtResource("4_2ml6w")]
 position = Vector2(302, 577)
 SPEED = 400.0
-isPiercing = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301651378]
-position = Vector2(317, 437)
+position = Vector2(270, 557)
 zoom = Vector2(0.95, 0.95)
 
 [node name="UI" type="Control" parent="." unique_id=1429491807]

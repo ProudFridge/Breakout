@@ -37,8 +37,8 @@ func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, g
 	for row: int in blockAmountX:
 		for column: int in blockAmountY:
 			if blockGrid[row][column] == 1:
-				#if spawn_in_circle(row, column, blockAmountX, blockAmountY, 30):
-				if spawn_in_a_border(row, column, blockAmountX, blockAmountY, 5):
+				#if spawn_in_circle(row, column, blockAmountX, blockAmountY, 20):
+				if spawn_in_a_border(row, column, blockAmountX, blockAmountY, 5) or spawn_in_circle(row, column, blockAmountX, blockAmountY, 20):
 					# Make the blocks spawn in a rainbow
 					var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmountY),0.5,1,1)
 					var bPosition: Vector2

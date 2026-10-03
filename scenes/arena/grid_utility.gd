@@ -11,8 +11,8 @@ class_name GridUtility
 @onready var blockPaddingYField: LineEdit = $FoldableContainer/VBoxContainer/BlockPaddingY/BlockPaddingY
 @onready var areaVisibilityToggle: CheckButton = $FoldableContainer/VBoxContainer/ShowGrid/CheckButton
 
-var blockAmountX: int = 0
-var blockAmountY: int = 0
+var blockAmountX: int = 10
+var blockAmountY: int = 10
 var blockPaddingX: int = 0
 var blockPaddingY: int = 0
 

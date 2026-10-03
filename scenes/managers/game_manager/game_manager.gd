@@ -29,5 +29,9 @@ func _on_ball_died() -> void:
 		life_changed.emit(lives)
 		respawn_timer.start()
 
+# Tried to make the ball "blink" before it respawns
+func _process(delta: float) -> void:
+	ball.modulate.r =  int(respawn_timer.time_left) % 2 / 2 + 0.5
+
 func _on_timer_timeout() -> void:
 	ball.respawn()

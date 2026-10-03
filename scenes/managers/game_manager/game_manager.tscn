@@ -6,4 +6,5 @@
 script = ExtResource("1_4tpuv")
 
 [node name="RespawnTimer" type="Timer" parent="." unique_id=1756365262]
+wait_time = 3.0
 one_shot = true

@@ -26,10 +26,6 @@ SwitcherSingleton="*uid://ci3w6p800a1sx"
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=2
 
-[display]
-
-window/size/viewport_height=1080
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")

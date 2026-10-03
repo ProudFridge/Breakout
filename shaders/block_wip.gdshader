@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D noise_texture;
-uniform vec2 speed = vec2(1.0, 0.4);
+uniform float speed = 0.4;
 
 void fragment() {
 	// Called for every pixel the material is visible on.
