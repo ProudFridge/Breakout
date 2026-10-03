@@ -4,16 +4,16 @@ class_name PolygonButton
 ##
 ## Can take a packed array of points to display a polygon that's also a button
 
+@export var width: float = 240;
+var height: float = sqrt(width * width - (width / 2) * (width / 2))
+
 ## Points describing the button's shape
 var points: PackedVector2Array = PackedVector2Array([
 		Vector2(-width / 2, height / 2),
 		Vector2(width / 2, height / 2),
 		Vector2(0, -height / 2)
 	])
-
-@export var width: float = 240;
-var height: float = sqrt(width * width - (width / 2) * (width / 2))
-
+	
 ## Colors
 #region Colors used for the buttons
 @export var normal: Color = Color.BLACK ## Normal color of the button
@@ -29,7 +29,10 @@ func _ready() -> void:
 	size = Vector2(width,width)
 	
 func _draw() -> void:
-	draw_colored_polygon(points, normal)
+	draw_colored_polygon(points, self_modulate)
+
+func _process(delta: float) -> void:
+	rotation += 0.1 * delta
 
 func _has_point(point: Vector2) -> bool:
 	return Geometry2D.is_point_in_polygon(point, points)

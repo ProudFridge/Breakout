@@ -5,4 +5,5 @@
 [node name="PolygonButton" type="Button" unique_id=785898870]
 offset_right = 40.0
 offset_bottom = 40.0
+text = "frgr"
 script = ExtResource("1_u38vv")
