@@ -34,7 +34,7 @@ offset_bottom = 909.0
 
 [node name="Panel" type="ColorRect" parent="Background" unique_id=291097030]
 layout_mode = 1
-color = Color(0.46229059, 0.46229059, 0.46229059, 1)
+color = Color(0.2231029, 0.2231029, 0.22310284, 1)
 
 [node name="BoundaryManager" parent="." unique_id=850233231 instance=ExtResource("2_2ml6w")]
 

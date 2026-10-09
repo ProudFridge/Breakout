@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://csx6j305eareb"]
+
+[ext_resource type="Script" uid="uid://nfq5jd1ec32a" path="res://scenes/block/block.gd" id="1_c27ow"]
+[ext_resource type="Shader" uid="uid://c5sm1o3plmmgj" path="res://shaders/block_wip.gdshader" id="1_vpped"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yksjm"]
+size = Vector2(40, 15)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vpped"]
+frequency = 0.0067
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s6pia"]
+noise = SubResource("FastNoiseLite_vpped")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vpped"]
+shader = ExtResource("1_vpped")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_s6pia")
+shader_parameter/speed = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66klm"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_c27ow"]
+material = SubResource("ShaderMaterial_66klm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfxuc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c27ow"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="Block" type="CharacterBody2D" unique_id=1082513130]
+motion_mode = 1
+script = ExtResource("1_c27ow")
+health = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225417575]
+shape = SubResource("RectangleShape2D_yksjm")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=317730714]
+material = SubResource("ShaderMaterial_vpped")
+scale = Vector2(40, 15)
+mesh = SubResource("QuadMesh_c27ow")
+
+[node name="Label" type="Label" parent="." unique_id=732255590]
+material = SubResource("ShaderMaterial_rfxuc")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -10.0
+offset_right = 7.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "1"
+label_settings = SubResource("LabelSettings_c27ow")
+horizontal_alignment = 1
+vertical_alignment = 1

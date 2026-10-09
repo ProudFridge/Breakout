@@ -1,36 +1,11 @@
 [gd_scene format=3 uid="uid://c2wdglxlagggu"]
 
 [ext_resource type="Theme" uid="uid://247q53tapwic" path="res://scenes/main_menu/main_theme.tres" id="1_37abs"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_2m7xh"]
+[ext_resource type="Script" uid="uid://dnv7eukdojxb6" path="res://test/custom_button/custom_button.gd" id="2_obyek"]
 
 [node name="CustomButton" type="Button" unique_id=905150147]
 offset_right = 198.0
 offset_bottom = 60.0
 theme = ExtResource("1_37abs")
 text = "filler text"
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1860754592]
-position = Vector2(21, 65)
-scale = Vector2(30.5, 9.5)
-mesh = SubResource("QuadMesh_2m7xh")
-
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="." unique_id=943378180]
-position = Vector2(63, 65)
-scale = Vector2(28.249998, 9.5)
-mesh = SubResource("QuadMesh_2m7xh")
-
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="." unique_id=794400481]
-position = Vector2(104.00001, 66)
-scale = Vector2(32.250004, 9.5)
-mesh = SubResource("QuadMesh_2m7xh")
-
-[node name="MeshInstance2D4" type="MeshInstance2D" parent="." unique_id=705568981]
-position = Vector2(147, 66)
-scale = Vector2(27.624994, 9.5)
-mesh = SubResource("QuadMesh_2m7xh")
-
-[node name="MeshInstance2D5" type="MeshInstance2D" parent="." unique_id=1433270050]
-position = Vector2(185, 65)
-scale = Vector2(26.249998, 9.5)
-mesh = SubResource("QuadMesh_2m7xh")
+script = ExtResource("2_obyek")

@@ -41,3 +41,6 @@ func delete() -> void:
 	
 func update_health_label() -> void:
 	label.text = str(int(round(health)))
+	
+func apply_hit_effects() -> void:
+	mesh.offset_transform_scale = Vector2(0.95, 0.95)

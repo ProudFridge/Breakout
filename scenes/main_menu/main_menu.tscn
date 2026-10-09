@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://0ow0ritn1su"]
 
-[ext_resource type="Script" uid="uid://cy8mms22kryo7" path="res://scenes/main_menu/play_button.gd" id="1_fsom3"]
 [ext_resource type="Script" uid="uid://deswd6ual3uih" path="res://scenes/main_menu/quit_button.gd" id="2_0ebjn"]
 [ext_resource type="Theme" uid="uid://247q53tapwic" path="res://scenes/main_menu/main_theme.tres" id="3_ob46e"]
 [ext_resource type="Script" uid="uid://b34ys2mfs4j18" path="res://scenes/main_menu/grid_container.gd" id="4_uqeha"]
@@ -32,35 +31,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_2m7xh")
-
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=227219246]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1312795990]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=868839953]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Play"
-script = ExtResource("1_fsom3")
-
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1567509049]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Quit"
-script = ExtResource("2_0ebjn")
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=703769466]
 layout_mode = 1
@@ -116,8 +86,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "nothing"
 
-[node name="Button4" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1687944003]
+[node name="QuitButton" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1687944003]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "nothing"
+text = "Quit"
+script = ExtResource("2_0ebjn")
