@@ -5,7 +5,14 @@ var trans: Tween.TransitionType = Tween.TRANS_EXPO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for button: Button in self.get_children():
+	var children: Array[Node] = get_children()
+	var i: int = 0
+	
+	(children[0] as Control).grab_focus.call_deferred()
+	print(children[0].get_path())
+	
+	for button: Button in children:
+		# Set animations
 		var tween: Tween
 		
 		button.offset_transform_enabled = true
