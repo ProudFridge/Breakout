@@ -10,7 +10,11 @@ static var audio_streams: Dictionary[String, Array] = {
 				preload("res://assets/sound_effects/bounce2.wav"),
 				preload("res://assets/sound_effects/bounce3.wav"),
 				preload("res://assets/sound_effects/bounce4.wav"),
-				preload("res://assets/sound_effects/bounce5.wav")]
+				preload("res://assets/sound_effects/bounce5.wav")],
+	"press": [preload("res://assets/sound_effects/pop_1.wav"),
+				preload("res://assets/sound_effects/pop_2.wav"),
+				preload("res://assets/sound_effects/pop_3.wav"),
+				preload("res://assets/sound_effects/pop_4.wav")]
 }
 
 # Plays a selected sound from the audio_streams dictionnary

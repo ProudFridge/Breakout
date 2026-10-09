@@ -1,0 +1,12 @@
+extends Button
+
+@onready var main_menu: Control = $"../.."
+
+func _ready() -> void:
+	self.pressed.connect(_on_pressed)
+
+func _on_pressed() -> void:
+	SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn",SwitcherSingleton.TRANSITION_TYPE.SLIDE)
+	
+	# Uncomment this line and comment the above lines to disable transitions
+	#SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn")

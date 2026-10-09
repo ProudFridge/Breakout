@@ -2,6 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cy8mms22kryo7" path="res://scenes/main_menu/play_button.gd" id="1_fsom3"]
 [ext_resource type="Script" uid="uid://deswd6ual3uih" path="res://scenes/main_menu/quit_button.gd" id="2_0ebjn"]
+[ext_resource type="Theme" uid="uid://247q53tapwic" path="res://scenes/main_menu/main_theme.tres" id="3_ob46e"]
+[ext_resource type="Script" uid="uid://b34ys2mfs4j18" path="res://scenes/main_menu/grid_container.gd" id="4_uqeha"]
+[ext_resource type="Script" uid="uid://3lrmm3k0hlhm" path="res://scenes/main_menu/start_button.gd" id="5_wem23"]
+
+[sub_resource type="Gradient" id="Gradient_0ebjn"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.090310164, 0.050347157, 0.19745782, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2m7xh"]
+gradient = SubResource("Gradient_0ebjn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2m7xh"]
+font_size = 64
 
 [node name="MainMenu" type="Control" unique_id=740092537]
 layout_mode = 3
@@ -11,7 +24,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1653429365]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_2m7xh")
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=227219246]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,3 +61,63 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"
 script = ExtResource("2_0ebjn")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=703769466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2" unique_id=1535011208]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="MarginContainer2/MarginContainer" unique_id=1665155611]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_ob46e")
+text = "Breakout Clone"
+label_settings = SubResource("LabelSettings_2m7xh")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=829127177]
+custom_minimum_size = Vector2(350, 350)
+custom_maximum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("3_ob46e")
+script = ExtResource("4_uqeha")
+
+[node name="StartButton" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=429037928]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Start"
+script = ExtResource("5_wem23")
+
+[node name="Button2" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=552485328]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+text = "nothing"
+
+[node name="Button3" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=702029597]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "nothing"
+
+[node name="Button4" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1687944003]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "nothing"

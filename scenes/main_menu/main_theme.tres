@@ -1,0 +1,43 @@
+[gd_resource type="Theme" format=3 uid="uid://247q53tapwic"]
+
+[ext_resource type="FontFile" uid="uid://dl2r5vgsaa8h3" path="res://assets/fonts/better_vcr/BetterVCR 25.09.ttf" id="1_hghty"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmyj4"]
+bg_color = Color(0.4862745, 0.6117647, 0.74509805, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfogj"]
+bg_color = Color(0.2622595, 0.36553386, 0.47408086, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.20152658, 0.20152658, 0.20152658, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhipj"]
+bg_color = Color(0.48772442, 0.61285925, 0.7438795, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7hy3"]
+bg_color = Color(0.4862745, 0.6117647, 0.74509805, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.2, 0.2, 0.2, 1)
+
+[resource]
+Button/fonts/font = ExtResource("1_hghty")
+Button/styles/focus = SubResource("StyleBoxFlat_vmyj4")
+Button/styles/hover = SubResource("StyleBoxFlat_rfogj")
+Button/styles/normal = SubResource("StyleBoxFlat_rhipj")
+Button/styles/pressed = SubResource("StyleBoxFlat_j7hy3")
+Label/fonts/font = ExtResource("1_hghty")

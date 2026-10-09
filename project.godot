@@ -26,6 +26,10 @@ SwitcherSingleton="*uid://ci3w6p800a1sx"
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=2
 
+[display]
+
+window/size/viewport_height=950
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
@@ -33,7 +37,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://assets/": "gray"
+"res://assets/": "orange"
 }
 
 [global_group]
@@ -82,4 +86,5 @@ dash={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/msaa_2d=3
 environment/defaults/default_clear_color=Color(0.11489672, 0.11489684, 0.11489674, 1)
