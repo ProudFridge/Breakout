@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Paddle
 
 var SPEED: float = 300.0
 var oriSpeed: float = SPEED

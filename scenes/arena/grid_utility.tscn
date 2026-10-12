@@ -2,75 +2,71 @@
 
 [ext_resource type="Script" uid="uid://blqn4enjbaexv" path="res://scenes/arena/grid_utility.gd" id="1_s6pia"]
 
-[node name="GridUtility" type="GridContainer" unique_id=1717053236]
-z_index = 1
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="GridUtility" type="FoldableContainer" unique_id=685990188]
+offset_right = 24.0
+offset_bottom = 24.0
 script = ExtResource("1_s6pia")
 
-[node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=685990188]
+[node name="Panel" type="Panel" parent="." unique_id=795267385]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="FoldableContainer" unique_id=795267385]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=55089256]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer" unique_id=55089256]
-layout_mode = 2
-
-[node name="GenerateGridButton" type="Button" parent="FoldableContainer/VBoxContainer" unique_id=1160125594]
+[node name="GenerateGridButton" type="Button" parent="VBoxContainer" unique_id=1160125594]
 layout_mode = 2
 text = "Generate Grid"
 
-[node name="BlockX" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=1511706161]
+[node name="BlockX" type="HBoxContainer" parent="VBoxContainer" unique_id=1511706161]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockX" unique_id=471134380]
+[node name="Label" type="Label" parent="VBoxContainer/BlockX" unique_id=471134380]
 layout_mode = 2
 text = "Block Amount X:"
 
-[node name="BlockAmountX" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockX" unique_id=1590959547]
+[node name="BlockAmountX" type="LineEdit" parent="VBoxContainer/BlockX" unique_id=1590959547]
 layout_mode = 2
 placeholder_text = "num"
 
-[node name="BlockY" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=750267667]
+[node name="BlockY" type="HBoxContainer" parent="VBoxContainer" unique_id=750267667]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockY" unique_id=1034453803]
+[node name="Label" type="Label" parent="VBoxContainer/BlockY" unique_id=1034453803]
 layout_mode = 2
 text = "Block Amount Y:"
 
-[node name="BlockAmountY" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockY" unique_id=120915544]
+[node name="BlockAmountY" type="LineEdit" parent="VBoxContainer/BlockY" unique_id=120915544]
 layout_mode = 2
 placeholder_text = "num"
 
-[node name="BlockPaddingX" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=183988794]
+[node name="BlockPaddingX" type="HBoxContainer" parent="VBoxContainer" unique_id=183988794]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockPaddingX" unique_id=1239138150]
+[node name="Label" type="Label" parent="VBoxContainer/BlockPaddingX" unique_id=1239138150]
 layout_mode = 2
 text = "Block Padding X:"
 
-[node name="BlockPaddingX" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockPaddingX" unique_id=1776525980]
+[node name="BlockPaddingX" type="LineEdit" parent="VBoxContainer/BlockPaddingX" unique_id=1776525980]
 layout_mode = 2
 placeholder_text = "num"
 
-[node name="BlockPaddingY" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=1240205611]
+[node name="BlockPaddingY" type="HBoxContainer" parent="VBoxContainer" unique_id=1240205611]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/BlockPaddingY" unique_id=2052842916]
+[node name="Label" type="Label" parent="VBoxContainer/BlockPaddingY" unique_id=2052842916]
 layout_mode = 2
 text = "Block Padding Y:"
 
-[node name="BlockPaddingY" type="LineEdit" parent="FoldableContainer/VBoxContainer/BlockPaddingY" unique_id=322858350]
+[node name="BlockPaddingY" type="LineEdit" parent="VBoxContainer/BlockPaddingY" unique_id=322858350]
 layout_mode = 2
 placeholder_text = "num"
 
-[node name="ShowGrid" type="HBoxContainer" parent="FoldableContainer/VBoxContainer" unique_id=847951354]
+[node name="ShowGrid" type="HBoxContainer" parent="VBoxContainer" unique_id=847951354]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="FoldableContainer/VBoxContainer/ShowGrid" unique_id=631162036]
+[node name="Label" type="Label" parent="VBoxContainer/ShowGrid" unique_id=631162036]
 layout_mode = 2
 text = "Toggle grid visibility"
 
-[node name="CheckButton" type="CheckButton" parent="FoldableContainer/VBoxContainer/ShowGrid" unique_id=1472322250]
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/ShowGrid" unique_id=1472322250]
 layout_mode = 2

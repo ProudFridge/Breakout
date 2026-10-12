@@ -1,6 +1,6 @@
 extends Label
 
-@onready var block_manager: BlockManager = $"../../../../../BlockManager"
+@export var block_manager: BlockManager
 
 func _ready() -> void:
 	block_manager.block_added.connect(_on_block_manager_block_added)

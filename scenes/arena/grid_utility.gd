@@ -1,15 +1,15 @@
-extends GridContainer
+extends FoldableContainer
 class_name GridUtility
 
 @export var blockManager: BlockManager
 @export var blockAreaSize: Vector2
 
-@onready var generate_grid_button: Button = $FoldableContainer/VBoxContainer/GenerateGridButton
-@onready var blockAmountXField: LineEdit = $FoldableContainer/VBoxContainer/BlockX/BlockAmountX
-@onready var blockAmountYField: LineEdit = $FoldableContainer/VBoxContainer/BlockY/BlockAmountY
-@onready var blockPaddingXField: LineEdit = $FoldableContainer/VBoxContainer/BlockPaddingX/BlockPaddingX
-@onready var blockPaddingYField: LineEdit = $FoldableContainer/VBoxContainer/BlockPaddingY/BlockPaddingY
-@onready var areaVisibilityToggle: CheckButton = $FoldableContainer/VBoxContainer/ShowGrid/CheckButton
+@onready var generate_grid_button: Button = $VBoxContainer/GenerateGridButton
+@onready var blockAmountXField: LineEdit = $VBoxContainer/BlockX/BlockAmountX
+@onready var blockAmountYField: LineEdit = $VBoxContainer/BlockY/BlockAmountY
+@onready var blockPaddingXField: LineEdit = $VBoxContainer/BlockPaddingX/BlockPaddingX
+@onready var blockPaddingYField: LineEdit = $VBoxContainer/BlockPaddingY/BlockPaddingY
+@onready var areaVisibilityToggle: CheckButton = $VBoxContainer/ShowGrid/CheckButton
 
 var blockAmountX: int = 10
 var blockAmountY: int = 10
