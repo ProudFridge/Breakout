@@ -11,9 +11,6 @@ class_name BoundaryManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("GameAreaSize: ", gameAreaSize)
-	print("BlockAreaSize: ", blockAreaSize)
-	
 	# Set up the world boundaries and add the screen edges
 	# Should change later for custom level sizes
 	left_wall.position = Vector2(0,0)

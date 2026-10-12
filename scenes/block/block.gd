@@ -49,7 +49,12 @@ func update_health_label() -> void:
 	
 func apply_hit_effects() -> void:
 	mesh.scale = effectScale
+	mesh.rotation = randf_range(-0.8, 0.8)
 	
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(mesh, "scale", Vector2(1,1), effectTime).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(func() -> void: tween.kill())
+
+	var rotTween: Tween = get_tree().create_tween()
+	rotTween.tween_property(mesh, "rotation", 0, effectTime).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	rotTween.tween_callback(func() -> void: rotTween.kill())

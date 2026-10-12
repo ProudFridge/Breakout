@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://dl2r5vgsaa8h3" path="res://assets/fonts/better_vcr/BetterVCR 25.09.ttf" id="1_hghty"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmyj4"]
-bg_color = Color(0.4862745, 0.6117647, 0.74509805, 1)
+bg_color = Color(0.2627451, 0.3647059, 0.4745098, 1)
 border_width_left = 6
 border_width_top = 6
 border_width_right = 6

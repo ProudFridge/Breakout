@@ -29,6 +29,7 @@ gdscript/warnings/inferred_declaration=2
 
 [display]
 
+window/size/viewport_width=600
 window/size/viewport_height=950
 
 [editor_plugins]
