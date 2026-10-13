@@ -42,6 +42,7 @@ color_initial_ramp = SubResource("GradientTexture1D_stoaj")
 z_index = 1
 motion_mode = 1
 script = ExtResource("1_oqv3d")
+isPiercing = true
 
 [node name="TrailComponent" parent="." unique_id=1230096798 instance=ExtResource("3_stoaj")]
 pointLimit = 8

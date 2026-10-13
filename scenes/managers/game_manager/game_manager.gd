@@ -11,26 +11,27 @@ class_name GameManager
 const PADDLE: Resource = preload("uid://cvstwnwbs75xl")
 const BALL: Resource = preload("uid://dpwwvkfv48suw")
 
-var currentLevel: int = 0
+static var currentLevel: int = 0
 var ball: Ball
 
 signal life_changed(lives: int)
-signal lost_game()
+signal level_lost()
 
 func _ready() -> void:
 	var paddle: Paddle = PADDLE.instantiate()
-	paddle.position = Vector2(Global.windowSize.x / 2, Global.windowSize.y - 300)
 	ball = BALL.instantiate()
+	
+	paddle.position = Vector2(Global.windowSize.x / 2, Global.windowSize.y - 300)
 	ball.position = Vector2(Global.windowSize.x / 2, paddle.position.y - 170)
 	
 	add_child(paddle)
 	add_child(ball)
 	
-	LevelManager.load_levels()
 	blockManager.generate_grid(blockAreaSize, LevelManager.grid[currentLevel][0], blockManager.block_padding, blockManager.grid_padding)
 	
 	respawn_timer.timeout.connect(_on_timer_timeout)
 	ball.died.connect(_on_ball_died)
+	blockManager.level_won.connect(_on_block_manager_level_won)
 	
 	if ball == null:
 		push_error("Ball slot cannot be empty")
@@ -38,7 +39,7 @@ func _ready() -> void:
 func _on_ball_died() -> void:
 	lives -= 1
 	if lives == 0:
-		lost_game.emit()
+		level_lost.emit()
 		ball.freeze()
 	else:
 		life_changed.emit(lives)
@@ -46,3 +47,9 @@ func _on_ball_died() -> void:
 
 func _on_timer_timeout() -> void:
 	ball.respawn()
+	
+func _on_block_manager_level_won() -> void:
+	currentLevel += 1
+	if currentLevel < LevelManager.levelCount:
+		SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn", SwitcherSingleton.TRANSITION_TYPE.SLIDE)
+	

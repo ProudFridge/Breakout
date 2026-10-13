@@ -3,6 +3,7 @@ class_name LevelManager
 ## Handles level loading from the levels.json file
 
 static var grid: Array[Array] = []
+static var levelCount: int = 0
 
 # Loads levels from the levels.json file
 # Can only store one level in the grid array
@@ -20,6 +21,7 @@ static func load_levels() -> void:
 	if error == OK:
 		var data_received: Array = json.data
 		var levelAmount: int = data_received.size()
+		levelCount = levelAmount
 		
 		for level: int in levelAmount:
 			# Add and array to store all the grids for the specified levels
