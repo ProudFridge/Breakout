@@ -1,10 +1,12 @@
+@tool
 extends Control
 class_name Title
 
-var letterMargin: float = 10
-var cellMargin: Vector2 = Vector2(4, 4)
-var cellSize: Vector2 = Vector2(18,13)
+@export var letterMargin: float = 10
+@export var cellMargin: Vector2 = Vector2(4, 4)
+@export var cellSize: Vector2 = Vector2(18,13)
 var letterSize: Vector2 = Vector2(3 * cellSize.x + 2 * cellMargin.x, 5 * cellSize.y + 4 * cellMargin.y)
+var titleSize: Vector2 = Vector2(8 * letterSize.x + 7 * letterMargin, letterSize.y)
 
 const B: Array[Array] = [
 	[1, 1, 0],
@@ -79,7 +81,7 @@ func _ready() -> void:
 		for row: int in range(0, letter.size()):
 			for col: int in range(0, letter[row].size()):
 				if letter[row][col] == 1:
-					_create_color_rect(Vector2(col * (cellSize.x + cellMargin.x) + i * (letterSize.x + letterMargin), row * (cellSize.y + cellMargin.y)), colors[row])
+					_create_color_rect(Vector2((col * (cellSize.x + cellMargin.x) + i * (letterSize.x + letterMargin)) - titleSize.x / 2, row * (cellSize.y + cellMargin.y)), colors[row])
 	
 
 func _create_color_rect(pos: Vector2, color: Color) -> void:
