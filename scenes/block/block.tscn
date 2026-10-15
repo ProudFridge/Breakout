@@ -1,11 +1,26 @@
 [gd_scene format=3 uid="uid://csx6j305eareb"]
 
 [ext_resource type="Script" uid="uid://nfq5jd1ec32a" path="res://scenes/block/block.gd" id="1_c27ow"]
+[ext_resource type="Shader" uid="uid://c5sm1o3plmmgj" path="res://shaders/block.gdshader" id="2_vpped"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yksjm"]
-size = Vector2(40, 15)
+size = Vector2(45, 15)
+
+[sub_resource type="Gradient" id="Gradient_c27ow"]
+offsets = PackedFloat32Array(0.004464286, 0.08035714, 0.29910713, 1)
+colors = PackedColorArray(0.66656864, 0.6665687, 0.66656864, 1, 0.71629757, 0.71629584, 0.71629614, 1, 0.29586664, 0.29586646, 0.29586664, 1, 0.6296749, 0.62967485, 0.6296742, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2m7xh"]
+gradient = SubResource("Gradient_c27ow")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vpped"]
+shader = ExtResource("2_vpped")
+shader_parameter/gradientTexture = SubResource("GradientTexture2D_2m7xh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_66klm"]
+shader = ExtResource("2_vpped")
+shader_parameter/gradientTexture = SubResource("GradientTexture2D_2m7xh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_c27ow"]
 material = SubResource("ShaderMaterial_66klm")
@@ -20,12 +35,14 @@ font_color = Color(0, 0, 0, 1)
 [node name="Block" type="CharacterBody2D" unique_id=1082513130]
 motion_mode = 1
 script = ExtResource("1_c27ow")
-health = 3.0
+health = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225417575]
 shape = SubResource("RectangleShape2D_yksjm")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=317730714]
+modulate = Color(0.90666217, 0.39643365, 0.54687977, 1)
+material = SubResource("ShaderMaterial_vpped")
 mesh = SubResource("QuadMesh_c27ow")
 
 [node name="Label" type="Label" parent="." unique_id=732255590]

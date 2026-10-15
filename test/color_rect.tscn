@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://03jlu8agiocl"]
+
+[ext_resource type="Shader" uid="uid://c1k5v82itkl84" path="res://shaders/transition.gdshader" id="1_viidn"]
+
+[sub_resource type="Gradient" id="Gradient_gel2r"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_viidn"]
+gradient = SubResource("Gradient_gel2r")
+fill = 1
+fill_from = Vector2(0.52136755, 0.4871795)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gel2r"]
+noise_type = 2
+frequency = 0.0316
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_viidn"]
+noise = SubResource("FastNoiseLite_gel2r")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0oif0"]
+shader = ExtResource("1_viidn")
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/node_resolution = Vector2(2, 2)
+shader_parameter/factor = 0.6999999843536
+shader_parameter/width = 0.4
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_viidn")
+shader_parameter/gradient_fixed = false
+shader_parameter/shape_texture = SubResource("NoiseTexture2D_viidn")
+shader_parameter/shape_tiling = 32.0
+shader_parameter/shape_rotation = 3.14
+shader_parameter/shape_scroll = Vector2(1, 1)
+shader_parameter/shape_feathering = 0.0
+shader_parameter/shape_treshold = 1.0
+
+[node name="ColorRect" type="ColorRect" unique_id=912924524]
+material = SubResource("ShaderMaterial_0oif0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

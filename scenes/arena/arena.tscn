@@ -38,6 +38,7 @@ zoom = Vector2(0.95, 0.95)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1736970156]
 layer = -1
+follow_viewport_enabled = true
 
 [node name="UI" type="Control" parent="CanvasLayer" unique_id=1429491807 node_paths=PackedStringArray("blockManager", "gameManager", "grid_utility")]
 layout_mode = 3
@@ -171,6 +172,7 @@ script = ExtResource("7_u52cf")
 gameManager = NodePath("../../../../../../../GameManager")
 
 [node name="GridUtility" parent="CanvasLayer/UI" unique_id=1717053236 node_paths=PackedStringArray("blockManager") instance=ExtResource("7_xgbxb")]
+visible = false
 layout_mode = 1
 offset_left = 12.0
 offset_top = 631.0

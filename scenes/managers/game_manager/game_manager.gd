@@ -40,6 +40,7 @@ func _on_ball_died() -> void:
 	lives -= 1
 	if lives == 0:
 		level_lost.emit()
+		life_changed.emit(lives)
 		ball.freeze()
 	else:
 		life_changed.emit(lives)

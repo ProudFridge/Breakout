@@ -9,11 +9,13 @@ var blockManager: BlockManager
 
 var effectTime: float = 0.2
 var effectScale: Vector2 = Vector2(0.7, 0.7)
+var blockSize: Vector2 = Vector2(45, 15)
 
 @onready var label: Label = $Label
 @onready var mesh: MeshInstance2D = $MeshInstance2D
 
 func _ready() -> void:
+	(mesh.material as ShaderMaterial).set_shader_parameter("blockSize", blockSize)
 	mesh.modulate = initialColor
 	initialHealth = health
 	#BlockManager.add_block(self)
@@ -33,6 +35,7 @@ func take_damage(damage: float) -> void:
 	
 # Sets the block's size
 func set_size(newSize: Vector2) -> void:
+	blockSize = newSize
 	$CollisionShape2D.shape.size = newSize
 	$MeshInstance2D.mesh.size = newSize
 	
@@ -49,7 +52,7 @@ func update_health_label() -> void:
 	
 func apply_hit_effects() -> void:
 	mesh.scale = effectScale
-	mesh.rotation = randf_range(-0.8, 0.8)
+	mesh.rotation = randf_range(-0.4, 0.4)
 	
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(mesh, "scale", Vector2(1,1), effectTime).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)

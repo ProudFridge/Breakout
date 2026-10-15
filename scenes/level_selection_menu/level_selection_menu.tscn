@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://crdv7dpsqtyqw"]
+
+[node name="LevelSelectionMenu" type="Control" unique_id=1411578087]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1118911536]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.021745175, 0.084314264, 0.149899, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=30399325]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=1188860350]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Button" type="Button" parent="MarginContainer/GridContainer" unique_id=1518072044]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button2" type="Button" parent="MarginContainer/GridContainer" unique_id=780976811]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="MarginContainer/GridContainer" unique_id=1926409447]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button4" type="Button" parent="MarginContainer/GridContainer" unique_id=1988834775]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button5" type="Button" parent="MarginContainer/GridContainer" unique_id=1765016554]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button6" type="Button" parent="MarginContainer/GridContainer" unique_id=662331975]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button7" type="Button" parent="MarginContainer/GridContainer" unique_id=977085699]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button8" type="Button" parent="MarginContainer/GridContainer" unique_id=2049579445]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button9" type="Button" parent="MarginContainer/GridContainer" unique_id=1462477963]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button10" type="Button" parent="MarginContainer/GridContainer" unique_id=730423113]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

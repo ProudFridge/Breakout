@@ -3,7 +3,7 @@ class_name BlockManager
 ## Used to instantiate a block grid
 
 @export var block_amount: Vector2i = Vector2i(3,2)
-@export var block_padding: Vector2 = Vector2(10, 10)
+@export var block_padding: Vector2 = Vector2(8, 8)
 @export var grid_padding: Vector2 = Vector2(10, 10)
 #@export var grid_area: Vector2	
 @export var show_grid_area: bool = false
@@ -40,7 +40,7 @@ func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, g
 				#if spawn_in_circle(row, column, blockAmountX, blockAmountY, 20):
 				if spawn_in_a_border(row, column, blockAmountX, blockAmountY, 5) or spawn_in_circle(row, column, blockAmountX, blockAmountY, 20):
 					# Make the blocks spawn in a rainbow
-					var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmountY),0.5,1,1)
+					var color: Color = Color.from_hsv(lerp(0, 1, float(column) / blockAmountY),0.8,1,1)
 					var bPosition: Vector2
 					bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
 					bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
