@@ -23,6 +23,7 @@ func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE) ->
 		var canvasLayer: CanvasLayer = CanvasLayer.new()
 		var transitionRect: TransitionRect = TransitionRect.new(0.5)
 		canvasLayer.add_child(transitionRect)
+		canvasLayer.follow_viewport_enabled = true
 		
 		transitionRect.set_shader(TransitionRect.TRANSITION_SHADER.get("HORIZONTAL"))
 		transitionRect.startTransitionDone.connect(SwitcherSingleton.switch_from_to.bind("res://scenes/arena/arena.tscn"))

@@ -42,6 +42,7 @@ color_initial_ramp = SubResource("GradientTexture1D_stoaj")
 
 [node name="Ball" type="CharacterBody2D" unique_id=71320122]
 z_index = 1
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_oqv3d")
 

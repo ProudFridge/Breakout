@@ -2,9 +2,22 @@
 
 [ext_resource type="Script" uid="uid://6bua83dj7est" path="res://scenes/paddle/paddle.gd" id="1_q5rgx"]
 [ext_resource type="PackedScene" uid="uid://dcf4uyw6i8nn6" path="res://scenes/components/dash_component/dash_component.tscn" id="2_2sa55"]
+[ext_resource type="Shader" uid="uid://c5sm1o3plmmgj" path="res://shaders/block.gdshader" id="2_gboxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eletc"]
 size = Vector2(60, 12)
+
+[sub_resource type="Gradient" id="Gradient_c27ow"]
+offsets = PackedFloat32Array(0.02232143, 0.08035714, 0.29910713, 1)
+colors = PackedColorArray(0.654232, 0.65423214, 0.6542318, 1, 0.5251021, 0.5251011, 0.525101, 1, 0.29586664, 0.29586646, 0.29586664, 1, 0.6296749, 0.62967485, 0.6296742, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2m7xh"]
+gradient = SubResource("Gradient_c27ow")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmsrg"]
+shader = ExtResource("2_gboxc")
+shader_parameter/gradientTexture = SubResource("GradientTexture2D_2m7xh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_q5rgx"]
 
@@ -16,6 +29,8 @@ script = ExtResource("1_q5rgx")
 shape = SubResource("RectangleShape2D_eletc")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1066922579]
+modulate = Color(0.47788018, 0.47788012, 0.47788012, 1)
+material = SubResource("ShaderMaterial_vmsrg")
 scale = Vector2(60, 12)
 mesh = SubResource("QuadMesh_q5rgx")
 

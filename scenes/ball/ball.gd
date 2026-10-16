@@ -10,6 +10,8 @@ class_name Ball
 @onready var mesh_instance_2d: MeshInstance2D = $MeshInstance2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
+const BALL: Resource = preload("uid://dpwwvkfv48suw")
+
 var initial_vector: Vector2 = Vector2(0,1)
 var initial_position: Vector2
 var ballRadius: float = 7
@@ -45,9 +47,15 @@ func _physics_process(delta: float) -> void:
 			
 			if not isPiercing:
 				velocity = velocity.bounce(collision.get_normal())
+		elif body is Paddle:
+			var paddleVelocity: Vector2 = (body as Paddle).velocity
+			
+			# Make the ball reflect less/more depending on the paddle's velocity
+			velocity = velocity.bounce(collision.get_normal().rotated(clamp(paddleVelocity.x, -0.1, 0.1)))
 		else:
 			velocity = velocity.bounce(collision.get_normal())
-		
+
+
 func set_size(radius: float) -> void:
 	(mesh_instance_2d.mesh as SphereMesh).radius = radius
 	(mesh_instance_2d.mesh as SphereMesh).height = 2 * radius

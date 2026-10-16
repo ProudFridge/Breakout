@@ -82,6 +82,11 @@ escape={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Block"
+2d_physics/layer_2="Ball"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
