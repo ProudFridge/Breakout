@@ -5,6 +5,8 @@ class_name LevelManager
 static var grid: Array[Array] = []
 static var levelCount: int = 0
 
+#TODO: create a custom class for levels that contains the level size, block area size and the blockGrid array
+
 # Loads levels from the levels.json file
 # Can only store one level in the grid array
 static func load_levels() -> void:

@@ -46,6 +46,7 @@ material = SubResource("ShaderMaterial_vpped")
 mesh = SubResource("QuadMesh_c27ow")
 
 [node name="Label" type="Label" parent="." unique_id=732255590]
+visible = false
 material = SubResource("ShaderMaterial_rfxuc")
 anchors_preset = 8
 anchor_left = 0.5

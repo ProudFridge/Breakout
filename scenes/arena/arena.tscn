@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://crl3sjvrqcwai" path="res://scenes/managers/game_manager/game_manager.tscn" id="1_u52cf"]
 [ext_resource type="PackedScene" uid="uid://x512y2sg1mhi" path="res://scenes/managers/boundary_manager/boundary_manager.tscn" id="2_2ml6w"]
 [ext_resource type="PackedScene" uid="uid://blmhj0qtrvphf" path="res://scenes/managers/block_manager/block_manager.tscn" id="2_ii07k"]
-[ext_resource type="Script" uid="uid://c08c1s1psljyd" path="res://scenes/arena/blocks_left.gd" id="6_ii07k"]
-[ext_resource type="Script" uid="uid://b8i4rgwx54w7n" path="res://scenes/arena/score_count.gd" id="6_jx0ua"]
-[ext_resource type="Script" uid="uid://blvoilddcboll" path="res://scenes/arena/lives_left.gd" id="7_u52cf"]
+[ext_resource type="Script" uid="uid://c08c1s1psljyd" path="res://scenes/arena/ui/blocks_left.gd" id="6_ii07k"]
+[ext_resource type="Script" uid="uid://b8i4rgwx54w7n" path="res://scenes/arena/ui/score_count.gd" id="6_jx0ua"]
+[ext_resource type="Script" uid="uid://blvoilddcboll" path="res://scenes/arena/ui/lives_left.gd" id="7_u52cf"]
 [ext_resource type="Script" uid="uid://ct5mrmcw5mlwc" path="res://scenes/arena/ui/ui.gd" id="7_vmsrg"]
-[ext_resource type="PackedScene" uid="uid://cy2vw61o3udh7" path="res://scenes/arena/grid_utility.tscn" id="7_xgbxb"]
-[ext_resource type="Script" uid="uid://c0jjhek854oit" path="res://scenes/arena/restart_button.gd" id="9_6w4xk"]
+[ext_resource type="PackedScene" uid="uid://cy2vw61o3udh7" path="res://scenes/arena/grid_utility/grid_utility.tscn" id="7_xgbxb"]
+[ext_resource type="Script" uid="uid://c0jjhek854oit" path="res://scenes/arena/ui/restart_button.gd" id="9_6w4xk"]
+[ext_resource type="Script" uid="uid://cwo2b31ad2swj" path="res://scenes/arena/ui/next_level_button.gd" id="11_xgbxb"]
+[ext_resource type="Script" uid="uid://mf3gmufjrs3x" path="res://scenes/arena/ui/previous_level_button.gd" id="12_vmsrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w4xk"]
 bg_color = Color(0.32544068, 0.32544097, 0.32544082, 1)
@@ -224,3 +226,24 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Restart?"
 script = ExtResource("9_6w4xk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=2077006910]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+offset_right = 133.0
+grow_vertical = 0
+
+[node name="NextLevelButton" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=2081928622 node_paths=PackedStringArray("gameManager")]
+layout_mode = 2
+text = "Next Level"
+script = ExtResource("11_xgbxb")
+gameManager = NodePath("../../../../GameManager")
+
+[node name="PreviousLevelButton" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1943225473 node_paths=PackedStringArray("gameManager")]
+layout_mode = 2
+text = "Previous Level"
+script = ExtResource("12_vmsrg")
+gameManager = NodePath("../../../../GameManager")

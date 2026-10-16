@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cy2vw61o3udh7"]
 
-[ext_resource type="Script" uid="uid://blqn4enjbaexv" path="res://scenes/arena/grid_utility.gd" id="1_s6pia"]
+[ext_resource type="Script" uid="uid://blqn4enjbaexv" path="res://scenes/arena/grid_utility/grid_utility.gd" id="1_s6pia"]
 
 [node name="GridUtility" type="FoldableContainer" unique_id=685990188]
 offset_right = 24.0

@@ -7,13 +7,17 @@ class_name Ball
 
 @onready var collision_particles: GPUParticles2D = $CollisionParticles
 @onready var particle_timer: Timer = $CollisionParticles/ParticleTimer
+@onready var mesh_instance_2d: MeshInstance2D = $MeshInstance2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var initial_vector: Vector2 = Vector2(0,1)
 var initial_position: Vector2
+var ballRadius: float = 7
 
 signal died()
 
 func _ready() -> void:
+	set_size(ballRadius)
 	velocity = initial_vector * SPEED
 	initial_position = position
 	
@@ -43,7 +47,13 @@ func _physics_process(delta: float) -> void:
 				velocity = velocity.bounce(collision.get_normal())
 		else:
 			velocity = velocity.bounce(collision.get_normal())
-			
+		
+func set_size(radius: float) -> void:
+	(mesh_instance_2d.mesh as SphereMesh).radius = radius
+	(mesh_instance_2d.mesh as SphereMesh).height = 2 * radius
+	(collision_shape_2d.shape as CircleShape2D).radius = radius
+	$TrailComponent.width = radius
+	
 func delete() -> void:
 	queue_free()
 

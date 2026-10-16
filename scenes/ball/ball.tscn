@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dyolv8x4fpwe5" path="res://scenes/components/trail_component/trail_component.tscn" id="3_stoaj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_oqv3d"]
+radius = 10.0
+height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5a6bx"]
 
@@ -47,7 +49,6 @@ script = ExtResource("1_oqv3d")
 pointLimit = 8
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1661593475]
-scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_oqv3d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336167681]
