@@ -83,10 +83,17 @@ func _ready() -> void:
 				if letter[row][col] == 1:
 					_create_color_rect(Vector2((col * (cellSize.x + cellMargin.x) + i * (letterSize.x + letterMargin)) - titleSize.x / 2, row * (cellSize.y + cellMargin.y)), colors[row])
 	
+#func _process(delta: float) -> void:
+	#var children: Array[Node] = get_children()
+	#for i: int in children.size():
+		#var node: ColorRect = children.get(i)
+		#node.offset_transform_position = Vector2(sin(float(Time.get_ticks_msec()) / 1000.0  + 2 * i), 0)
+
 
 func _create_color_rect(pos: Vector2, color: Color) -> void:
-	var colorRect: ColorRect = ColorRect.new()
+	var colorRect: TitleColorRect = load("res://scenes/title/title_color_rect.tscn").instantiate()
 	colorRect.size = cellSize
 	colorRect.color = color
 	colorRect.position = pos
+	colorRect.offset_transform_enabled = true
 	add_child(colorRect)

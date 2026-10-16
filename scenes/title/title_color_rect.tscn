@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b7woc0vvg8c1b"]
+
+[ext_resource type="Shader" uid="uid://c5sm1o3plmmgj" path="res://shaders/block.gdshader" id="1_21ttm"]
+[ext_resource type="Script" uid="uid://uuw7j1fsp1i" path="res://scenes/title/title_color_rect.gd" id="1_hq6qu"]
+
+[sub_resource type="Gradient" id="Gradient_c27ow"]
+offsets = PackedFloat32Array(0.0044642687, 0.080357134, 0.29910713, 1)
+colors = PackedColorArray(0.39688924, 0.39688927, 0.3968891, 1, 0.7666207, 0.7666192, 0.7666192, 1, 0.29586664, 0.29586646, 0.29586664, 1, 0.40451172, 0.40451106, 0.4045107, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2m7xh"]
+gradient = SubResource("Gradient_c27ow")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21ttm"]
+shader = ExtResource("1_21ttm")
+shader_parameter/gradientTexture = SubResource("GradientTexture2D_2m7xh")
+
+[node name="TitleColorRect" type="ColorRect" unique_id=490590835]
+material = SubResource("ShaderMaterial_21ttm")
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0.24000001, 0.24000001, 1)
+script = ExtResource("1_hq6qu")

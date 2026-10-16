@@ -15,10 +15,8 @@ var blockSize: Vector2 = Vector2(45, 15)
 @onready var mesh: MeshInstance2D = $MeshInstance2D
 
 func _ready() -> void:
-	(mesh.material as ShaderMaterial).set_shader_parameter("blockSize", blockSize)
 	mesh.modulate = initialColor
 	initialHealth = health
-	#BlockManager.add_block(self)
 	update_health_label()
 
 # Decreases the block's health

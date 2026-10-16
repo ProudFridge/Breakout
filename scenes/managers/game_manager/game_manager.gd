@@ -21,7 +21,7 @@ func _ready() -> void:
 	var paddle: Paddle = PADDLE.instantiate()
 	ball = BALL.instantiate()
 	
-	paddle.position = Vector2(Global.windowSize.x / 2, Global.windowSize.y - 300)
+	paddle.position = Vector2(Global.windowSize.x / 2, Global.windowSize.y - 200)
 	ball.position = Vector2(Global.windowSize.x / 2, paddle.position.y - 170)
 	
 	add_child(paddle)
