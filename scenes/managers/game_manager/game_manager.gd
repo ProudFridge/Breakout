@@ -5,8 +5,9 @@ class_name GameManager
 
 @export var lives: int = 3
 @export var blockManager: BlockManager
+@export var abilityManager: AbilityManager
 @onready var respawn_timer: Timer = $RespawnTimer
-@onready var blockAreaSize: Vector2 = Vector2(Global.windowSize.x, 400)
+@onready var blockAreaSize: Vector2 = Vector2(Global.windowSize.x, 450)
 
 const PADDLE: Resource = preload("uid://cvstwnwbs75xl")
 const BALL: Resource = preload("uid://dpwwvkfv48suw")
@@ -27,6 +28,8 @@ func _ready() -> void:
 	
 	add_child(paddle)
 	add_child(ball)
+	
+	abilityManager.paddle = paddle
 	
 	blockManager.generate_grid(blockAreaSize, LevelManager.grid[currentLevel][0], blockManager.block_padding, blockManager.grid_padding)
 	

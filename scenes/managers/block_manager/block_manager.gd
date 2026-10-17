@@ -4,7 +4,7 @@ class_name BlockManager
 
 @export var block_amount: Vector2i = Vector2i(3,2)
 @export var block_padding: Vector2 = Vector2(8, 8)
-@export var grid_padding: Vector2 = Vector2(10, 10)
+@export var grid_padding: Vector2 = Vector2(10, 50)
 @export var show_grid_area: bool = false
 @export var abilityManager: AbilityManager
 
@@ -82,9 +82,11 @@ func _instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
 	blockInstance.initialColor = color
 	blockInstance.position = position
 	
-	if (randf_range(0, 1) < 0.2):
+	var rand: float = randf_range(0, 1)
+	if rand < 0.2:
 		blockInstance.ability = Ability.AbilityType.CLONE
-	
+	elif rand >= 0.2 && rand < 0.3:
+		blockInstance.ability = Ability.AbilityType.GROW
 	add_child(blockInstance)
 
 func spawn_in_circle(row: int, col: int, blockAmountX: int, blockAmountY: int, radius: float) -> bool:

@@ -19,6 +19,11 @@ func _ready() -> void:
 	mesh.modulate = initialColor
 	initialHealth = health
 	update_health_label()
+	
+	if ability == Ability.AbilityType.CLONE:
+		$CloneSprite.visible = true
+	elif ability == Ability.AbilityType.GROW:
+		$GrowSprite.visible = true
 
 # Decreases the block's health
 func take_damage(damage: float, ball: Ball) -> void:

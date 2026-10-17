@@ -30,8 +30,9 @@ script = ExtResource("1_ii07k")
 [node name="BlockManager" parent="." unique_id=46482369 node_paths=PackedStringArray("abilityManager") instance=ExtResource("2_ii07k")]
 abilityManager = NodePath("../AbilityManager")
 
-[node name="GameManager" parent="." unique_id=2062060914 node_paths=PackedStringArray("blockManager") instance=ExtResource("1_u52cf")]
+[node name="GameManager" parent="." unique_id=2062060914 node_paths=PackedStringArray("blockManager", "abilityManager") instance=ExtResource("1_u52cf")]
 blockManager = NodePath("../BlockManager")
+abilityManager = NodePath("../AbilityManager")
 
 [node name="BoundaryManager" parent="." unique_id=850233231 instance=ExtResource("2_2ml6w")]
 

@@ -23,5 +23,5 @@ func use_ability() -> void:
 enum AbilityType {
 	NONE,
 	CLONE,
-	SHOOT
+	GROW
 }

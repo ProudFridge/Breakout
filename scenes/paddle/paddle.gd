@@ -6,6 +6,9 @@ var oriSpeed: float = SPEED
 const maxTiltAngle: float = deg_to_rad(15)
 var tiltAccel: float = 2
 
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var mesh_instance: MeshInstance2D = $MeshInstance2D
+
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	#var direction: float= Input.get_axis("move_left", "move_right")
@@ -31,3 +34,10 @@ func _physics_process(delta: float) -> void:
 		var body: Node = collision.get_collider()
 		if body is Ability:
 			(body as Ability).use_ability()
+
+func set_size(size: Vector2) -> void:
+	collision_shape.shape.size = size
+	mesh_instance.scale = size
+
+func get_size() -> Vector2:
+	return mesh_instance.scale
