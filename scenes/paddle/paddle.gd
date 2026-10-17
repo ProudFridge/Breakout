@@ -8,13 +8,13 @@ var tiltAccel: float = 2
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
-	var direction: float= Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	#position.x = get_global_mouse_position().x
+	#var direction: float= Input.get_axis("move_left", "move_right")
+	#if direction:
+		#velocity.x = direction * SPEED
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
+	#
+	position.x = get_global_mouse_position().x
 	
 	# Handle the paddle tilt
 	if Input.is_action_pressed("tilt_right"):
@@ -24,4 +24,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		rotation = move_toward(rotation, 0, tiltAccel * delta)
 	
-	move_and_slide()
+	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+	
+	# Bounces the ball whenever there's a collision
+	if collision:
+		var body: Node = collision.get_collider()
+		if body is Ability:
+			(body as Ability).use_ability()

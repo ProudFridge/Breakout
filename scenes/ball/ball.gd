@@ -33,13 +33,17 @@ func _physics_process(delta: float) -> void:
 		var body: Node = collision.get_collider()
 		
 		if body.is_in_group("BottomWall"):
-			reset_ball()
-			died.emit()
+			print(_get_ball_count())
+			if _get_ball_count() <= 1:
+				reset_ball()
+				died.emit()
+			else:
+				delete()
 		else:
 			AudioManager.play_sound("bounce")
 			
 		if body is Block:
-			body.take_damage(damage)
+			body.take_damage(damage, self)
 			
 			collision_particles.position = position
 			collision_particles.emitting = true
@@ -64,6 +68,10 @@ func set_size(radius: float) -> void:
 	
 func delete() -> void:
 	queue_free()
+
+## Counts the amount of Ball nodes in the scene tree
+func _get_ball_count() -> int:
+	return get_tree().get_nodes_in_group("Ball").size()
 
 ## Resets the ball's position and clears the trail
 func reset_ball() -> void:

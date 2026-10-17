@@ -5,8 +5,8 @@ class_name BlockManager
 @export var block_amount: Vector2i = Vector2i(3,2)
 @export var block_padding: Vector2 = Vector2(8, 8)
 @export var grid_padding: Vector2 = Vector2(10, 10)
-#@export var grid_area: Vector2	
 @export var show_grid_area: bool = false
+@export var abilityManager: AbilityManager
 
 @onready var grid_area_highlight: ColorRect = $GridArea
 
@@ -17,7 +17,7 @@ var _block_instances: Array[Block] = []
 static var levels: Array = []
 
 signal block_added(block: Block)
-signal block_removed(block: Block)
+signal block_removed(block: Block, ball: Ball)
 signal level_won()
 
 func _ready() -> void:
@@ -45,7 +45,7 @@ func generate_grid(gridSize: Vector2, blockGrid: Array, blockPadding: Vector2, g
 					bPosition.x = row * (blockPadding.x + blockSize.x) + gridPadding.x + blockSize.x / 2
 					bPosition.y = column * (blockPadding.y + blockSize.y) + gridPadding.y + blockSize.y / 2
 						
-					instantiate_block(bPosition, blockSize, color)
+					_instantiate_block(bPosition, blockSize, color)
 
 # Adds a block to the block instances array
 func add_block(block_instance: Block) -> void:
@@ -54,10 +54,10 @@ func add_block(block_instance: Block) -> void:
 		block_added.emit(block_instance)
 
 # Removes a block from the block instances array
-func remove_block(block_instance: Block) -> void:
+func remove_block(block_instance: Block, ball: Ball) -> void:
 	if block_instance in _block_instances:
 		_block_instances.erase(block_instance)
-		block_removed.emit(block_instance)
+		block_removed.emit(block_instance, ball)
 		
 		# Detects if the player has won
 		if _block_instances.size() == 0:
@@ -73,14 +73,17 @@ func clear_grid() -> void:
 func toggle_grid_area_visibilty() -> void:
 	grid_area_highlight.visible = not grid_area_highlight.visible
 	
-func instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
-	var blockInstance: Block = block.instantiate()	
+func _instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
+	var blockInstance: Block = block.instantiate()
 	self.add_block(blockInstance)
 	
 	blockInstance.blockManager = self
 	blockInstance.set_size(size)
 	blockInstance.initialColor = color
 	blockInstance.position = position
+	
+	if (randf_range(0, 1) < 0.2):
+		blockInstance.ability = Ability.AbilityType.CLONE
 	
 	add_child(blockInstance)
 

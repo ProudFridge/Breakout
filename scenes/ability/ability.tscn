@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://qlrevi4e1u2"]
+
+[ext_resource type="Script" uid="uid://bd3nwgll1tuxh" path="res://scenes/ability/ability.gd" id="1_k5b0n"]
+[ext_resource type="Texture2D" uid="uid://ccpe11f3ap40g" path="res://icon.svg" id="2_cx84a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2m7xh"]
+
+[node name="Ability" type="CharacterBody2D" unique_id=1480663031]
+script = ExtResource("1_k5b0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=228239382]
+shape = SubResource("CircleShape2D_2m7xh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1388708943]
+scale = Vector2(0.109375, 0.109375015)
+texture = ExtResource("2_cx84a")

@@ -40,7 +40,7 @@ scale_max = 8.0
 scale_curve = SubResource("CurveTexture_stoaj")
 color_initial_ramp = SubResource("GradientTexture1D_stoaj")
 
-[node name="Ball" type="CharacterBody2D" unique_id=71320122]
+[node name="Ball" type="CharacterBody2D" unique_id=71320122 groups=["Ball"]]
 z_index = 1
 collision_layer = 2
 motion_mode = 1

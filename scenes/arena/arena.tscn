@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://crl3sjvrqcwai" path="res://scenes/managers/game_manager/game_manager.tscn" id="1_u52cf"]
 [ext_resource type="PackedScene" uid="uid://x512y2sg1mhi" path="res://scenes/managers/boundary_manager/boundary_manager.tscn" id="2_2ml6w"]
 [ext_resource type="PackedScene" uid="uid://blmhj0qtrvphf" path="res://scenes/managers/block_manager/block_manager.tscn" id="2_ii07k"]
+[ext_resource type="PackedScene" uid="uid://br1t2orfmy61y" path="res://scenes/managers/ability_manager/ability_manager.tscn" id="5_s83md"]
 [ext_resource type="Script" uid="uid://c08c1s1psljyd" path="res://scenes/arena/ui/blocks_left.gd" id="6_ii07k"]
 [ext_resource type="Script" uid="uid://b8i4rgwx54w7n" path="res://scenes/arena/ui/score_count.gd" id="6_jx0ua"]
 [ext_resource type="Script" uid="uid://blvoilddcboll" path="res://scenes/arena/ui/lives_left.gd" id="7_u52cf"]
@@ -26,12 +27,17 @@ corner_radius_bottom_left = 8
 [node name="Arena" type="Node2D" unique_id=2083693325]
 script = ExtResource("1_ii07k")
 
-[node name="BlockManager" parent="." unique_id=46482369 instance=ExtResource("2_ii07k")]
+[node name="BlockManager" parent="." unique_id=46482369 node_paths=PackedStringArray("abilityManager") instance=ExtResource("2_ii07k")]
+abilityManager = NodePath("../AbilityManager")
 
 [node name="GameManager" parent="." unique_id=2062060914 node_paths=PackedStringArray("blockManager") instance=ExtResource("1_u52cf")]
 blockManager = NodePath("../BlockManager")
 
 [node name="BoundaryManager" parent="." unique_id=850233231 instance=ExtResource("2_2ml6w")]
+
+[node name="AbilityManager" parent="." unique_id=2139786975 node_paths=PackedStringArray("blockManager", "gameManager") instance=ExtResource("5_s83md")]
+blockManager = NodePath("../BlockManager")
+gameManager = NodePath("../GameManager")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301651378]
 visible = false

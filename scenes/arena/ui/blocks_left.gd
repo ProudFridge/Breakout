@@ -9,5 +9,5 @@ func _ready() -> void:
 func _on_block_manager_block_added(_block: Block) -> void:
 	text = str(block_manager._block_instances.size())
 	
-func _on_block_manager_block_removed(_block: Block) -> void:
+func _on_block_manager_block_removed(_block: Block, ball: Ball) -> void:
 	text = str(block_manager._block_instances.size())

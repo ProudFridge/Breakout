@@ -5,8 +5,9 @@ class_name Block
 var initialHealth: float
 var initialColor: Color
 var blockManager: BlockManager
+var ability: Ability.AbilityType = Ability.AbilityType.NONE
 
-
+#TODO: maybe move into a component node
 var effectTime: float = 0.2
 var effectScale: Vector2 = Vector2(0.7, 0.7)
 var blockSize: Vector2 = Vector2(45, 15)
@@ -20,10 +21,10 @@ func _ready() -> void:
 	update_health_label()
 
 # Decreases the block's health
-func take_damage(damage: float) -> void:
+func take_damage(damage: float, ball: Ball) -> void:
 	health = health - damage
 	if health == 0:
-		blockManager.remove_block(self)
+		blockManager.remove_block(self, ball)
 		delete()
 	update_health_label()	
 	

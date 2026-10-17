@@ -13,12 +13,13 @@ const BALL: Resource = preload("uid://dpwwvkfv48suw")
 
 static var currentLevel: int = 0
 var ball: Ball
+var paddle: Paddle
 
 signal life_changed(lives: int)
 signal level_lost()
 
 func _ready() -> void:
-	var paddle: Paddle = PADDLE.instantiate()
+	paddle = PADDLE.instantiate()
 	ball = BALL.instantiate()
 	
 	paddle.position = Vector2(Global.windowSize.x / 2, Global.windowSize.y - 200)
