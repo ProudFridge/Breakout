@@ -39,5 +39,12 @@ func set_size(size: Vector2) -> void:
 	collision_shape.shape.size = size
 	mesh_instance.scale = size
 
+func tween_size(size: Vector2) -> void:
+	collision_shape.shape.size = size
+	
+	var meshTween: Tween = get_tree().create_tween()
+	meshTween.tween_property(mesh_instance, "scale", size, 0.5)
+	meshTween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	
 func get_size() -> Vector2:
 	return mesh_instance.scale

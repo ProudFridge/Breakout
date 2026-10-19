@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		if body.is_in_group("BottomWall"):
 			print(_get_ball_count())
 			if _get_ball_count() <= 1:
+				AudioManager.play_sound("death")
 				reset_ball()
 				died.emit()
 			else:

@@ -14,7 +14,13 @@ static var audio_streams: Dictionary[String, Array] = {
 	"press": [preload("res://assets/sound_effects/pop_1.wav"),
 				preload("res://assets/sound_effects/pop_2.wav"),
 				preload("res://assets/sound_effects/pop_3.wav"),
-				preload("res://assets/sound_effects/pop_4.wav")]
+				preload("res://assets/sound_effects/pop_4.wav")],
+	"buttonPress" : [preload("res://assets/sound_effects/Retro8.ogg"),
+				preload("res://assets/sound_effects/Retro9.ogg"),
+				preload("res://assets/sound_effects/Retro10.ogg")],
+	"clone" : [preload("res://assets/sound_effects/Retro PickUp 18.wav")],
+	"grow" : [preload("res://assets/sound_effects/Retro PowerUP 09.wav")],
+	"death" : [preload("res://assets/sound_effects/Retro Impact Metal 36.wav")]
 }
 
 # Plays a selected sound from the audio_streams dictionnary

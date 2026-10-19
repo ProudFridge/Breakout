@@ -19,7 +19,7 @@ func _ready() -> void:
 		button.button_down.connect(func() -> void:
 			if tween: tween.kill()
 			button.offset_transform_scale = Vector2(0.95, 0.95)
-			AudioManager.play_sound("press")
+			AudioManager.play_sound("buttonPress")
 			)
 		
 		button.button_up.connect(func() -> void:
