@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dwgasggobsevp"]
+
+[ext_resource type="FontFile" uid="uid://dl2r5vgsaa8h3" path="res://assets/fonts/better_vcr/BetterVCR 25.09.ttf" id="1_6frq4"]
+[ext_resource type="Script" uid="uid://bbir7xgk6y3hq" path="res://scenes/congrats/congrats.gd" id="1_jm3ca"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2m7xh"]
+font = ExtResource("1_6frq4")
+font_size = 26
+
+[node name="Congrats" type="Control" unique_id=1032946808]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jm3ca")
+
+[node name="Label" type="Label" parent="." unique_id=1059623534]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -11.5
+offset_right = 108.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thanks for playing"
+label_settings = SubResource("LabelSettings_2m7xh")

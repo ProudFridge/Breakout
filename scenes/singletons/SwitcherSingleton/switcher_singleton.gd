@@ -16,7 +16,7 @@ func switch_from_to(targetScene: String, transitionType: TRANSITION_TYPE = TRANS
 	# Defer the load to a later time, when we can be sure that no code from the current scene is running
 	deferred_switch_to.call_deferred(targetScene, transitionType)
 
-func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE) -> void:
+func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE = TRANSITION_TYPE.NONE) -> void:
 	if transitionType != TRANSITION_TYPE.NONE:
 		# Adds the transitionRect into a canvasLayer so it stays idnependant of the camera's position
 		# TODO: group this into a function, it's messy
@@ -26,7 +26,7 @@ func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE) ->
 		canvasLayer.follow_viewport_enabled = true
 		
 		transitionRect.set_shader(TransitionRect.TRANSITION_SHADER.get("HORIZONTAL"))
-		transitionRect.startTransitionDone.connect(SwitcherSingleton.switch_from_to.bind("res://scenes/arena/arena.tscn"))
+		transitionRect.startTransitionDone.connect(SwitcherSingleton.switch_from_to.bind(targetScene))
 	
 		get_tree().get_root().add_child(canvasLayer)
 	else:

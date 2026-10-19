@@ -15,16 +15,21 @@ const BALL: Resource = preload("uid://dpwwvkfv48suw")
 static var currentLevel: int = 0
 var ball: Ball
 var paddle: Paddle
+var initialPaddlePosition: Vector2
+var initialBallPosition: Vector2
 
 signal life_changed(lives: int)
 signal level_lost()
 
 func _ready() -> void:
+	initialPaddlePosition= Vector2(Global.windowSize.x / 2, Global.windowSize.y - 200)
+	initialBallPosition = Vector2(Global.windowSize.x / 2, initialPaddlePosition.y - 170)
+	
 	paddle = PADDLE.instantiate()
 	ball = BALL.instantiate()
 	
-	paddle.position = Vector2(Global.windowSize.x / 2, Global.windowSize.y - 200)
-	ball.position = Vector2(Global.windowSize.x / 2, paddle.position.y - 170)
+	paddle.position = initialPaddlePosition
+	ball.position = initialBallPosition
 	
 	add_child(paddle)
 	add_child(ball)
@@ -55,6 +60,9 @@ func _on_timer_timeout() -> void:
 	
 func _on_block_manager_level_won() -> void:
 	currentLevel += 1
-	if currentLevel < LevelManager.levelCount:
+	print(currentLevel)
+	if currentLevel < LevelManager.levelCount :
 		SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn", SwitcherSingleton.TRANSITION_TYPE.SLIDE)
+	elif currentLevel >= LevelManager.levelCount :
+		SwitcherSingleton.switch_from_to("res://scenes/congrats/congrats.tscn", SwitcherSingleton.TRANSITION_TYPE.SLIDE)
 	

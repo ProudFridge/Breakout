@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Ball
 
-@export var SPEED: float = 300.0
+@export var SPEED: float = 400.0
 @export var damage: float = 1
 @export var isPiercing: bool = false
 
@@ -33,7 +33,6 @@ func _physics_process(delta: float) -> void:
 		var body: Node = collision.get_collider()
 		
 		if body.is_in_group("BottomWall"):
-			print(_get_ball_count())
 			if _get_ball_count() <= 1:
 				AudioManager.play_sound("death")
 				reset_ball()
