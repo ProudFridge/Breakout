@@ -7,5 +7,5 @@ A breakout clone with some additional features.
 3. Run the projet by pressing F5
 
 ### Assets used
-[FreeSFX](https://kronbits.itch.io/freesfx) for the ability sound effects
-[Universal UI/Menu Soundpack](https://cyrex-studios.itch.io/universal-ui-soundpack) for the ui
+- [FreeSFX](https://kronbits.itch.io/freesfx) for the ability sound effects
+- [Universal UI/Menu Soundpack](https://cyrex-studios.itch.io/universal-ui-soundpack) for the ui
