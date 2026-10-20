@@ -22,7 +22,6 @@ func _ready() -> void:
 	
 	if ability == Ability.AbilityType.CLONE:
 		$CloneLabel.visible = true
-		print(modulate)
 		$CloneLabel.label_settings.outline_color = Color(1 - mesh.modulate.r,1- mesh.modulate.g,1- mesh.modulate.b,1)
 	elif ability == Ability.AbilityType.GROW:
 		$GrowSprite.visible = true

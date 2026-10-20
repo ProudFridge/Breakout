@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 			if not isPiercing:
 				velocity = velocity.bounce(collision.get_normal())
 		elif body is Paddle:
-			var paddleVelocity: Vector2 = (body as Paddle).velocity
+			var paddleVelocity: Vector2 = (body as Paddle).computedVelocity
 			
 			# Make the ball reflect less/more depending on the paddle's velocity
 			velocity = velocity.bounce(collision.get_normal().rotated(clamp(paddleVelocity.x, -0.1, 0.1)))

@@ -2,6 +2,15 @@
 
 [ext_resource type="FontFile" uid="uid://dl2r5vgsaa8h3" path="res://assets/fonts/better_vcr/BetterVCR 25.09.ttf" id="1_6frq4"]
 [ext_resource type="Script" uid="uid://bbir7xgk6y3hq" path="res://scenes/congrats/congrats.gd" id="1_jm3ca"]
+[ext_resource type="Theme" uid="uid://247q53tapwic" path="res://scenes/main_menu/main_theme.tres" id="3_xxnpq"]
+[ext_resource type="Script" uid="uid://p1qw2026sbl6" path="res://scenes/congrats/return_to_main_menu.gd" id="4_xxnpq"]
+
+[sub_resource type="Gradient" id="Gradient_0ebjn"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.01, 0.01, 0.01, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jm3ca"]
+gradient = SubResource("Gradient_0ebjn")
 
 [sub_resource type="LabelSettings" id="LabelSettings_2m7xh"]
 font = ExtResource("1_6frq4")
@@ -15,6 +24,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jm3ca")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1935388435]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jm3ca")
 
 [node name="Label" type="Label" parent="." unique_id=1059623534]
 layout_mode = 1
@@ -31,3 +49,25 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Thanks for playing"
 label_settings = SubResource("LabelSettings_2m7xh")
+
+[node name="ReturnToMainMenu" type="Button" parent="." unique_id=1346285100]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 125.0
+offset_right = 120.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../Normal")
+focus_next = NodePath("../Normal")
+focus_previous = NodePath("../QuitButton")
+theme = ExtResource("3_xxnpq")
+text = "Return to Main Menu"
+script = ExtResource("4_xxnpq")

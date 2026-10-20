@@ -8,12 +8,12 @@
 [ext_resource type="Script" uid="uid://bdjfkvbmk8777" path="res://scenes/main_menu/normal.gd" id="7_thkx5"]
 [ext_resource type="Script" uid="uid://cytqnc83mh6bi" path="res://scenes/main_menu/hard.gd" id="8_x2yjq"]
 
-[sub_resource type="Gradient" id="Gradient_0ebjn"]
+[sub_resource type="Gradient" id="Gradient_thkx5"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.01, 0.01, 0.01, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2m7xh"]
-gradient = SubResource("Gradient_0ebjn")
+gradient = SubResource("Gradient_thkx5")
 
 [node name="MainMenu" type="Control" unique_id=740092537]
 layout_mode = 3
