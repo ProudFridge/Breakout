@@ -10,6 +10,11 @@ class_name BlockManager
 
 @onready var grid_area_highlight: ColorRect = $GridArea
 
+static var abilitySpawnChances: Dictionary[Ability.AbilityType, float] = {
+	Ability.AbilityType.CLONE: 0.2,
+	Ability.AbilityType.GROW: 0.1
+}
+
 var block: PackedScene = preload("res://scenes/block/block.tscn")
 
 # Use later to detect if the player has won
@@ -83,10 +88,15 @@ func _instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
 	blockInstance.position = position
 	
 	var rand: float = randf_range(0, 1)
-	if rand < 0.2:
-		blockInstance.ability = Ability.AbilityType.CLONE
-	elif rand >= 0.2 && rand < 0.3:
-		blockInstance.ability = Ability.AbilityType.GROW
+	var min: float = 0
+	var max: float = 0
+	
+	for ability: Ability.AbilityType in abilitySpawnChances:
+		max += abilitySpawnChances.get(ability)
+		if rand >= min && rand < max:
+			blockInstance.ability = ability
+		min = max
+		
 	add_child(blockInstance)
 
 func spawn_in_circle(row: int, col: int, blockAmountX: int, blockAmountY: int, radius: float) -> bool:

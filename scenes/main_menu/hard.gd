@@ -7,4 +7,8 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	Ball.defaultBallSpeed = 550
 	GameManager.difficulty = GameManager.DIFFICULTY.HARD
+	BlockManager.abilitySpawnChances = {
+		Ability.AbilityType.CLONE: 0.2,
+		Ability.AbilityType.GROW: 0.1
+		}
 	SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn",SwitcherSingleton.TRANSITION_TYPE.SLIDE)
