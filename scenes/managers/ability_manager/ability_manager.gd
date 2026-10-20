@@ -18,6 +18,8 @@ func _on_block_manager_block_removed(block: Block, ball: Ball) -> void:
 		print("CLONE")
 		AudioManager.play_sound("clone")
 		var ballInstance: Ball = BALL.instantiate()
+		ballInstance.isClone = true
+		ballInstance.ballRadius = 6
 		ballInstance.position = ball.position - Vector2(10, 10)
 		ballInstance.initial_position = gameManager.initialBallPosition
 		ballInstance.initial_vector = ball.velocity.normalized().rotated(randf_range(-PI / 6, PI / 6))

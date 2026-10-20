@@ -35,9 +35,9 @@ func _physics_process(delta: float) -> void:
 		if body is Ability:
 			(body as Ability).use_ability()
 
-func set_size(size: Vector2) -> void:
-	collision_shape.shape.size = size
-	mesh_instance.scale = size
+func set_length(length: float) -> void:
+	collision_shape.shape.size.x = length
+	mesh_instance.scale.x = length
 
 func tween_size(size: Vector2) -> void:
 	collision_shape.shape.size = size

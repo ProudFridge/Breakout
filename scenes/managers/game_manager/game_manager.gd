@@ -12,6 +12,7 @@ class_name GameManager
 const PADDLE: Resource = preload("uid://cvstwnwbs75xl")
 const BALL: Resource = preload("uid://dpwwvkfv48suw")
 
+static var difficulty: DIFFICULTY
 static var currentLevel: int = 0
 var ball: Ball
 var paddle: Paddle
@@ -33,6 +34,13 @@ func _ready() -> void:
 	
 	add_child(paddle)
 	add_child(ball)
+	
+	if difficulty == DIFFICULTY.EASY:
+		paddle.set_length(90)
+	elif difficulty == DIFFICULTY.NORMAL:
+		paddle.set_length(75)
+	else:
+		paddle.set_length(60)
 	
 	abilityManager.paddle = paddle
 	
@@ -66,3 +74,8 @@ func _on_block_manager_level_won() -> void:
 	elif currentLevel >= LevelManager.levelCount :
 		SwitcherSingleton.switch_from_to("res://scenes/congrats/congrats.tscn", SwitcherSingleton.TRANSITION_TYPE.SLIDE)
 	
+enum DIFFICULTY {
+	EASY,
+	NORMAL,
+	HARD
+}

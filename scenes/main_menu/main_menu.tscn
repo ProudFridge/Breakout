@@ -4,7 +4,9 @@
 [ext_resource type="Script" uid="uid://deswd6ual3uih" path="res://scenes/main_menu/quit_button.gd" id="2_0ebjn"]
 [ext_resource type="Theme" uid="uid://247q53tapwic" path="res://scenes/main_menu/main_theme.tres" id="3_ob46e"]
 [ext_resource type="Script" uid="uid://b34ys2mfs4j18" path="res://scenes/main_menu/grid_container.gd" id="4_uqeha"]
-[ext_resource type="Script" uid="uid://3lrmm3k0hlhm" path="res://scenes/main_menu/start_button.gd" id="5_wem23"]
+[ext_resource type="Script" uid="uid://dxehrnheaplsf" path="res://scenes/main_menu/easy.gd" id="6_4xg86"]
+[ext_resource type="Script" uid="uid://bdjfkvbmk8777" path="res://scenes/main_menu/normal.gd" id="7_thkx5"]
+[ext_resource type="Script" uid="uid://cytqnc83mh6bi" path="res://scenes/main_menu/hard.gd" id="8_x2yjq"]
 
 [sub_resource type="Gradient" id="Gradient_0ebjn"]
 offsets = PackedFloat32Array(0)
@@ -59,45 +61,43 @@ size_flags_vertical = 6
 theme = ExtResource("3_ob46e")
 script = ExtResource("4_uqeha")
 
-[node name="StartButton" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=429037928]
+[node name="Easy" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=2035849320]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../QuitButton")
-focus_neighbor_bottom = NodePath("../Button2")
-focus_next = NodePath("../Button2")
+focus_neighbor_bottom = NodePath("../Normal")
+focus_next = NodePath("../Normal")
 focus_previous = NodePath("../QuitButton")
-text = "Start"
-script = ExtResource("5_wem23")
+text = "Easy"
+script = ExtResource("6_4xg86")
 
-[node name="Button2" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=552485328]
+[node name="Normal" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1523571866]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
-offset_transform_enabled = true
-focus_neighbor_top = NodePath("../StartButton")
-focus_neighbor_bottom = NodePath("../Button3")
-focus_next = NodePath("../Button3")
-focus_previous = NodePath("../StartButton")
-text = "nothing"
+focus_neighbor_top = NodePath("../Easy")
+focus_neighbor_bottom = NodePath("../Hard")
+focus_next = NodePath("../Hard")
+focus_previous = NodePath("../Easy")
+text = "Normal"
+script = ExtResource("7_thkx5")
 
-[node name="Button3" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=702029597]
+[node name="Hard" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=242442314]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Button2")
+focus_neighbor_top = NodePath("../Normal")
 focus_neighbor_bottom = NodePath("../QuitButton")
 focus_next = NodePath("../QuitButton")
-focus_previous = NodePath("../Button2")
-text = "nothing"
+focus_previous = NodePath("../Normal")
+text = "Hard"
+script = ExtResource("8_x2yjq")
 
 [node name="QuitButton" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1687944003]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Button3")
-focus_neighbor_bottom = NodePath("../StartButton")
-focus_next = NodePath("../StartButton")
-focus_previous = NodePath("../Button3")
+focus_neighbor_top = NodePath("../Hard")
+focus_neighbor_bottom = NodePath("../Easy")
+focus_next = NodePath("../Easy")
+focus_previous = NodePath("../Hard")
 text = "Quit"
 script = ExtResource("2_0ebjn")

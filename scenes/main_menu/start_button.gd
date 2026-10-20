@@ -7,6 +7,3 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn",SwitcherSingleton.TRANSITION_TYPE.SLIDE)
-	
-	# Uncomment this line and comment the above lines to disable transitions
-	#SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn")

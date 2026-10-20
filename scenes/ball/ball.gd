@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Ball
 
-@export var SPEED: float = 400.0
+static var defaultBallSpeed: float = 400.0
+@export var SPEED: float = defaultBallSpeed
 @export var damage: float = 1
 @export var isPiercing: bool = false
 
@@ -12,9 +13,10 @@ class_name Ball
 
 const BALL: Resource = preload("uid://dpwwvkfv48suw")
 
-var initial_vector: Vector2 = Vector2(0,1)
+var initial_vector: Vector2 = Vector2(0,-1)
 var initial_position: Vector2
-var ballRadius: float = 7
+var ballRadius: float = 8
+var isClone: float = false
 
 signal died()
 
@@ -24,7 +26,11 @@ func _ready() -> void:
 	initial_position = position
 	
 	particle_timer.timeout.connect(_on_particle_timer_timeout)
-
+	
+	if isClone:
+		var timer: SceneTreeTimer = get_tree().create_timer(10)
+		timer.timeout.connect(func() -> void: if self: delete())
+	
 func _physics_process(delta: float) -> void:		
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	
@@ -33,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		var body: Node = collision.get_collider()
 		
 		if body.is_in_group("BottomWall"):
-			if _get_ball_count() <= 1:
+			if !isClone:
 				AudioManager.play_sound("death")
 				reset_ball()
 				died.emit()
@@ -61,9 +67,13 @@ func _physics_process(delta: float) -> void:
 
 
 func set_size(radius: float) -> void:
-	(mesh_instance_2d.mesh as SphereMesh).radius = radius
-	(mesh_instance_2d.mesh as SphereMesh).height = 2 * radius
-	(collision_shape_2d.shape as CircleShape2D).radius = radius
+	var mesh: SphereMesh = SphereMesh.new()
+	mesh.radius = radius
+	mesh.height = 2 * radius
+	mesh_instance_2d.mesh = mesh
+	var collisionShape: CircleShape2D = CircleShape2D.new()
+	collisionShape.radius = radius
+	collision_shape_2d.shape = collisionShape
 	$TrailComponent.width = radius
 	
 func delete() -> void:
