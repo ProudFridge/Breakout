@@ -11,6 +11,7 @@ var characterBody: CharacterBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	characterBody = get_parent()
+	modulate = characterBody.modulate
 	#previousPosition = currentPosition
 	#currentPosition = position
 	#position = characterBody.position
