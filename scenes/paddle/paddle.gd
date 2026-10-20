@@ -4,7 +4,7 @@ class_name Paddle
 var SPEED: float = 300.0
 var oriSpeed: float = SPEED
 const maxTiltAngle: float = deg_to_rad(15)
-var tiltAccel: float = 2
+var tiltAccel: float = 5
 var prevPosition: Vector2 = Vector2.ZERO
 var computedVelocity: Vector2 = Vector2.ZERO
 
@@ -23,6 +23,14 @@ func _physics_process(delta: float) -> void:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 	#
 	position.x = get_global_mouse_position().x
+	
+	# Handle the paddle tilt
+	if Input.is_action_pressed("tilt_right"):
+		rotation = move_toward(rotation, maxTiltAngle, tiltAccel * delta)
+	elif Input.is_action_pressed("tilt_left"):
+		rotation = move_toward(rotation, -maxTiltAngle, tiltAccel * delta)
+	else:
+		rotation = move_toward(rotation, 0, tiltAccel * delta)
 	
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 
