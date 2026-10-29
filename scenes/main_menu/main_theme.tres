@@ -9,10 +9,21 @@ bg_color = Color(0.21, 0.21, 0.21, 0.40392157)
 bg_color = Color(0.21176471, 0.21176471, 0.21176471, 0.40392157)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhipj"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0.36, 0.36, 0.36, 0.05490196)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7hy3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3vx8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hghty"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5058824, 0.5058824, 0.5058824, 1)
 
 [resource]
 Button/fonts/font = ExtResource("1_hghty")
@@ -21,3 +32,10 @@ Button/styles/hover = SubResource("StyleBoxFlat_rfogj")
 Button/styles/normal = SubResource("StyleBoxFlat_rhipj")
 Button/styles/pressed = SubResource("StyleBoxFlat_j7hy3")
 Label/fonts/font = ExtResource("1_hghty")
+Panel/styles/panel = SubResource("StyleBoxFlat_t3vx8")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_hghty")
+RichTextLabel/fonts/bold_font = ExtResource("1_hghty")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_hghty")
+RichTextLabel/fonts/italics_font = ExtResource("1_hghty")
+RichTextLabel/fonts/mono_font = ExtResource("1_hghty")
+RichTextLabel/fonts/normal_font = ExtResource("1_hghty")

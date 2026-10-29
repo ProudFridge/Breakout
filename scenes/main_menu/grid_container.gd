@@ -8,8 +8,7 @@ func _ready() -> void:
 	var children: Array[Node] = get_children()
 	var i: int = 0
 	
-	(children[1] as Control).grab_focus.call_deferred()
-	print(children[0].get_path())
+	(children[0] as Control).grab_focus.call_deferred()
 	
 	for button: Button in children:
 		# Set animations

@@ -1,9 +1,9 @@
 extends CanvasLayer
 
 @export var startMessage: CanvasLayer
-@onready var resume: Button = $PanelContainer/VBoxContainer/Resume
-@onready var main_menu: Button = $PanelContainer/VBoxContainer/MainMenu
-@onready var quit: Button = $PanelContainer/VBoxContainer/Quit
+@export var resume: Button
+@export var main_menu: Button
+@export var quit: Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

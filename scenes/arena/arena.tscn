@@ -13,19 +13,13 @@
 [ext_resource type="Script" uid="uid://c0jjhek854oit" path="res://scenes/arena/ui/restart_button.gd" id="9_6w4xk"]
 [ext_resource type="Script" uid="uid://cwo2b31ad2swj" path="res://scenes/arena/ui/next_level_button.gd" id="11_xgbxb"]
 [ext_resource type="Script" uid="uid://mf3gmufjrs3x" path="res://scenes/arena/ui/previous_level_button.gd" id="12_vmsrg"]
+[ext_resource type="Script" uid="uid://o2u1uu22fqry" path="res://scenes/arena/ui/level_buttons_dev.gd" id="13_rhjlh"]
 [ext_resource type="Script" uid="uid://bwxm8xtf20qli" path="res://scenes/arena/ui/pause_menu/pause_menu.gd" id="15_t3vx8"]
 [ext_resource type="Script" uid="uid://qjcmcnd88eef" path="res://scenes/arena/ui/start_message/start_message.gd" id="15_w4nra"]
 [ext_resource type="Theme" uid="uid://247q53tapwic" path="res://scenes/main_menu/main_theme.tres" id="16_rhjlh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w4xk"]
 bg_color = Color(0.32544068, 0.32544097, 0.32544082, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ml6w"]
-bg_color = Color(0.13319641, 0.13319641, 0.13319635, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="Arena" type="Node2D" unique_id=2083693325]
 script = ExtResource("1_ii07k")
@@ -57,10 +51,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+color = Color(0.008202021, 0.008202026, 0.00820202, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1736970156]
-layer = -1
 follow_viewport_enabled = true
 
 [node name="UI" type="Control" parent="CanvasLayer" unique_id=1429491807 node_paths=PackedStringArray("blockManager", "gameManager", "grid_utility")]
@@ -70,6 +63,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("16_rhjlh")
 script = ExtResource("7_vmsrg")
 blockManager = NodePath("../../BlockManager")
 gameManager = NodePath("../../GameManager")
@@ -92,7 +86,7 @@ offset_left = -164.0
 offset_right = 164.0
 offset_bottom = 39.0
 grow_horizontal = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 160
 alignment = 1
 
 [node name="BlocksLeftPanel" type="Panel" parent="CanvasLayer/UI/Header/HBoxContainer" unique_id=1033606314]
@@ -188,10 +182,10 @@ gameManager = NodePath("../../../../../../../GameManager")
 [node name="GridUtility" parent="CanvasLayer/UI" unique_id=1717053236 node_paths=PackedStringArray("blockManager") instance=ExtResource("7_xgbxb")]
 visible = false
 layout_mode = 1
-offset_left = 12.0
-offset_top = 631.0
-offset_right = 221.0
-offset_bottom = 862.0
+offset_left = 37.0
+offset_top = 627.0
+offset_right = 246.0
+offset_bottom = 858.0
 folded = true
 blockManager = NodePath("../../../BlockManager")
 
@@ -210,7 +204,6 @@ offset_right = 165.0
 offset_bottom = 91.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2ml6w")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/LostScreen" unique_id=523988215]
 layout_mode = 1
@@ -239,7 +232,7 @@ size_flags_vertical = 3
 text = "Restart?"
 script = ExtResource("9_6w4xk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=2077006910]
+[node name="LevelButtonsDev" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=2077006910]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -247,23 +240,28 @@ anchor_bottom = 1.0
 offset_top = -66.0
 offset_right = 133.0
 grow_vertical = 0
+script = ExtResource("13_rhjlh")
 
-[node name="NextLevelButton" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=2081928622 node_paths=PackedStringArray("gameManager")]
+[node name="NextLevelButton" type="Button" parent="CanvasLayer/UI/LevelButtonsDev" unique_id=2081928622 node_paths=PackedStringArray("gameManager")]
 layout_mode = 2
 text = "Next Level"
 script = ExtResource("11_xgbxb")
 gameManager = NodePath("../../../../GameManager")
 
-[node name="PreviousLevelButton" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1943225473 node_paths=PackedStringArray("gameManager")]
+[node name="PreviousLevelButton" type="Button" parent="CanvasLayer/UI/LevelButtonsDev" unique_id=1943225473 node_paths=PackedStringArray("gameManager")]
 layout_mode = 2
 text = "Previous Level"
 script = ExtResource("12_vmsrg")
 gameManager = NodePath("../../../../GameManager")
 
-[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2006036382 node_paths=PackedStringArray("startMessage")]
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2006036382 node_paths=PackedStringArray("startMessage", "resume", "main_menu", "quit")]
 process_mode = 3
+visible = false
 script = ExtResource("15_t3vx8")
 startMessage = NodePath("../StartMessage")
+resume = NodePath("PanelContainer/MarginContainer/VBoxContainer/Resume")
+main_menu = NodePath("PanelContainer/MarginContainer/VBoxContainer/MainMenu")
+quit = NodePath("PanelContainer/MarginContainer/VBoxContainer/Quit")
 
 [node name="PanelContainer" type="PanelContainer" parent="PauseMenu" unique_id=1891272597]
 anchors_preset = 8
@@ -277,23 +275,31 @@ offset_right = 129.0
 offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("16_rhjlh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer" unique_id=124181593]
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PanelContainer" unique_id=1758868680]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer/MarginContainer" unique_id=124181593]
 process_mode = 3
 layout_mode = 2
 theme = ExtResource("16_rhjlh")
 
-[node name="Resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=586147441]
+[node name="Resume" type="Button" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=586147441]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Resume"
 
-[node name="MainMenu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=1358976856]
+[node name="MainMenu" type="Button" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1358976856]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit to main menu"
 
-[node name="Quit" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=1596807816]
+[node name="Quit" type="Button" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1596807816]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"
@@ -303,16 +309,20 @@ process_mode = 3
 visible = false
 script = ExtResource("15_w4nra")
 
-[node name="Label" type="Label" parent="StartMessage" unique_id=437867957]
+[node name="RichTextLabel" type="RichTextLabel" parent="StartMessage" unique_id=1383009471]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -198.0
+offset_top = -20.0
+offset_right = 198.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Press space to start"
+theme = ExtResource("16_rhjlh")
+bbcode_enabled = true
+text = "[pulse][wave freq=2.0 amp=30]Press space to start[/wave][/pulse]"
+horizontal_alignment = 1
+vertical_alignment = 1
