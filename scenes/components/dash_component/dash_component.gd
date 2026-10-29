@@ -18,9 +18,6 @@ func _ready() -> void:
 		#if node is CharacterBody2D:
 			#characterBody = node	
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("dash") and characterBody.velocity != Vector2.ZERO:
-		dash_start()
 		
 func _on_dash_timer_timeout() -> void:
 	dash_finished()

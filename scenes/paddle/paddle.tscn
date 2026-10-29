@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cvstwnwbs75xl"]
 
 [ext_resource type="Script" uid="uid://6bua83dj7est" path="res://scenes/paddle/paddle.gd" id="1_q5rgx"]
-[ext_resource type="PackedScene" uid="uid://dcf4uyw6i8nn6" path="res://scenes/components/dash_component/dash_component.tscn" id="2_2sa55"]
 [ext_resource type="Shader" uid="uid://c5sm1o3plmmgj" path="res://shaders/block.gdshader" id="2_gboxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eletc"]
@@ -33,5 +32,3 @@ modulate = Color(0.47788018, 0.47788012, 0.47788012, 1)
 material = SubResource("ShaderMaterial_vmsrg")
 scale = Vector2(60, 12)
 mesh = SubResource("QuadMesh_q5rgx")
-
-[node name="DashComponent" parent="." unique_id=688090852 instance=ExtResource("2_2sa55")]
