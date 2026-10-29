@@ -73,7 +73,8 @@ const T: Array[Array] = [
 ]
 
 const letters: Array = [B,R,E,A,K,O,U,T]
-const colors: Array[Color] = [Color("d2a44a"), Color("74cbea"), Color("48a048"), Color("d2d240"), Color("c84848")]
+#const colors: Array[Color] = [Color("d2a44a"), Color("74cbea"), Color("48a048"), Color("d2d240"), Color("c84848")]
+const colors: Array[Color] = [Color("d2a44a"), Color("4dc1ebff"), Color("62d962ff"), Color("f2f227ff"), Color("e32d2dff")]
 
 func _ready() -> void:
 	for i: int in range(0, letters.size()):
