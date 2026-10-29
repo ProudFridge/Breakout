@@ -5,8 +5,8 @@ extends Node2D
 func _ready() -> void:
 	pass # Replace with function body.
 
-#func _draw() -> void:
-	#draw_rect(Rect2(Vector2.ZERO, Global.windowSize), Color.AQUA)
+func _draw() -> void:
+	draw_rect(Rect2(Vector2.ZERO, Global.windowSize), Color.AQUA, false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

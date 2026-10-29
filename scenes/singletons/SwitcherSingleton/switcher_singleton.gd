@@ -6,6 +6,7 @@ extends Node
 var current_scene: Node = null
 	
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	var root: Window = get_tree().root
 	# Using a negative index counts from the end, so this gets the last child node of `root`.
 	current_scene = root.get_child(-1)	
@@ -21,7 +22,9 @@ func deferred_switch_to(targetScene: String, transitionType: TRANSITION_TYPE = T
 		# Adds the transitionRect into a canvasLayer so it stays idnependant of the camera's position
 		# TODO: group this into a function, it's messy
 		var canvasLayer: CanvasLayer = CanvasLayer.new()
+		#canvasLayer.process_mode = Node.PROCESS_MODE_ALWAYS
 		var transitionRect: TransitionRect = TransitionRect.new(0.75)
+		
 		canvasLayer.add_child(transitionRect)
 		canvasLayer.follow_viewport_enabled = true
 		
@@ -79,6 +82,8 @@ class TransitionRect extends ColorRect:
 		else:
 			var startTween: Tween = get_tree().create_tween()
 			var endTween: Tween = get_tree().create_tween()
+			startTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			endTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 			
 			startTween.set_ease(Tween.EASE_OUT)
 			startTween.set_trans(Tween.TRANS_BACK)

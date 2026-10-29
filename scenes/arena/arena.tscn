@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://cwo2b31ad2swj" path="res://scenes/arena/ui/next_level_button.gd" id="11_xgbxb"]
 [ext_resource type="Script" uid="uid://mf3gmufjrs3x" path="res://scenes/arena/ui/previous_level_button.gd" id="12_vmsrg"]
 [ext_resource type="Script" uid="uid://bwxm8xtf20qli" path="res://scenes/arena/ui/pause_menu/pause_menu.gd" id="15_t3vx8"]
+[ext_resource type="Script" uid="uid://qjcmcnd88eef" path="res://scenes/arena/ui/start_message/start_message.gd" id="15_w4nra"]
+[ext_resource type="Theme" uid="uid://247q53tapwic" path="res://scenes/main_menu/main_theme.tres" id="16_rhjlh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w4xk"]
 bg_color = Color(0.32544068, 0.32544097, 0.32544082, 1)
@@ -42,9 +44,8 @@ blockManager = NodePath("../BlockManager")
 gameManager = NodePath("../GameManager")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301651378]
-visible = false
-position = Vector2(317, 503)
-zoom = Vector2(0.95, 0.95)
+anchor_mode = 0
+limit_enabled = false
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=607154934]
 layer = -1
@@ -259,28 +260,59 @@ text = "Previous Level"
 script = ExtResource("12_vmsrg")
 gameManager = NodePath("../../../../GameManager")
 
-[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2006036382]
-visible = false
-script = ExtResource("15_t3vx8")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=124181593]
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2006036382 node_paths=PackedStringArray("startMessage")]
 process_mode = 3
+script = ExtResource("15_t3vx8")
+startMessage = NodePath("../StartMessage")
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu" unique_id=1891272597]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -109.0
+offset_right = 129.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer" unique_id=124181593]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("16_rhjlh")
+
+[node name="Resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=586147441]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=1358976856]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit to main menu"
+
+[node name="Quit" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=1596807816]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+
+[node name="StartMessage" type="CanvasLayer" parent="." unique_id=935056920]
+process_mode = 3
+visible = false
+script = ExtResource("15_w4nra")
+
+[node name="Label" type="Label" parent="StartMessage" unique_id=437867957]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -20.0
+offset_top = -11.5
 offset_right = 20.0
-offset_bottom = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Button" type="Button" parent="PauseMenu/VBoxContainer" unique_id=586147441]
-layout_mode = 2
-text = "test"
-
-[node name="Button2" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1358976856]
-layout_mode = 2
-text = "test"
+text = "Press space to start"

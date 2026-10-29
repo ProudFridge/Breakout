@@ -23,12 +23,6 @@ signal life_changed(lives: int)
 signal level_lost()
 
 func _ready() -> void:
-	# Pauses the game for some time when the level starts
-	process_mode = Node.PROCESS_MODE_DISABLED
-	var timer: SceneTreeTimer = get_tree().create_timer(1.5)
-	timer.timeout.connect(func() -> void: process_mode = PROCESS_MODE_ALWAYS)
-	
-	
 	paddle = PADDLE.instantiate()
 	ball = BALL.instantiate()
 	
