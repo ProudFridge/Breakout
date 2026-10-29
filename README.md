@@ -6,6 +6,9 @@ A breakout clone with some additional features.
 2. Clone this repository and import the project into godot
 3. Run the projet by pressing F5
 
+### Controls
+-`Q/E`: Tilt the paddle left/right
+
 ### Assets used
 - [FreeSFX](https://kronbits.itch.io/freesfx) for the ability sound effects
 - [Universal UI/Menu Soundpack](https://cyrex-studios.itch.io/universal-ui-soundpack) for the ui
