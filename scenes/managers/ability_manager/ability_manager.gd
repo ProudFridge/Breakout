@@ -15,7 +15,6 @@ func _ready() -> void:
 # TODO: maybe replace with a class for each abilityType
 func _on_block_manager_block_removed(block: Block, ball: Ball) -> void:
 	if block.ability == Ability.AbilityType.CLONE:
-		print("CLONE")
 		AudioManager.play_sound("clone")
 		var ballInstance: Ball = BALL.instantiate()
 		
@@ -28,7 +27,6 @@ func _on_block_manager_block_removed(block: Block, ball: Ball) -> void:
 		
 		add_child(ballInstance)
 	elif block.ability == Ability.AbilityType.GROW:
-		print("GROW")
 		AudioManager.play_sound("grow")
 		# TODO: Make the paddle blink as it grows
 		paddle.tween_size(Vector2(paddle.get_size().x * 1.2, paddle.get_size().y))

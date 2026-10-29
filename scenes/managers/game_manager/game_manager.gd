@@ -28,11 +28,12 @@ func _ready() -> void:
 	var timer: SceneTreeTimer = get_tree().create_timer(1.5)
 	timer.timeout.connect(func() -> void: process_mode = PROCESS_MODE_ALWAYS)
 	
-	initialPaddlePosition= Vector2(Global.windowSize.x / 2, Global.windowSize.y - 200)
-	initialBallPosition = Vector2(Global.windowSize.x / 2, initialPaddlePosition.y - 170)
 	
 	paddle = PADDLE.instantiate()
 	ball = BALL.instantiate()
+	
+	initialPaddlePosition= Vector2(Global.windowSize.x / 2, Global.windowSize.y - 200)
+	initialBallPosition = Vector2(Global.windowSize.x / 2, initialPaddlePosition.y - ball.ballRadius * 2)
 	
 	paddle.position = initialPaddlePosition
 	ball.position = initialBallPosition

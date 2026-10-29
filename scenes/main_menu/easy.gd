@@ -10,4 +10,5 @@ func _on_pressed() -> void:
 		Ability.AbilityType.CLONE: 0.5,
 		Ability.AbilityType.GROW: 0.3
 		}
+	BlockManager.blockHealth = 1
 	SwitcherSingleton.switch_from_to("res://scenes/arena/arena.tscn",SwitcherSingleton.TRANSITION_TYPE.SLIDE)

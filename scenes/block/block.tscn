@@ -59,7 +59,6 @@ shader_parameter/transparency = 60.0
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_c27ow")
-health = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225417575]
 shape = SubResource("RectangleShape2D_yksjm")

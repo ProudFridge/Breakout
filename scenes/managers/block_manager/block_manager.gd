@@ -15,6 +15,8 @@ static var abilitySpawnChances: Dictionary[Ability.AbilityType, float] = {
 	Ability.AbilityType.GROW: 0.1
 }
 
+static var blockHealth: int = 1
+
 var block: PackedScene = preload("res://scenes/block/block.tscn")
 
 # Use later to detect if the player has won
@@ -82,6 +84,7 @@ func _instantiate_block(position: Vector2, size: Vector2, color: Color) -> void:
 	var blockInstance: Block = block.instantiate()
 	self.add_block(blockInstance)
 	
+	blockInstance.health = blockHealth
 	blockInstance.blockManager = self
 	blockInstance.set_size(size)
 	blockInstance.initialColor = color
