@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cniqxh06sbxw5"]
 
-[ext_resource type="Script" uid="uid://bahxyb1jog471" path="res://scenes/arena/arena.gd" id="1_ii07k"]
 [ext_resource type="PackedScene" uid="uid://crl3sjvrqcwai" path="res://scenes/managers/game_manager/game_manager.tscn" id="1_u52cf"]
 [ext_resource type="PackedScene" uid="uid://x512y2sg1mhi" path="res://scenes/managers/boundary_manager/boundary_manager.tscn" id="2_2ml6w"]
 [ext_resource type="PackedScene" uid="uid://blmhj0qtrvphf" path="res://scenes/managers/block_manager/block_manager.tscn" id="2_ii07k"]
@@ -22,7 +21,6 @@
 bg_color = Color(0.32544068, 0.32544097, 0.32544082, 1)
 
 [node name="Arena" type="Node2D" unique_id=2083693325]
-script = ExtResource("1_ii07k")
 
 [node name="BlockManager" parent="." unique_id=46482369 node_paths=PackedStringArray("abilityManager") instance=ExtResource("2_ii07k")]
 abilityManager = NodePath("../AbilityManager")
