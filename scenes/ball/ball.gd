@@ -85,7 +85,7 @@ func _get_ball_count() -> int:
 
 ## Resets the ball's position and clears the trail
 func reset_ball() -> void:
-	position = initial_position
+	position = initial_position - Vector2(0, 40)
 	$TrailComponent.clear()
 	velocity = Vector2.ZERO
 

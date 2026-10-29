@@ -4,7 +4,6 @@ extends Control
 @export var gameManager: GameManager
 @export var grid_utility: GridUtility
 @onready var lost_screen: Panel = $LostScreen
-@onready var color_rect: ColorRect = $ColorRect
 var blockAmountX: int = 10
 var blockAmountY: int = 10
 
